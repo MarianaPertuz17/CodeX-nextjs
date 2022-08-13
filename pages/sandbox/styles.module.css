@@ -1,0 +1,78 @@
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #20045c;
+}
+
+.innerContainer {
+  height: 90%;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.codeEditor {
+  height: 55%;
+  width: 50%;
+}
+
+.labelContainer {
+  height: 10%;
+  display:flex;
+  justify-content:space-between;
+}
+
+.label {
+  color: white;
+  width: 20%;
+  background-color: #0f0b22;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  font-family: 'Open Sans';
+}
+
+.questionContainer {
+  background-color: #0f0b22;
+  height: 100%;
+  width: 47%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.outputContainer {
+  background-color: #0f0b22;
+  height: 60%;
+}
+
+.runButton {
+  background-color: #52c842;
+  border: none;
+  color:white;
+  font-weight: bold;
+  font-family: 'Open Sans';
+  cursor: pointer;
+  width: 7vw;
+}
+
+.submitButton {
+  background-color: #8d62eb;
+  border: none;
+  color:white;
+  font-weight: bold;
+  font-family: 'Open Sans';
+  cursor: pointer;
+  width: 7vw;
+}
+
+.runButton:hover{
+  background-color: #3f9e32;
+}
+
+.submitButton:hover {
+  background-color: #5f439b;
+}
