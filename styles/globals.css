@@ -13,3 +13,20 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.cm-theme {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.ͼ15 {
+  height: 95% !important;
+}
+
+.cm-content {
+  background-color: #0f0b22 !important;
+}
+
+.cm-gutters {
+  background-color: #0f0b22 !important;
+}
