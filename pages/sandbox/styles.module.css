@@ -42,6 +42,8 @@
   height: 100%;
   width: 47%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
 }
 
 .outputContainer {
@@ -75,4 +77,16 @@
 
 .submitButton:hover {
   background-color: #5f439b;
+}
+
+.clockContainer {
+  background-color: #343049;
+  border: none;
+  width: 15vw;
+  height: 5%;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
 }
