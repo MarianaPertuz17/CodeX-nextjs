@@ -1,15 +1,14 @@
 .container {
-  height: 100vh;
+  height: 90vh;  
   width: 100vw;
   display: flex;
-  align-items: center;
+  padding: 20px;
   justify-content: center;
-  background-color: #20045c;
 }
 
 .innerContainer {
-  height: 90%;
-  width: 95%;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }

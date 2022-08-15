@@ -11,7 +11,7 @@ import Image from 'next/image';
 import { HintList } from '../../components/hintList';
 import { hintMock } from './mock';
 import { ExerciseDetail } from '../../components/exerciseDetail';
-
+import logo from '../../public/assets/images/logo.png'
 
 export default function Sandbox () {
 
@@ -19,8 +19,18 @@ export default function Sandbox () {
   const [openTimer, setOpenTimer] = useState(false);
 
   return(
-    <>
-      <div className={styles.container}>
+    <div style={{display:'flex', flexDirection:'column', background:'#20045c'}}>
+      <div style={{position: 'relative', width:'150px', height:'10vh', marginLeft:'20px'}}>
+        <Image
+          src={logo}
+          alt="logo"
+          layout='fill'
+          objectFit='contain'
+        />
+      </div>
+      
+      <div className={styles.container} >
+      
         <div className={styles.innerContainer}>
           <div className={styles.questionContainer}>
             <div className={styles.clockContainer}>
@@ -63,7 +73,7 @@ export default function Sandbox () {
         </div>
         
       </div>
-    </>
+    </div>
     
     
   )
