@@ -1,0 +1,114 @@
+.container {
+  background-image: url('../public/assets/images/landing-bg.png');
+  background-size: cover;
+  height: 132vh;
+  
+}
+
+.welcomeContainer {
+  height: 60vh;
+  display: flex;
+  margin-top: 13vh;
+  margin-bottom: 10vh;
+  padding: 0 80px;
+}
+
+.textContainer{
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  margin-top: 10vh;
+}
+
+.title {
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: 70px;
+}
+
+.taglineTitle {
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: 70px;
+  animation-duration: 1750ms;
+  animation-delay: 500ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.48, 0.08, 0.19, 1);
+}
+
+.lastTitle {
+  text-align: center;
+  width:37%;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: 70px;
+}
+
+.text {
+  color: gray;
+  font-size: 20px;
+  margin-top: 3vh;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.spaceman {
+  height: 78vh;
+  width: 45vw;
+  position: relative;
+  padding:0;
+  animation: updown 3s linear infinite;
+  z-index: 1000;
+}
+
+@keyframes updown {
+    0% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+.whiteFloor {
+  width: 100%;
+}
+
+.firstCardContainer {
+  display: flex;
+  padding: 0 80px;
+}
+
+.h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: 45px;
+}
+
+.planet {
+  height: 75vh;
+  width:70vw;
+  margin-top: -20vh;
+  margin-left: -7vw;
+  position: relative;
+}
+
+.secondCardContainer {
+  background-image: url('../public/assets/images/background_2.png');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  padding: 250px 0;
+  position: relative;
+}
+
+.rocket {
+  height: 70vh;
+  width:30vw;
+  position: relative;
+}
