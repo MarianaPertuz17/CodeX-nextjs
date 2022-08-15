@@ -8,6 +8,10 @@ import { useState } from 'react';
 import { MyStopwatch } from '../../components/timer';
 import clock from '../../public/assets/images/clock.png';
 import Image from 'next/image';
+import { HintList } from '../../components/hintList';
+import { hintMock } from './mock';
+import { ExerciseDetail } from '../../components/exerciseDetail';
+
 
 export default function Sandbox () {
 
@@ -33,8 +37,8 @@ export default function Sandbox () {
               <div>
                <MyStopwatch/>
               </div>
-              
             </div>
+            <ExerciseDetail hintMock={hintMock}/>
           </div>
           <div className={styles.codeEditor}>
             <div className={styles.labelContainer}>
