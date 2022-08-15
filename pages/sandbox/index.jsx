@@ -4,7 +4,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { javascript } from '@codemirror/lang-javascript';
 import styles from './styles.module.css';
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { MyStopwatch } from '../../components/timer';
 import clock from '../../public/assets/images/clock.png';
 import Image from 'next/image';
@@ -15,8 +15,21 @@ import logo from '../../public/assets/images/logo.png'
 
 export default function Sandbox () {
 
-  const [code, setCode] = useState('');
-  const [openTimer, setOpenTimer] = useState(false);
+  const [codeString, setCodeString] = useState('');
+
+  const parseFunction = (str)=> {
+    return Function('"use strict";return (' + str + ')')();
+  }
+
+  const onChange = useCallback(value => {
+    setCodeString(value)
+  }, []);
+
+  const handleRun = () => {
+    const functionToTest = parseFunction(codeString);
+    console.log(functionToTest);
+  }
+
 
   return(
     <div style={{display:'flex', flexDirection:'column', background:'#20045c'}}>
@@ -54,14 +67,15 @@ export default function Sandbox () {
             <div className={styles.labelContainer}>
               <div className={styles.label}>Javascript</div>
               
-              <button className={styles.runButton}>Run code</button>
+              <button className={styles.runButton} onClick={handleRun}>Run code</button>
             </div>
             
             <CodeMirror
-              value={code}
+              value={codeString}
               height="200px"
               theme={dracula}
               extensions={[javascript({ jsx: true })]}
+              onChange={onChange}
             />
              <div className={styles.labelContainer}>
               <div className={styles.label}>Output</div>
