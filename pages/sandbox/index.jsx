@@ -2,13 +2,12 @@
 // import 'codemirror/theme/dracula.css';
 import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
-import { javascript } from '@codemirror/lang-javascript';
+import { html } from '@codemirror/lang-html';
 import styles from './styles.module.css';
 import { useState, useCallback } from 'react';
 import { MyStopwatch } from '../../components/timer';
 import clock from '../../public/assets/images/clock.png';
 import Image from 'next/image';
-import { HintList } from '../../components/hintList';
 import { hintMock } from './mock';
 import { ExerciseDetail } from '../../components/exerciseDetail';
 import logo from '../../public/assets/images/logo.png'
@@ -74,7 +73,7 @@ export default function Sandbox () {
               value={codeString}
               height="200px"
               theme={dracula}
-              extensions={[javascript({ jsx: true })]}
+              extensions={[html()]}
               onChange={onChange}
             />
              <div className={styles.labelContainer}>
