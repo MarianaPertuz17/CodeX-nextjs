@@ -10,6 +10,14 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Test {
+  id         Int      @id @default(autoincrement())
+  testInput  String[]
+  testOutput String[]
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId Int      @unique // relation scalar field (used in the `@relation` attribute above)
+}
+
 model Exercise {
   id           Int      @id @default(autoincrement())
   name         String
@@ -20,14 +28,11 @@ model Exercise {
   paramNames   String[]
   input        String?
   output       String?
-  User         User?    @relation(fields: [userId], references: [id])
-  userId       Int?
+  test         Test?
 }
 
 model User {
-  id       Int        @id @default(autoincrement())
-  email    String     @unique
-  username String
-  password String
-  solved   Exercise[]
+  id     Int    @id @default(autoincrement())
+  authId String @unique
+  solved Int[]
 }
