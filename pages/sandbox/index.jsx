@@ -34,13 +34,13 @@ export default function Sandbox () {
     fetchExercise();
   }, []);
 
-  useEffect(()=> {
-    if(exercise) {
-    setCodeString(`function ${exercise.functionName}(${exercise.paramNames[0]}) {
-  // Write your code here.
-  return
-}`);}
-  }, [exercise]);
+//   useEffect(()=> {
+//     if(exercise) {
+//     setCodeString(`function ${exercise.functionName}(${exercise.paramNames[0]}) {
+//   // Write your code here.
+//   return
+// }`);}
+//   }, [exercise]);
 
   const [codeString, setCodeString] = useState('');
 
@@ -59,7 +59,7 @@ export default function Sandbox () {
 
 
   return(
-    <div style={{display:'flex', flexDirection:'column', background:'#20045c'}}>
+    <div style={{display:'flex', flexDirection:'column', background:'#100444f7'}}>
       <NavBar/>
       
       <div className={styles.container} >
