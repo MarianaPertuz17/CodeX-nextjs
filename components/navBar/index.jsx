@@ -6,12 +6,16 @@ import Image from 'next/image';
 export function NavBar () {
   return(
     <div className={styles.container}>
-      <Image
-          src={logo}
-          alt="logo"
-          height='100%'
-          width='200px'
-        />
+      <Link href="/">
+        <a style={{cursor:'pointer'}}>
+          <Image
+            src={logo}
+            alt="logo"
+            height='100%'
+            width='200px'
+          />
+        </a>
+      </Link>
       <div >
         <Link href="/sandbox" className={styles.questionsLabel}>Sandbox</Link>
       </div>
