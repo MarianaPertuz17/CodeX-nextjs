@@ -4,11 +4,13 @@ const prisma = new PrismaClient()
 
 export default async function handler(req, res) {
     try{
-        const exercise = await prisma.exercise.findMany()
-     res.json(exercise)
+        const test = await prisma.test.findUnique({
+            where: {
+                id: parseInt(req.query.id)
+            }
+        })
+     res.json(test)
     }catch(error){
         res.status(400).json({error})
     }
   }
-  
-
