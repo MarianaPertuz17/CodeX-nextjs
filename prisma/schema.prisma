@@ -11,6 +11,14 @@ datasource db {
   url      = "postgresql://providence:PiWo50AlTah5HdFQUBZg@codex-db-instance-1.cl2pkr7samlh.us-east-1.rds.amazonaws.com:5432/codex?schema=public"
 }
 
+model Test {
+  id         Int      @id @default(autoincrement())
+  testInput  String[]
+  testOutput String[]
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId Int      @unique // relation scalar field (used in the `@relation` attribute above)
+}
+
 model Exercise {
   id           Int      @id @default(autoincrement())
   name         String
@@ -21,14 +29,11 @@ model Exercise {
   paramNames   String[]
   input        String?
   output       String?
-  User         User?    @relation(fields: [userId], references: [id])
-  userId       Int?
+  test         Test?
 }
 
 model User {
-  id       Int        @id @default(autoincrement())
-  email    String     @unique
-  username String
-  password String
-  solved   Exercise[]
+  id     Int    @id @default(autoincrement())
+  authId String @unique
+  solved Int[]
 }
