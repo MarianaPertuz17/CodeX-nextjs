@@ -1,3 +1,4 @@
+
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
@@ -7,7 +8,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://providence:PiWo50AlTah5HdFQUBZg@codex-db-instance-1.cl2pkr7samlh.us-east-1.rds.amazonaws.com:5432/codex?schema=public"
 }
 
 model Test {
