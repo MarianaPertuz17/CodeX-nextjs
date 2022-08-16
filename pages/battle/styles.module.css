@@ -33,7 +33,7 @@
   padding-left: 20px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  font-family: 'Open Sans';
+  font-family: Open Sans;
 }
 
 .questionContainer {
@@ -48,7 +48,6 @@
 
 .outputContainer {
   background-color: #0f0b22;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,7 +58,7 @@
   border: none;
   color:white;
   font-weight: bold;
-  font-family: 'Open Sans';
+  font-family: Open Sans;
   cursor: pointer;
   width: 7vw;
 }
@@ -69,7 +68,7 @@
   border: none;
   color:white;
   font-weight: bold;
-  font-family: 'Open Sans';
+  font-family: Open Sans;
   cursor: pointer;
   width: 7vw;
 }
@@ -87,8 +86,16 @@
   border: none;
   color:white;
   font-weight: bold;
-  font-family: 'Open Sans';
+  font-family: Open Sans;
   cursor: pointer;
   width: 7vw;
 }
 
+.matchContainer {
+  display:flex;
+  flex-direction:column;
+  color:white;
+  font-weight: bold;
+  font-family: Open Sans;
+  margin-left: 1.5vw;
+}
