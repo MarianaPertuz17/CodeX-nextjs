@@ -3,6 +3,7 @@ import styles from './styles.module.css';
 import Link from 'next/link'
 import Image from 'next/image';
 import { useUser } from '@auth0/nextjs-auth0';
+import { useRouter } from 'next/router'
 
 export function NavBar () {
 

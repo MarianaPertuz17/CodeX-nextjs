@@ -7,7 +7,7 @@ import { NavBar } from '../../components/navBar';
 
 export default function CSSBattle () {
 
-  const url = `https://cssbattle.dev/api/getScore?levelId=25&token=`;
+  const url = `http://localhost:3000/api`;
 
   const [score, setScore] = useState(0);
   const [match, setMatch] = useState(0);
@@ -29,13 +29,12 @@ export default function CSSBattle () {
   console.log(JSON.stringify(codeString), 'CODE STRING')
 
   const fetchScore = () => {
-    return fetch(url, {
-      mode: 'cors',
+    return fetch(`${url}/cssbattle`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(codeString)})
+      body: JSON.stringify({code: codeString})})
       .then(res => res.json())
       .then(data => data)
       .catch(e => e);
