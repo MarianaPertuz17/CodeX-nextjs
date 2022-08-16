@@ -2,11 +2,11 @@ import logo from '../../public/assets/images/logo.png';
 import styles from './styles.module.css';
 import Link from 'next/link'
 import Image from 'next/image';
-import { useUser } from '@auth0/nextjs-auth0';
+import { useUser} from '@auth0/nextjs-auth0';
 
 export function NavBar () {
 
-  const { user, isLoading } = useUser();
+  const { user } = useUser();
 
   return(
     <div className={styles.container}>
@@ -29,9 +29,9 @@ export function NavBar () {
           <div className={styles.button}>
             <Link href="/api/auth/login">Sign In</Link>
           </div>
-          {/* <div className={styles.button}>
-            <Link href="/signup">Sign Up</Link>
-          </div> */}
+          <div className={styles.button}>
+            <Link href="/api/signup">Sign Up</Link>
+          </div>
         </div>
         }
         {user &&
