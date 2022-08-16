@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.9.1",
     "@babel/helper-module-imports": "^7.18.6",
     "@codemirror/lang-javascript": "^6.0.2",
     "@fortawesome/fontawesome": "^1.1.8",
