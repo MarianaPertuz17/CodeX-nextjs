@@ -57,19 +57,23 @@ export default function CSSBattle () {
          
           </div>
 
-          <div style={{width:'50%', height:'95%', display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-            <div style={{width:'100%', height:'45%', display:'flex', flexDirection:'column'}}>
+          <div style={{width:'43%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+            <div style={{width:'100%', height:'49%', display:'flex', flexDirection:'column'}}>
               <div className={styles.labelContainer}>
                 <div className={styles.label}>Output</div>
               </div>
-              <div className={styles.outputContainer}></div>
+              <div className={styles.outputContainer}>
+                <iframe srcDoc={codeString} height={300} width={400}></iframe>
+              </div>
             </div>
 
-            <div style={{width:'100%', height:'50%', display:'flex', flexDirection:'column'}}>
+            <div style={{width:'100%', height:'49%', display:'flex', flexDirection:'column'}}>
               <div className={styles.labelContainer}>
                 <div className={styles.label}>Target</div>
               </div>
-              <div className={styles.outputContainer}></div>
+              <div className={styles.outputContainer}>
+                <iframe src="https://cssbattle.dev/targets/25.png" height={300} width={400}></iframe>
+              </div>
             </div>
             
 

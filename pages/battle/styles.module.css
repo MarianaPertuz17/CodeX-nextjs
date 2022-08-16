@@ -1,5 +1,5 @@
 .container {
-  height: 86vh;  
+  height: 100vh;  
   width: 100vw;
   display: flex;
   padding: 0 40px;
@@ -7,17 +7,16 @@
 }
 
 .innerContainer {
-  height: 100%;
+  height: 90%;
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
 .codeEditor {
-  height: 95%;
-  width: 45%;
+  height: 100%;
+  width: 55%;
 }
-
 
 .labelContainer {
   height: 4vh;
@@ -50,6 +49,9 @@
 .outputContainer {
   background-color: #0f0b22;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .runButton {
