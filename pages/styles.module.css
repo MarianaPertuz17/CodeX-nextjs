@@ -5,6 +5,18 @@
   
 }
 
+.cssContain {
+  background-image: url('../public/assets/images/coverBattle.png');
+  background-size: cover;
+  background: no repeat;
+  height: 100vh;
+  display: flex;
+  padding: 0px 80px;
+  margin: 0px 80px;
+  border-radius: 20px;
+  margin-bottom: 10vh;
+}
+
 .welcomeContainer {
   height: 60vh;
   display: flex;
@@ -40,7 +52,6 @@
 
 .lastTitle {
   text-align: center;
-  width:37%;
   color: white;
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
@@ -49,7 +60,7 @@
 
 .text {
   color: gray;
-  font-size: 20px;
+  font-size: 22px;
   margin-top: 3vh;
   font-family: 'DM Sans', sans-serif;
 }
@@ -59,6 +70,7 @@
   width: 45vw;
   position: relative;
   padding:0;
+  left:100%;
   animation: updown 3s linear infinite;
   z-index: 1000;
 }
@@ -77,6 +89,8 @@
 
 .whiteFloor {
   width: 100%;
+  height: 27%;
+  position: relative;
 }
 
 .firstCardContainer {
@@ -105,10 +119,44 @@
   justify-content: center;
   padding: 250px 0;
   position: relative;
+  max-height: fit-content;
 }
 
 .rocket {
-  height: 70vh;
-  width:30vw;
+  width:65%;
   position: relative;
+}
+
+.shadow {
+  width:93%;
+  height: 95vh;
+  position: relative;
+}
+
+.cssCode {
+  width:25vw;
+  position: relative;
+  box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  filter: brightness(1.55) ;
+}
+
+.innerContainer {
+  display: flex;
+  background-color: #0f0b22;
+  padding: 0px 80px;
+  border-radius: 20px;
+  margin-bottom: 10vh;
+  width: 100%;
+}
+
+.cssBattleText {
+  font-size: 72px;
+  background: -webkit-linear-gradient(#44eae3, rgb(206, 85, 206));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 40%;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: 45px;
+  align-self: center;
 }
