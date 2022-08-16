@@ -46,7 +46,7 @@ export default function CSSBattle () {
 
 
   return(
-    <div style={{display:'flex', flexDirection:'column', background:'#20045c'}}>
+    <div className={styles.fullContainer}>
       <NavBar/>
       
       <div className={styles.container} >
