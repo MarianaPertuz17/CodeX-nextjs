@@ -2,7 +2,7 @@
 // import 'codemirror/theme/dracula.css';
 import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
-import { html } from '@codemirror/lang-html';
+import { javascript } from '@codemirror/lang-javascript';
 import styles from './styles.module.css';
 import { useState, useCallback } from 'react';
 import { MyStopwatch } from '../../components/timer';
@@ -10,7 +10,7 @@ import clock from '../../public/assets/images/clock.png';
 import Image from 'next/image';
 import { hintMock } from './mock';
 import { ExerciseDetail } from '../../components/exerciseDetail';
-import logo from '../../public/assets/images/logo.png'
+import { NavBar } from '../../components/navBar';
 
 export default function Sandbox () {
 
@@ -32,14 +32,7 @@ export default function Sandbox () {
 
   return(
     <div style={{display:'flex', flexDirection:'column', background:'#20045c'}}>
-      <div style={{position: 'relative', width:'150px', height:'10vh', marginLeft:'20px'}}>
-        <Image
-          src={logo}
-          alt="logo"
-          layout='fill'
-          objectFit='contain'
-        />
-      </div>
+      <NavBar/>
       
       <div className={styles.container} >
       
@@ -65,7 +58,6 @@ export default function Sandbox () {
           <div className={styles.codeEditor}>
             <div className={styles.labelContainer}>
               <div className={styles.label}>Javascript</div>
-              
               <button className={styles.runButton} onClick={handleRun}>Run code</button>
             </div>
             
@@ -73,13 +65,13 @@ export default function Sandbox () {
               value={codeString}
               height="200px"
               theme={dracula}
-              extensions={[html()]}
+              extensions={[javascript({jsx:true})]}
               onChange={onChange}
             />
-             <div className={styles.labelContainer}>
-              <div className={styles.label}>Output</div>
-              <button className={styles.submitButton}>Submit code</button>
-             </div>
+            <div className={styles.labelContainer}>
+            <div className={styles.label}>Output</div>
+            <button className={styles.submitButton}>Submit code</button>
+            </div>
             
             <div className={styles.outputContainer}></div>
           </div>

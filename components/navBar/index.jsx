@@ -18,6 +18,9 @@ export function NavBar () {
       
       <div className={styles.labelContainer}>
         <div className={styles.questionsLabel}>
+          <Link href="/battle">CSS Battles &#11088;</Link>
+        </div>
+        <div className={styles.questionsLabel}>
           <Link href="/questions">Coding Interview Questions</Link>
         </div>
         
