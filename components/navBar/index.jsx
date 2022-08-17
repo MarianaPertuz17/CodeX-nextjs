@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 
 export function NavBar () {
 
-  const { user, isLoading } = useUser();
+  const { user } = useUser();
 
   return(
     <div className={styles.container}>
@@ -37,9 +37,9 @@ export function NavBar () {
           <div className={styles.button}>
             <Link href="/api/auth/login">Sign In</Link>
           </div>
-          {/* <div className={styles.button}>
-            <Link href="/signup">Sign Up</Link>
-          </div> */}
+          <div className={styles.button}>
+            <Link href="/api/signup">Sign Up</Link>
+          </div>
         </div>
         }
         {user &&
