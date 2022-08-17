@@ -1,7 +1,5 @@
 import styles from './styles.module.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-// import the icons you need
 import {
   faChevronDown,
   faChevronUp
@@ -23,7 +21,6 @@ export function ListItem ({item, list, hint}) {
           <FontAwesomeIcon
             icon={isOpen ? faChevronUp : faChevronDown}
             style={{color:'white', fontSize:23}}
-            //style={isOpen ? styles.arrowUp : styles.arrowDown }
           />
         </button>
       </div>

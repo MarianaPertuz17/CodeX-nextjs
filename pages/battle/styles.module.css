@@ -1,7 +1,7 @@
 .fullContainer {
   display:flex;
   flex-direction:column;
-  background:#100444f7
+  background: #040428;
 }
 
 .container {
@@ -10,6 +10,7 @@
   display: flex;
   padding: 0 20px;
   justify-content: center;
+  /* background: radial-gradient(52.42% 52.36% at 39.89% 51.36%,rgba(69,62,151,0.8901960784313725) 0%,rgb(18 19 29/0%) 70%); */
 }
 
 .innerContainer {
@@ -31,28 +32,34 @@
 }
 
 .label {
-  color: white;
+  color: rgb(189, 189, 189);
   width: 20%;
-  background-color: #0f0b22;
+  background-color: #30304b;
   display: flex;
   align-items: center;
   padding-left: 20px;
+  border: 0.3px solid #393254;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   font-family: Open Sans;
+  opacity: 0.8;
 }
 
 
 .outputContainer {
-  background-color: #0f0b22;
+  background-color: #202049;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: 18%;
+  padding-right: 1vw;
+  border: 0.3px solid #393254;
+  border-bottom-left-radius:10px ;
+  border-bottom-right-radius:10px ;
 }
 
 
 .submitButton {
-  background-color: #8d62eb;
+  background-color:  #400ed7;
   border: none;
   color:white;
   font-weight: bold;
@@ -63,7 +70,7 @@
 
 
 .submitButton:hover {
-  background-color: #5f439b;
+  background-color: #4119b7;
 }
 
 .matchContainer {

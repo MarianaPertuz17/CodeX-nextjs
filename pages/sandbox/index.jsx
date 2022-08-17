@@ -1,5 +1,3 @@
-// import 'codemirror/keymap/sublime';
-// import 'codemirror/theme/dracula.css';
 import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { javascript } from '@codemirror/lang-javascript';
@@ -8,41 +6,66 @@ import { useState, useCallback, useEffect } from 'react';
 import { MyStopwatch } from '../../components/timer';
 import clock from '../../public/assets/images/clock.png';
 import Image from 'next/image';
-import { hintMock } from './mock';
 import { ExerciseDetail } from '../../components/exerciseDetail';
 import { NavBar } from '../../components/navBar';
+import { Spinner } from '../../components/spinner';
+import { TestResult } from '../../components/testResult';
 
 export default function Sandbox () {
 
+  const [codeString, setCodeString] = useState('');
   const [ exercise, setExercise ] = useState();
+  const [ tests, setTests ] = useState([]);
+  const [ loading, setLoading ] = useState(false);
+  const [ showTestResult, setShowTestResult ] = useState(false);
+  const [ functionToTest, setFunctionToTest] = useState();
+  const url= 'http://localhost:3000/api';
 
-  const url= 'http://localhost:3000/api/exercises'
+  useEffect(() => {
+    handleFetch();
+  }, []);
 
-  const fetchExercise = async() => {
-    const res = await handleFetch();
-    setExercise(res);
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setShowTestResult(true);
+        setLoading(false);
+    }, 2000);
+    }
+  }, [loading]);
+
+    useEffect(()=> {
+    if(exercise) {
+    setCodeString(`function ${exercise.functionName}(${exercise.paramNames.join(',')}) {
+  // Write your code here.
+  return
+}`);}
+  }, [exercise]);
+
+
+  const handleFetch = async() => {
+    const resExercise = await fetchExercise();
+    setExercise(resExercise);
+    if (resExercise) {
+      const resTests = await fetchTests(resExercise.id);
+      setTests(resTests);
+    }
   }
 
-  const handleFetch = () => {
-    return fetch(`${url}/${1}`)
+  console.log(tests, 'los test')
+  const fetchExercise = () => {
+    return fetch(`${url}/exercises/${1}`)
       .then(res => res.json())
       .then(data => data)
       .catch(e => e);
   }
 
-  useEffect(() => {
-    fetchExercise();
-  }, []);
-
-//   useEffect(()=> {
-//     if(exercise) {
-//     setCodeString(`function ${exercise.functionName}(${exercise.paramNames[0]}) {
-//   // Write your code here.
-//   return
-// }`);}
-//   }, [exercise]);
-
-  const [codeString, setCodeString] = useState('');
+  const fetchTests = (id) => {
+    return fetch(`${url}/test/${id}`)
+      .then(res => res.json())
+      .then(data => data)
+      .catch(e => e);
+  }
 
   const parseFunction = (str)=> {
     return Function('"use strict";return (' + str + ')')();
@@ -53,36 +76,49 @@ export default function Sandbox () {
   }, []);
 
   const handleRun = () => {
-    const functionToTest = parseFunction(codeString);
-    console.log(functionToTest);
+    const func = parseFunction(codeString);
+    setFunctionToTest(func);
+    setLoading(true);
+  }
+
+
+
+  const handleSubmit = () => {
+    
   }
 
 
   return(
-    <div style={{display:'flex', flexDirection:'column', background:'#100444f7'}}>
+    <div style={{display:'flex', flexDirection:'column', background:'#040428'}}>
       <NavBar/>
       
       <div className={styles.container} >
       
         <div className={styles.innerContainer}>
-          <div className={styles.questionContainer}>
-            <div className={styles.clockContainer}>
-              <div style={{position: 'relative', width:'25%', height:'100%'}}>
+          <div style={{width:'47%', height:'100%'}}>
+          <div className={styles.labelButtonContainer}>
+            <div style={{display:'flex'}}>
+              <button className={styles.label}>Prompt </button>
+              <button className={styles.label} style={{borderRadius:0, background:'#30304b'}}>Solutions</button>
+            </div>
+              
+              <div className={styles.clockContainer}>
                 <Image
                   src={clock}
                   alt="clock"
-                  height='100%'
-                  width='35px'
-                  layout='fill'
-                  objectFit='contain'
+                  height='20px'
+                  width='20px'
                 />
-              </div>   
-              <div>
                <MyStopwatch/>
-              </div>
             </div>
-            {exercise && <ExerciseDetail exercise={exercise} hintMock={hintMock}/>}
+    
           </div>
+          <div className={styles.questionContainer}>         
+            {exercise && <ExerciseDetail exercise={exercise}/>}
+          </div>
+
+          </div>
+          
           <div className={styles.codeEditor}>
             <div className={styles.labelContainer}>
               <div className={styles.label}>Javascript</div>
@@ -97,11 +133,14 @@ export default function Sandbox () {
               onChange={onChange}
             />
             <div className={styles.labelContainer}>
-            <div className={styles.label}>Output</div>
-            <button className={styles.submitButton}>Submit code</button>
+              <div className={styles.label}>Output</div>
+              <button className={styles.submitButton} onClick={handleSubmit}>Submit code</button>
             </div>
             
-            <div className={styles.outputContainer}></div>
+            <div className={styles.outputContainer}>
+              { loading && <Spinner/> }
+              { showTestResult && tests && <TestResult functionToTest={functionToTest} tests={tests}/> }
+            </div>
           </div>
         </div>
         

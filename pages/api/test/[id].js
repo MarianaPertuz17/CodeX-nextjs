@@ -4,7 +4,7 @@ const prisma = new PrismaClient()
 
 export default async function handler(req, res) {
     try{
-        const test = await prisma.test.findUnique({
+        const test = await prisma.test.findMany({
             where: {
                 id: parseInt(req.query.id)
             }
