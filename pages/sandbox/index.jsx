@@ -65,24 +65,30 @@ export default function Sandbox () {
       <div className={styles.container} >
       
         <div className={styles.innerContainer}>
-          <div className={styles.questionContainer}>
-            <div className={styles.clockContainer}>
-              <div style={{position: 'relative', width:'25%', height:'100%'}}>
+          <div style={{width:'47%', height:'100%'}}>
+          <div className={styles.labelButtonContainer}>
+            <div style={{display:'flex'}}>
+              <button className={styles.label}>Prompt </button>
+              <button className={styles.label} style={{borderRadius:0, background:'#343049'}}>Solutions</button>
+            </div>
+              
+              <div className={styles.clockContainer}>
                 <Image
                   src={clock}
                   alt="clock"
-                  height='100%'
-                  width='35px'
-                  layout='fill'
-                  objectFit='contain'
+                  height='20px'
+                  width='20px'
                 />
-              </div>   
-              <div>
                <MyStopwatch/>
-              </div>
             </div>
+    
+          </div>
+          <div className={styles.questionContainer}>         
             {exercise && <ExerciseDetail exercise={exercise} hintMock={hintMock}/>}
           </div>
+
+          </div>
+          
           <div className={styles.codeEditor}>
             <div className={styles.labelContainer}>
               <div className={styles.label}>Javascript</div>
@@ -97,8 +103,8 @@ export default function Sandbox () {
               onChange={onChange}
             />
             <div className={styles.labelContainer}>
-            <div className={styles.label}>Output</div>
-            <button className={styles.submitButton}>Submit code</button>
+              <div className={styles.label}>Output</div>
+              <button className={styles.submitButton}>Submit code</button>
             </div>
             
             <div className={styles.outputContainer}></div>

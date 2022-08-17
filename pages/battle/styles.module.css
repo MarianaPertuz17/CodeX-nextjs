@@ -47,7 +47,8 @@
   background-color: #0f0b22;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: 18%;
+  padding-right: 1vw;
 }
 
 
