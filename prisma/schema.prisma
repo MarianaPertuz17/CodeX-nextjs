@@ -15,7 +15,7 @@ model Test {
   testInput  String[]
   testOutput String[]
   exercise   Exercise @relation(fields: [exerciseId], references: [id])
-  exerciseId Int      @unique // relation scalar field (used in the `@relation` attribute above)
+  exerciseId Int
 }
 
 model Exercise {
@@ -31,7 +31,7 @@ model Exercise {
   paramNames   String[]
   input        String?
   output       String?
-  test         Test?
+  tests        Test[]
 }
 
 model User {
