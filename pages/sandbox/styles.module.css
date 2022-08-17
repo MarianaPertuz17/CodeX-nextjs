@@ -34,17 +34,6 @@
   border-radius: 5px;
 }
 
-.outputContainer {
-  background-color: #202049;
-  display: flex;
-  align-items: center;
-  padding-left: 18%;
-  padding-right: 1vw;
-  border: 0.3px solid #393254;
-  border-bottom-left-radius:10px ;
-  border-bottom-right-radius:10px ;
-}
-
 
 .label {
   color: rgb(189, 189, 189);
@@ -93,22 +82,24 @@
 }
 
 .submitButton {
-  background-color: #8d62eb;
+  background-color:  #400ed7;
   border: none;
   color:white;
   font-weight: bold;
-  font-family: 'Open Sans';
+  font-family: Open Sans;
   cursor: pointer;
   width: 7vw;
+}
+
+
+.submitButton:hover {
+  background-color: #4119b7;
 }
 
 .runButton:hover{
   background-color: #3f9e32;
 }
 
-.submitButton:hover {
-  background-color: #5f439b;
-}
 
 .clockContainer {
   border: none;

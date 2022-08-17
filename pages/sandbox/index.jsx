@@ -6,15 +6,39 @@ import { useState, useCallback, useEffect } from 'react';
 import { MyStopwatch } from '../../components/timer';
 import clock from '../../public/assets/images/clock.png';
 import Image from 'next/image';
-import { hintMock } from './mock';
 import { ExerciseDetail } from '../../components/exerciseDetail';
 import { NavBar } from '../../components/navBar';
+import { Spinner } from '../../components/spinner';
 
 export default function Sandbox () {
 
+  const [codeString, setCodeString] = useState('');
   const [ exercise, setExercise ] = useState();
+  const [ loading, setLoading ] = useState(false);
+  const [ showTestResult, setShowTestResult ] = useState(false);
+  const url= 'http://localhost:3000/api/exercises';
 
-  const url= 'http://localhost:3000/api/exercises'
+  useEffect(() => {
+    fetchExercise();
+  }, []);
+
+  useEffect(() => {
+    if (loading) {
+      setTimeout(() => {
+        setLoading(false);
+        setShowTestResult(true);
+    }, 2000);
+    }
+  }, [loading]);
+
+    useEffect(()=> {
+    if(exercise) {
+    setCodeString(`function ${exercise.functionName}(${exercise.paramNames[0]}) {
+  // Write your code here.
+  return
+}`);}
+  }, [exercise]);
+
 
   const fetchExercise = async() => {
     const res = await handleFetch();
@@ -28,20 +52,6 @@ export default function Sandbox () {
       .catch(e => e);
   }
 
-  useEffect(() => {
-    fetchExercise();
-  }, []);
-
-//   useEffect(()=> {
-//     if(exercise) {
-//     setCodeString(`function ${exercise.functionName}(${exercise.paramNames[0]}) {
-//   // Write your code here.
-//   return
-// }`);}
-//   }, [exercise]);
-
-  const [codeString, setCodeString] = useState('');
-
   const parseFunction = (str)=> {
     return Function('"use strict";return (' + str + ')')();
   }
@@ -52,7 +62,11 @@ export default function Sandbox () {
 
   const handleRun = () => {
     const functionToTest = parseFunction(codeString);
-    console.log(functionToTest);
+    setLoading(true);
+  }
+
+  const handleSubmit = () => {
+    
   }
 
 
@@ -102,10 +116,12 @@ export default function Sandbox () {
             />
             <div className={styles.labelContainer}>
               <div className={styles.label}>Output</div>
-              <button className={styles.submitButton}>Submit code</button>
+              <button className={styles.submitButton} onClick={handleSubmit}>Submit code</button>
             </div>
             
-            <div className={styles.outputContainer}></div>
+            <div className={styles.outputContainer}>
+              {loading && <Spinner/>}
+            </div>
           </div>
         </div>
         
