@@ -9,44 +9,59 @@ import Image from 'next/image';
 import { ExerciseDetail } from '../../components/exerciseDetail';
 import { NavBar } from '../../components/navBar';
 import { Spinner } from '../../components/spinner';
+import { TestResult } from '../../components/testResult';
 
 export default function Sandbox () {
 
   const [codeString, setCodeString] = useState('');
   const [ exercise, setExercise ] = useState();
+  const [ tests, setTests ] = useState([]);
   const [ loading, setLoading ] = useState(false);
   const [ showTestResult, setShowTestResult ] = useState(false);
-  const url= 'http://localhost:3000/api/exercises';
+  const [ functionToTest, setFunctionToTest] = useState();
+  const url= 'http://localhost:3000/api';
 
   useEffect(() => {
-    fetchExercise();
+    handleFetch();
   }, []);
 
   useEffect(() => {
     if (loading) {
       setTimeout(() => {
-        setLoading(false);
         setShowTestResult(true);
+        setLoading(false);
     }, 2000);
     }
   }, [loading]);
 
     useEffect(()=> {
     if(exercise) {
-    setCodeString(`function ${exercise.functionName}(${exercise.paramNames[0]}) {
+    setCodeString(`function ${exercise.functionName}(${exercise.paramNames.join(',')}) {
   // Write your code here.
   return
 }`);}
   }, [exercise]);
 
 
-  const fetchExercise = async() => {
-    const res = await handleFetch();
-    setExercise(res);
+  const handleFetch = async() => {
+    const resExercise = await fetchExercise();
+    setExercise(resExercise);
+    if (resExercise) {
+      const resTests = await fetchTests(resExercise.id);
+      setTests(resTests);
+    }
   }
 
-  const handleFetch = () => {
-    return fetch(`${url}/${1}`)
+  console.log(tests, 'los test')
+  const fetchExercise = () => {
+    return fetch(`${url}/exercises/${1}`)
+      .then(res => res.json())
+      .then(data => data)
+      .catch(e => e);
+  }
+
+  const fetchTests = (id) => {
+    return fetch(`${url}/test/${id}`)
       .then(res => res.json())
       .then(data => data)
       .catch(e => e);
@@ -61,9 +76,12 @@ export default function Sandbox () {
   }, []);
 
   const handleRun = () => {
-    const functionToTest = parseFunction(codeString);
+    const func = parseFunction(codeString);
+    setFunctionToTest(func);
     setLoading(true);
   }
+
+
 
   const handleSubmit = () => {
     
@@ -120,7 +138,8 @@ export default function Sandbox () {
             </div>
             
             <div className={styles.outputContainer}>
-              {loading && <Spinner/>}
+              { loading && <Spinner/> }
+              { showTestResult && tests && <TestResult functionToTest={functionToTest} tests={tests}/> }
             </div>
           </div>
         </div>
