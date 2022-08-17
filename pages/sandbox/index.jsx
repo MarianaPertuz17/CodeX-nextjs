@@ -1,5 +1,3 @@
-// import 'codemirror/keymap/sublime';
-// import 'codemirror/theme/dracula.css';
 import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { javascript } from '@codemirror/lang-javascript';
@@ -59,7 +57,7 @@ export default function Sandbox () {
 
 
   return(
-    <div style={{display:'flex', flexDirection:'column', background:'#100444f7'}}>
+    <div style={{display:'flex', flexDirection:'column', background:'#040428'}}>
       <NavBar/>
       
       <div className={styles.container} >
@@ -69,7 +67,7 @@ export default function Sandbox () {
           <div className={styles.labelButtonContainer}>
             <div style={{display:'flex'}}>
               <button className={styles.label}>Prompt </button>
-              <button className={styles.label} style={{borderRadius:0, background:'#343049'}}>Solutions</button>
+              <button className={styles.label} style={{borderRadius:0, background:'#30304b'}}>Solutions</button>
             </div>
               
               <div className={styles.clockContainer}>
@@ -84,7 +82,7 @@ export default function Sandbox () {
     
           </div>
           <div className={styles.questionContainer}>         
-            {exercise && <ExerciseDetail exercise={exercise} hintMock={hintMock}/>}
+            {exercise && <ExerciseDetail exercise={exercise}/>}
           </div>
 
           </div>

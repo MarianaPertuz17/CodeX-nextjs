@@ -4,7 +4,7 @@ import { ListItem } from '../listItem';
 import styles from './styles.module.css';
 
 
-export function ExerciseDetail ({hintMock, exercise}) {
+export function ExerciseDetail ({exercise}) {
   console.log(exercise, 'pa to')
   return(
     <div className={styles.container}>

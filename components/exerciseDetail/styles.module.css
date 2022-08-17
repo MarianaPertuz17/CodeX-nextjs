@@ -23,11 +23,11 @@
   border-radius: 100px;
   border: 4px solid transparent;
   background-clip: content-box;
-  background-color: #343049;
+  background-color: #30304b;
 } 
 
 .sampleContainer {
-  background-color: #343049;
+  background-color: #38345c;
   display: flex;
   flex-direction: column;
   color:white;
