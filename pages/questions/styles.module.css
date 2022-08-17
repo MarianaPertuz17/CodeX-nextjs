@@ -1,0 +1,36 @@
+.header{
+    background:'#20045c';
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 36px;
+}
+
+.dashboard{
+    height: 950px;
+    background: white;
+    display:flex;
+    flex-direction: column;
+    width:100vw;
+    align-items: center;
+}
+
+.completed{
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.categorySelect{
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.exerciseTabs{
+    heigth: 70%;
+}
