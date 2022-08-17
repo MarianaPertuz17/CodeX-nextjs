@@ -1,11 +1,12 @@
-import { TestItem } from "../testItem"
+import { ListItem } from "../listItem"
+// import { TestItem } from "../testItem"
 
 
-export function TestList ({tests}) {
+export function TestList ({functionToTest, tests}) {
   console.log(tests, 'lll')
   return(
     <>
-      hola
+      {tests && tests.map((test) => <ListItem key={0} item={test} list={tests} type='test'/>)}
     </> 
   )
 }
