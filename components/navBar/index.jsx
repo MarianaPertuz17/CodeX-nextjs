@@ -2,7 +2,8 @@ import logo from '../../public/assets/images/logo.png';
 import styles from './styles.module.css';
 import Link from 'next/link'
 import Image from 'next/image';
-import { useUser} from '@auth0/nextjs-auth0';
+import { useUser } from '@auth0/nextjs-auth0';
+import { useRouter } from 'next/router'
 
 export function NavBar () {
 
@@ -10,17 +11,24 @@ export function NavBar () {
 
   return(
     <div className={styles.container}>
-      <Image
-          src={logo}
-          alt="logo"
-          height='100%'
-          width='200px'
-        />
+      <Link href="/">
+        <a style={{cursor:'pointer'}}>
+          <Image
+            src={logo}
+            alt="logo"
+            height='100%'
+            width='200px'
+          />
+        </a>
+      </Link>
       <div >
         <Link href="/sandbox" className={styles.questionsLabel}>Sandbox</Link>
       </div>
       
       <div className={styles.labelContainer}>
+        <div className={styles.questionsLabel}>
+          <Link href="/battle">CSS Battles &#11088;</Link>
+        </div>
         <div className={styles.questionsLabel}>
           <Link href="/questions">Coding Interview Questions</Link>
         </div>
