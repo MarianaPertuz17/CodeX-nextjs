@@ -4,7 +4,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { javascript } from '@codemirror/lang-javascript';
 import styles from './styles.module.css';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { MyStopwatch } from '../../components/timer';
 import clock from '../../public/assets/images/clock.png';
 import Image from 'next/image';
@@ -13,6 +13,34 @@ import { ExerciseDetail } from '../../components/exerciseDetail';
 import { NavBar } from '../../components/navBar';
 
 export default function Sandbox () {
+
+  const [ exercise, setExercise ] = useState();
+
+  const url= 'http://localhost:3000/api/exercises'
+
+  const fetchExercise = async() => {
+    const res = await handleFetch();
+    setExercise(res);
+  }
+
+  const handleFetch = () => {
+    return fetch(`${url}/${1}`)
+      .then(res => res.json())
+      .then(data => data)
+      .catch(e => e);
+  }
+
+  useEffect(() => {
+    fetchExercise();
+  }, []);
+
+//   useEffect(()=> {
+//     if(exercise) {
+//     setCodeString(`function ${exercise.functionName}(${exercise.paramNames[0]}) {
+//   // Write your code here.
+//   return
+// }`);}
+//   }, [exercise]);
 
   const [codeString, setCodeString] = useState('');
 
@@ -31,7 +59,7 @@ export default function Sandbox () {
 
 
   return(
-    <div style={{display:'flex', flexDirection:'column', background:'#20045c'}}>
+    <div style={{display:'flex', flexDirection:'column', background:'#100444f7'}}>
       <NavBar/>
       
       <div className={styles.container} >
@@ -53,7 +81,7 @@ export default function Sandbox () {
                <MyStopwatch/>
               </div>
             </div>
-            <ExerciseDetail hintMock={hintMock}/>
+            {exercise && <ExerciseDetail exercise={exercise} hintMock={hintMock}/>}
           </div>
           <div className={styles.codeEditor}>
             <div className={styles.labelContainer}>

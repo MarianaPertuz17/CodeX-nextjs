@@ -4,22 +4,22 @@ import { ListItem } from '../listItem';
 import styles from './styles.module.css';
 
 
-export function ExerciseDetail ({hintMock}) {
-
+export function ExerciseDetail ({hintMock, exercise}) {
+  console.log(exercise, 'pa to')
   return(
     <div className={styles.container}>
       <div>
-        <span>Difficulty:</span>
+        <span>Difficulty: {exercise.difficulty}</span>
         <span>Category:</span>
       </div>
-      <h1>Title</h1>
-      <span style={{fontSize:14}}>Description</span>
+      <h1>{exercise.name}</h1>
+      <span style={{fontSize:14}}>{exercise.description}</span>
       <p className={styles.p}>Sample Input</p>
-      <div className={styles.sampleContainer}></div>
+      <div className={styles.sampleContainer}>{exercise.input}</div>
       <p className={styles.p}>Sample Ouput</p>
-      <div className={styles.sampleContainer}></div>
+      <div className={styles.sampleContainer}>{exercise.output}</div>
       <p className={styles.p}>Hints</p>
-      <HintList hintList={hintMock}/>
+      <HintList hintList={exercise.hints}/>
       <ListItem item = {complexityMock}/>
     </div>
     
