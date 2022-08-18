@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     try{
         const solver = await prisma.user.findUnique({
             where: {
-                id: parseInt(req.query.id)
+                authId: req.query.id
             }
         })
      res.json(solver)
