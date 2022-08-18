@@ -1,13 +1,14 @@
 
-import { TestList } from '../testList';
+import { ListItem } from '../listItem';
 import styles from './styles.module.css';
 
-export function TestResult ({functionToTest, tests}) {
-  
+
+export function TestResult ({tests, params}) {
+  console.log(tests, 'testtt')
   return(
     <div className={styles.container}>
       <span className={styles.error}>Uh oh ... Looks like some tests did not pass</span>
-      <TestList functionToTest={functionToTest} tests={tests}/>
+      {tests && tests.map((test) => <ListItem key={0} item={test} list={tests} type='test' params={params}/>)}
     </div>
   )
 }

@@ -19,6 +19,7 @@ export default function Sandbox () {
   const [ tests, setTests ] = useState([]);
   const [ loading, setLoading ] = useState(false);
   const [ showTestResult, setShowTestResult ] = useState(false);
+  const [ result, setResult ] = useState([]);
   // const [ functionToTest, setFunctionToTest] = useState();
   const url= 'http://localhost:3000/api';
 
@@ -53,7 +54,7 @@ export default function Sandbox () {
     }
   }
 
-  console.log(tests, 'los test')
+
   const fetchExercise = () => {
     return fetch(`${url}/exercises/${1}`)
       .then(res => res.json())
@@ -77,10 +78,24 @@ export default function Sandbox () {
   }, []);
 
   const handleRun = () => {
+    // setResult([]);
     const functionToTest = parseFunction(codeString);
-    // console.log(func, 'la prueba')
+    tests.map(test => {
+      const args = JSON.parse(test.testInput);
+      const output = JSON.parse(test.testOutput)
+      const testResult = functionToTest(...args);
+      if (testResult === output) {
+        setResult(prevState => [...prevState, {passed: true, input: args, expectedOutput: output, receivedOut: testResult }]);
+      } else {
+        setResult(prevState => [...prevState, {passed: false, input: args, expectedOutput: output, receivedOut: testResult}]);
+      }
+      console.log(result, 'el resu')
+      
+    })
     setLoading(true);
+    
   }
+  
 
   const functionToTest = (param1, param2) => {
     return parseFunction(codeString)(param1,param2);
@@ -142,7 +157,7 @@ export default function Sandbox () {
             
             <div className={styles.outputContainer}>
               { loading && <Spinner/> }
-              { showTestResult && tests && <TestResult functionToTest={functionToTest} tests={tests}/> }
+              { showTestResult && tests && <TestResult tests={result} params={exercise.paramNames}/> }
             </div>
           </div>
         </div>

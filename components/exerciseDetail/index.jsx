@@ -1,4 +1,3 @@
-import { complexityMock } from '../../pages/sandbox/mock';
 import { HintList } from '../hintList';
 import { ListItem } from '../listItem';
 import styles from './styles.module.css';
@@ -24,7 +23,7 @@ export function ExerciseDetail ({exercise}) {
       <div className={styles.sampleContainer}>{exercise.output}</div>
       <p className={styles.p}>Hints</p>
       <HintList hintList={exercise.hints}/>
-      <ListItem item = {complexityMock}/>
+      <ListItem item = {exercise.bigO}/>
     </div>
     
   )
