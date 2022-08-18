@@ -10,6 +10,7 @@ import { ExerciseDetail } from '../../components/exerciseDetail';
 import { NavBar } from '../../components/navBar';
 import { Spinner } from '../../components/spinner';
 import { TestResult } from '../../components/testResult';
+import _ from 'lodash';
 
 export default function Sandbox () {
 
@@ -18,7 +19,7 @@ export default function Sandbox () {
   const [ tests, setTests ] = useState([]);
   const [ loading, setLoading ] = useState(false);
   const [ showTestResult, setShowTestResult ] = useState(false);
-  const [ functionToTest, setFunctionToTest] = useState();
+  // const [ functionToTest, setFunctionToTest] = useState();
   const url= 'http://localhost:3000/api';
 
   useEffect(() => {
@@ -76,12 +77,14 @@ export default function Sandbox () {
   }, []);
 
   const handleRun = () => {
-    const func = parseFunction(codeString);
-    setFunctionToTest(func);
+    const functionToTest = parseFunction(codeString);
+    // console.log(func, 'la prueba')
     setLoading(true);
   }
 
-
+  const functionToTest = (param1, param2) => {
+    return parseFunction(codeString)(param1,param2);
+  }
 
   const handleSubmit = () => {
     

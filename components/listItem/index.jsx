@@ -4,14 +4,28 @@ import {
   faChevronDown,
   faChevronUp
 } from "@fortawesome/free-solid-svg-icons";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export function ListItem ({item, list, type}) {
+export function ListItem ({item, list, type, functionToTest}) {
   const [ isOpen, setIsOpen ] = useState(false);
+  let testResult;
+  const [result, setResult] = useState(false);
 
   const handleClick = () => {
     setIsOpen(prevState => !prevState)
   }
+
+  useEffect(() => {
+    if (type === 'test') {
+      console.log(item)
+      const args = JSON.parse(item.testInput);
+      testResult = functionToTest(...args);
+      setResult(testResult)
+      console.log(result, 'el test espero')
+    }
+  }, [])
+  
+  
 
   return(
     <div className={styles.container}>
@@ -28,7 +42,7 @@ export function ListItem ({item, list, type}) {
       </div>
       <div className={isOpen ? styles.openItem : styles.item}>
         {type !== 'test' && item}
-        {type === 'test' && 'hola'}
+        {type === 'test' && testResult}
       </div>
     </div>
   )

@@ -6,7 +6,7 @@ export default async function handler(req, res) {
     try{
         const test = await prisma.test.findMany({
             where: {
-                id: parseInt(req.query.id)
+                exerciseId: parseInt(req.query.id)
             }
         })
      res.json(test)
