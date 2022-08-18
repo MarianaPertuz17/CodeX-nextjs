@@ -80,18 +80,20 @@ export default function Sandbox () {
   const handleRun = () => {
     // setResult([]);
     const functionToTest = parseFunction(codeString);
-    tests.map(test => {
+    const result = [];
+    tests.forEach(test => {
       const args = JSON.parse(test.testInput);
       const output = JSON.parse(test.testOutput)
       const testResult = functionToTest(...args);
       if (testResult === output) {
-        setResult(prevState => [...prevState, {passed: true, input: args, expectedOutput: output, receivedOut: testResult }]);
+        result.push({passed: true, input: args, expectedOutput: output, receivedOut: testResult });
       } else {
-        setResult(prevState => [...prevState, {passed: false, input: args, expectedOutput: output, receivedOut: testResult}]);
+        result.push({passed: false, input: args, expectedOutput: output, receivedOut: testResult});
       }
       console.log(result, 'el resu')
       
     })
+    setResult(result);
     setLoading(true);
     
   }
