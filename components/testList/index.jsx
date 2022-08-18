@@ -3,10 +3,10 @@ import { ListItem } from "../listItem"
 
 
 export function TestList ({functionToTest, tests}) {
-  console.log(tests, 'lll')
+  
   return(
     <>
-      {tests && tests.map((test) => <ListItem key={0} item={test} list={tests} type='test'/>)}
+      {tests && tests.map((test) => <ListItem key={0} item={test} list={tests} type='test' functionToTest={functionToTest}/>)}
     </> 
   )
 }
