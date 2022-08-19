@@ -9,14 +9,17 @@ export function TestDetail ({item}) {
 
   return(
     <div className={styles.container}>
-      <span>Expected output</span>
-      <div>{JSON.stringify(expectedOutput)}</div>
-      <span>Your output</span>
-      <span>{receivedOut === undefined ? 'undefined' : JSON.stringify(receivedOut)}</span>
-      <span>Input</span>
-      {input.length>0 ? input.map((e, index) => {
-        return <span key={index}>{params[index]} = {JSON.stringify(e)}</span>
-      }) : <span>{params[0]} = {input}</span>}
+      <h3>Expected output</h3>
+      <code className={styles.output}>{JSON.stringify(expectedOutput)}</code>
+      <h3>Your output</h3>
+      <code className={styles.output}>{receivedOut === undefined ? 'undefined' : JSON.stringify(receivedOut)}</code>
+      <h3>Input</h3>
+      <code className={styles.output}>
+        {input.length>0 ? input.map((e, index) => {
+          return <code key={index}>{params[index]} = {JSON.stringify(e)}</code>
+        }) : <code>{params[0]} = {input}</code>}
+      </code> 
+      
       
     </div>
     
