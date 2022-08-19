@@ -4,10 +4,10 @@ import { html } from '@codemirror/lang-html';
 import styles from './styles.module.css';
 import { useState, useCallback } from 'react';
 import { NavBar } from '../../components/navBar';
+import { url } from '../../config';
+
 
 export default function CSSBattle () {
-
-  const url = `http://localhost:3000/api`;
 
   const [score, setScore] = useState(0);
   const [match, setMatch] = useState(0);
