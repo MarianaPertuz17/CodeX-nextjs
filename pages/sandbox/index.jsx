@@ -10,24 +10,31 @@ import { ExerciseDetail } from '../../components/exerciseDetail';
 import { NavBar } from '../../components/navBar';
 import { Spinner } from '../../components/spinner';
 import { TestResult } from '../../components/testResult';
-import _ from 'lodash';
+import { url } from '../../config';
 
 export const AppContext = createContext();
 
-export default function Sandbox () {
+export async function getServerSideProps() {
+  // Fetch exercises
+  const res = await fetch(`${url}/exercises/${1}`);
+  const exercise = await res.json();
+
+  // Fetch tests
+  const res2 = await fetch(`${url}/test/${exercise.id}`);
+  const tests= await res2.json();
+  
+  return {
+    props: { exercise, tests },
+  }
+}
+
+export default function Sandbox ({exercise, tests}) {
 
   const [codeString, setCodeString] = useState('');
-  const [ exercise, setExercise ] = useState();
-  const [ tests, setTests ] = useState([]);
   const [ loading, setLoading ] = useState(false);
   const [ showTestResult, setShowTestResult ] = useState(false);
   const [ result, setResult ] = useState([]);
-  // const [ functionToTest, setFunctionToTest] = useState();
-  const url= 'http://localhost:3000/api';
 
-  useEffect(() => {
-    handleFetch();
-  }, []);
 
   useEffect(() => {
     if (loading) {
@@ -46,30 +53,6 @@ export default function Sandbox () {
 }`);}
   }, [exercise]);
 
-
-  const handleFetch = async() => {
-    const resExercise = await fetchExercise();
-    setExercise(resExercise);
-    if (resExercise) {
-      const resTests = await fetchTests(resExercise.id);
-      setTests(resTests);
-    }
-  }
-
-
-  const fetchExercise = () => {
-    return fetch(`${url}/exercises/${1}`)
-      .then(res => res.json())
-      .then(data => data)
-      .catch(e => e);
-  }
-
-  const fetchTests = (id) => {
-    return fetch(`${url}/test/${id}`)
-      .then(res => res.json())
-      .then(data => data)
-      .catch(e => e);
-  }
 
   const parseFunction = (str)=> {
     return Function('"use strict";return (' + str + ')')();
