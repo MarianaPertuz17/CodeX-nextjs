@@ -32,7 +32,7 @@ export function ListItem ({item, list, type, params}) {
       </div>
       <div className={isOpen ? styles.openItem : styles.item}>
         {type !== 'test' && item}
-        {type === 'test' && <TestDetail item={item} params={params}/>}
+        {type === 'test' && <TestDetail item={item}/>}
       </div>
     </div>
   )

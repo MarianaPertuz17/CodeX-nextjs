@@ -1,8 +1,11 @@
+import { useContext } from 'react';
+import { AppContext } from '../../pages/sandbox';
 import styles from './styles.module.css';
 
 
-export function TestDetail ({item, params}) {
+export function TestDetail ({item}) {
   const {input, expectedOutput, receivedOut} = item;
+  const { params } = useContext(AppContext);
 
   return(
     <div className={styles.container}>

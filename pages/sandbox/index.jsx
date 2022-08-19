@@ -2,7 +2,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { javascript } from '@codemirror/lang-javascript';
 import styles from './styles.module.css';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, createContext } from 'react';
 import { MyStopwatch } from '../../components/timer';
 import clock from '../../public/assets/images/clock.png';
 import Image from 'next/image';
@@ -11,6 +11,8 @@ import { NavBar } from '../../components/navBar';
 import { Spinner } from '../../components/spinner';
 import { TestResult } from '../../components/testResult';
 import _ from 'lodash';
+
+export const AppContext = createContext();
 
 export default function Sandbox () {
 
@@ -78,7 +80,6 @@ export default function Sandbox () {
   }, []);
 
   const handleRun = () => {
-    // setResult([]);
     const functionToTest = parseFunction(codeString);
     const result = [];
     tests.forEach(test => {
@@ -90,7 +91,6 @@ export default function Sandbox () {
       } else {
         result.push({passed: false, input: args, expectedOutput: output, receivedOut: testResult});
       }
-      console.log(result, 'el resu')
       
     })
     setResult(result);
@@ -98,10 +98,6 @@ export default function Sandbox () {
     
   }
   
-
-  const functionToTest = (param1, param2) => {
-    return parseFunction(codeString)(param1,param2);
-  }
 
   const handleSubmit = () => {
     
@@ -159,7 +155,8 @@ export default function Sandbox () {
             
             <div className={styles.outputContainer}>
               { loading && <Spinner/> }
-              { showTestResult && tests && <TestResult tests={result} params={exercise.paramNames}/> }
+
+              { showTestResult && tests && <AppContext.Provider value={{tests: result, params: exercise.paramNames}}><TestResult/></AppContext.Provider> }
             </div>
           </div>
         </div>
