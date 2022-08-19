@@ -26,7 +26,6 @@ export default function CSSBattle () {
     setScore(score);
     setMatch(match);
   }
-  console.log(JSON.stringify(codeString), 'CODE STRING')
 
   const fetchScore = () => {
     return fetch(`${url}/cssbattle`, {
