@@ -3,8 +3,6 @@ import prisma from '../client';
 export default async function userHandler(req, res) {
   const { method } = req;
 
-  console.log(method, 'try')
-
   switch (method) {
     case 'GET':
       try{
@@ -36,7 +34,6 @@ export default async function userHandler(req, res) {
         })
         res.status(200).send({res: 'success' , error: false});
       } catch (e) {
-        console.log(e, 'errro')
         res.status(500).send({res: 'Cound not post exercise', error: true});
       }
       break

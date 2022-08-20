@@ -2,7 +2,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { javascript } from '@codemirror/lang-javascript';
 import styles from './styles.module.css';
-import { useState, useCallback, useEffect, createContext } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { MyStopwatch } from '../../components/timer';
 import clock from '../../public/assets/images/clock.png';
 import Image from 'next/image';
@@ -14,14 +14,14 @@ import { url } from '../../config';
 import { useUser } from '@auth0/nextjs-auth0';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router'
+import { AppContext } from './context';
 
-  
 
-export const AppContext = createContext();
-
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const { id } = context.query;
   // Fetch exercises
-  const res = await fetch(`${url}/exercises/${1}`);
+  const res = await fetch(`${url}/exercises/${id}`);
   const exercise = await res.json();
 
   // Fetch tests
@@ -35,16 +35,18 @@ export async function getServerSideProps() {
 
 export default function Sandbox ({exercise, tests}) {
 
+  const router = useRouter()
+  const { id } = router.query;
+
   const [ codeString, setCodeString ] = useState('');
   const [ loading, setLoading ] = useState(false);
   const [ showTestResult, setShowTestResult ] = useState(false);
   const [ result, setResult ] = useState([]);
-
+  
   const { user } = useUser();
 
 
   useEffect(() => {
-    console.log('mounted')
     if (loading) {
       setTimeout(() => {
         setShowTestResult(true);
@@ -102,12 +104,29 @@ export default function Sandbox ({exercise, tests}) {
 
   const handleSubmit = async() => {
     if ( user ) {
-      const {res, error} = await updateUserExercises(user.sub);
+      console.log(result, 'test')
+      if (showTestResult && result.every(ele => ele.passed === true)) {
+        toast.success('Your exercise has been submitted', {
+          position: "top-right",
+          autoClose: 5000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        }); 
+        await updateUserExercises(user.sub);         
+      } else {
+        toast.error(`You haven´t passed all the tests`, {
+          position: "top-right",
+          autoClose: 4000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
     } else {
       toast.error('You have to login first', {
         position: "top-right",
         autoClose: 4000,
-        hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
