@@ -69,7 +69,7 @@ export default function CSSBattle () {
           </div>
 
           <div style={{width:'43%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-            <div style={{width:'100%', height:'49%', display:'flex', flexDirection:'column'}}>
+            <div style={{width:'100%', height:'47%', display:'flex', flexDirection:'column'}}>
               <div className={styles.labelContainer}>
                 <div className={styles.label}>Output</div>
                 <button className={styles.submitButton} onClick={findScore}>Submit code</button>
@@ -83,7 +83,7 @@ export default function CSSBattle () {
               </div>
             </div>
 
-            <div style={{width:'100%', height:'49%', display:'flex', flexDirection:'column'}}>
+            <div style={{width:'100%', height:'47%', display:'flex', flexDirection:'column'}}>
               <div className={styles.labelContainer}>
                 <div className={styles.label}>Target</div>
               </div>

@@ -142,10 +142,9 @@ export default function Sandbox ({exercise, tests}) {
       <NavBar/>
       
       <div className={styles.container} >
-      
+      <ToastContainer />
         <div className={styles.innerContainer}>
-        <ToastContainer />
-          <div style={{width:'47%', height:'100%'}}>
+          <div style={{width:'48%', height:'100%'}}>
           <div className={styles.labelButtonContainer}>
             <div style={{display:'flex'}}>
               <button className={styles.label}>Prompt </button>
@@ -189,7 +188,6 @@ export default function Sandbox ({exercise, tests}) {
             
             <div className={styles.outputContainer}>
               { loading && <Spinner/> }
-
               { showTestResult && tests && <AppContext.Provider value={{tests: result, params: exercise.paramNames}}><TestResult/></AppContext.Provider> }
             </div>
           </div>
