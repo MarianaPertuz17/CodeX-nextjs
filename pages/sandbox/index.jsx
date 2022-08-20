@@ -11,6 +11,11 @@ import { NavBar } from '../../components/navBar';
 import { Spinner } from '../../components/spinner';
 import { TestResult } from '../../components/testResult';
 import { url } from '../../config';
+import { useUser } from '@auth0/nextjs-auth0';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+  
 
 export const AppContext = createContext();
 
@@ -30,13 +35,16 @@ export async function getServerSideProps() {
 
 export default function Sandbox ({exercise, tests}) {
 
-  const [codeString, setCodeString] = useState('');
+  const [ codeString, setCodeString ] = useState('');
   const [ loading, setLoading ] = useState(false);
   const [ showTestResult, setShowTestResult ] = useState(false);
   const [ result, setResult ] = useState([]);
 
+  const { user } = useUser();
+
 
   useEffect(() => {
+    console.log('mounted')
     if (loading) {
       setTimeout(() => {
         setShowTestResult(true);
@@ -45,7 +53,8 @@ export default function Sandbox ({exercise, tests}) {
     }
   }, [loading]);
 
-    useEffect(()=> {
+
+  useEffect(()=> {
     if(exercise) {
     setCodeString(`function ${exercise.functionName}(${exercise.paramNames.join(',')}) {
   // Write your code here.
@@ -81,8 +90,30 @@ export default function Sandbox ({exercise, tests}) {
     
   }
   
+  const updateUserExercises = (id) => {
+    return fetch(`${url}/userex/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({exerciseId: exercise.id})
+    })
+      .then(res => res.json())
+      .then(data => data)
+      .catch(e => e);
+  }
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
+    if ( user ) {
+      const {res, error} = await updateUserExercises(user.sub);
+    } else {
+      toast.error('You have to login first', {
+        position: "top-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
     
   }
 
@@ -94,6 +125,7 @@ export default function Sandbox ({exercise, tests}) {
       <div className={styles.container} >
       
         <div className={styles.innerContainer}>
+        <ToastContainer />
           <div style={{width:'47%', height:'100%'}}>
           <div className={styles.labelButtonContainer}>
             <div style={{display:'flex'}}>
