@@ -1,4 +1,4 @@
-import prisma from '../client';
+import { prisma } from '../../../db.js';
 
 export default async function exerciseById(req, res) {
     try{
