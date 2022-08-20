@@ -1,7 +1,7 @@
 
 import { ListItem } from '../listItem';
 import styles from './styles.module.css';
-import { AppContext } from '../../pages/sandbox';
+import { AppContext } from '../../pages/sandbox/context';
 import { useContext } from 'react';
 
 export function TestResult () {
@@ -12,7 +12,7 @@ export function TestResult () {
     <div className={styles.container}>
       {!allTestsPassed && <span className={styles.error}>Uh oh ... Looks like some tests did not pass</span>}
       {allTestsPassed && <span className={styles.error}>{`Congrats! You've passed all the tests`}</span>}
-      {tests && tests.map((test, index) => <ListItem key={index} item={test} list={tests} type='test'/>)}
+      {tests.map((test, index) => <ListItem key={index} item={test} list={tests} type='test'/>)}
     </div>
   )
 }

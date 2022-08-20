@@ -2,7 +2,7 @@ import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { javascript } from '@codemirror/lang-javascript';
 import styles from './styles.module.css';
-import { useState, useCallback, useEffect, createContext } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { MyStopwatch } from '../../components/timer';
 import clock from '../../public/assets/images/clock.png';
 import Image from 'next/image';
@@ -11,12 +11,17 @@ import { NavBar } from '../../components/navBar';
 import { Spinner } from '../../components/spinner';
 import { TestResult } from '../../components/testResult';
 import { url } from '../../config';
+import { useUser } from '@auth0/nextjs-auth0';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router'
+import { AppContext } from './context';
 
-export const AppContext = createContext();
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const { id } = context.query;
   // Fetch exercises
-  const res = await fetch(`${url}/exercises/${1}`);
+  const res = await fetch(`${url}/exercises/${id}`);
   const exercise = await res.json();
 
   // Fetch tests
@@ -30,10 +35,15 @@ export async function getServerSideProps() {
 
 export default function Sandbox ({exercise, tests}) {
 
-  const [codeString, setCodeString] = useState('');
+  const router = useRouter()
+  const { id } = router.query;
+
+  const [ codeString, setCodeString ] = useState('');
   const [ loading, setLoading ] = useState(false);
   const [ showTestResult, setShowTestResult ] = useState(false);
   const [ result, setResult ] = useState([]);
+  
+  const { user } = useUser();
 
 
   useEffect(() => {
@@ -45,7 +55,8 @@ export default function Sandbox ({exercise, tests}) {
     }
   }, [loading]);
 
-    useEffect(()=> {
+
+  useEffect(()=> {
     if(exercise) {
     setCodeString(`function ${exercise.functionName}(${exercise.paramNames.join(',')}) {
   // Write your code here.
@@ -78,11 +89,50 @@ export default function Sandbox ({exercise, tests}) {
     })
     setResult(result);
     setLoading(true);
-    
+    setShowTestResult(false);
   }
   
+  const updateUserExercises = (id) => {
+    return fetch(`${url}/userex/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({exerciseId: exercise.id})
+    })
+      .then(res => res.json())
+      .then(data => data)
+      .catch(e => e);
+  }
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
+    if ( user ) {
+      console.log(result, 'test')
+      if (showTestResult && result.every(ele => ele.passed === true)) {
+        toast.success('Your exercise has been submitted', {
+          position: "top-right",
+          autoClose: 5000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        }); 
+        await updateUserExercises(user.sub);         
+      } else {
+        toast.error(`You haven´t passed all the tests`, {
+          position: "top-right",
+          autoClose: 4000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
+    } else {
+      toast.error('You have to login first', {
+        position: "top-right",
+        autoClose: 4000,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
     
   }
 
@@ -94,6 +144,7 @@ export default function Sandbox ({exercise, tests}) {
       <div className={styles.container} >
       
         <div className={styles.innerContainer}>
+        <ToastContainer />
           <div style={{width:'47%', height:'100%'}}>
           <div className={styles.labelButtonContainer}>
             <div style={{display:'flex'}}>
