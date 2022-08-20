@@ -89,7 +89,7 @@ export default function Sandbox ({exercise, tests}) {
     })
     setResult(result);
     setLoading(true);
-    
+    setShowTestResult(false);
   }
   
   const updateUserExercises = (id) => {

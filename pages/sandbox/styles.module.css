@@ -30,6 +30,7 @@
   height: 4vh;
   display:flex;
   justify-content:space-between;
+  align-items: center;
   background-color: #30304b;
   border-radius: 5px;
 }
@@ -131,4 +132,5 @@
   align-items: center;
   align-self: flex-end;
   justify-content: space-around;
+  height: 100%;
 }
