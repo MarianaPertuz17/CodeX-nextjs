@@ -1,1 +1,0 @@
-export const complexityMock = 'O(n) time complexity'
