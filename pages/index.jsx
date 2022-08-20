@@ -1,9 +1,7 @@
 import spaceman from '../public/assets/images/spaceman.png';
 import whiteFloor from '../public/assets/images/landing_down.png'
 import planet from '../public/assets/images/planet.png';
-import cssCode from '../public/assets/images/html.png';
 import rocket from '../public/assets/images/rocket.png';
-import shadow from '../public/assets/images/shadow.png';
 import { NavBar } from '../components/navBar';
 import styles from './styles.module.css';
 import Image from 'next/image';
