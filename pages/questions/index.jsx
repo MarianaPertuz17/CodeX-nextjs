@@ -51,6 +51,7 @@ const handleFetchUser = () => {
 }
 
 
+
 const filter = () => {
   for(let exercise of exercises){
     if(exercise.difficulty === 1 && easy.some(e => e.id === exercise.id) === false) setEasy(easy => [...easy, exercise])
@@ -69,6 +70,7 @@ useEffect(() => {
   fetchUser();
   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, []);
+
 
 useEffect(() => {
   fetchExercises();  
