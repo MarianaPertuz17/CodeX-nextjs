@@ -7,7 +7,13 @@ export function SolutionsContainer ({exercise}) {
 
   return(
     <div className={styles.container}>
-      <span>Difficulty: HELLO</span>
+      <span>Our solutions</span>
+      <button className={styles.solutionButton}>Solution 1</button>
+      <div style={{display:'flex', justifyContent:'space-between', marginTop:'4vh'}}>
+        <span>User solutions</span>
+        <button className={styles.shareButton}>Share +</button>
+      </div>
+      
           
     </div>
     
