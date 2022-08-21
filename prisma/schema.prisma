@@ -39,7 +39,7 @@ model Exercise {
 model User {
   id       Int     @id @default(autoincrement())
   authId   String  @unique
-  username String
+  username String?
   solved   Int[]
   paidUser Boolean @default(false)
 }
