@@ -32,10 +32,23 @@ model Exercise {
   input        String?
   output       String?
   tests        Test[]
+  solutions    Solution[]
+  ourSolution  String
 }
 
 model User {
   id     Int    @id @default(autoincrement())
   authId String @unique
   solved Int[]
+}
+
+model Solution {
+  id           Int      @id @default(autoincrement())
+  title        String
+  explanation  String
+  solution     String
+  exercise     Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId   Int
+  userId       String
+  createdAt  DateTime   @default(now())
 }
