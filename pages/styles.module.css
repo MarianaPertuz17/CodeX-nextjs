@@ -24,7 +24,7 @@
   padding: 0 80px;
 }
 
-.textContainer{
+.textContainer {
   display: flex;
   flex-direction: column;
   width: 55%;
@@ -36,6 +36,11 @@
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
   font-size: 70px;
+}
+
+.buyButton {
+  color: white;
+  font-size: 150px;
 }
 
 .taglineTitle {
@@ -68,22 +73,24 @@
   height: 78vh;
   width: 45vw;
   position: relative;
-  padding:0;
-  left:100%;
+  padding: 0;
+  left: 100%;
   animation: updown 3s linear infinite;
   z-index: 1000;
 }
 
 @keyframes updown {
-    0% {
-        transform: translateY(-20px);
-    }
-    50% {
-        transform: translateY(20px);
-    }
-    100% {
-        transform: translateY(-20px);
-    }
+  0% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateY(20px);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
 }
 
 .whiteFloor {
@@ -105,7 +112,7 @@
 
 .planet {
   height: 75vh;
-  width:70vw;
+  width: 70vw;
   margin-top: -20vh;
   margin-left: -7vw;
   position: relative;
@@ -122,21 +129,21 @@
 }
 
 .rocket {
-  width:65%;
+  width: 65%;
   position: relative;
 }
 
 .shadow {
-  width:93%;
+  width: 93%;
   height: 95vh;
   position: relative;
 }
 
 .cssCode {
-  width:25vw;
+  width: 25vw;
   position: relative;
   box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  filter: brightness(1.55) ;
+  filter: brightness(1.55);
 }
 
 .innerContainer {

@@ -19,7 +19,7 @@ model Test {
 }
 
 model Exercise {
-  id           Int      @id @default(autoincrement())
+  id           Int        @id @default(autoincrement())
   name         String
   difficulty   Int
   category     String?
@@ -37,18 +37,20 @@ model Exercise {
 }
 
 model User {
-  id     Int    @id @default(autoincrement())
-  authId String @unique
-  solved Int[]
+  id       Int     @id @default(autoincrement())
+  authId   String  @unique
+  username String
+  solved   Int[]
+  paidUser Boolean @default(false)
 }
 
 model Solution {
-  id           Int      @id @default(autoincrement())
-  title        String
-  explanation  String
-  solution     String
-  exercise     Exercise @relation(fields: [exerciseId], references: [id])
-  exerciseId   Int
-  userId       String
-  createdAt  DateTime   @default(now())
+  id          Int      @id @default(autoincrement())
+  title       String
+  explanation String
+  solution    String
+  exercise    Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId  Int
+  userId      String
+  createdAt   DateTime @default(now())
 }

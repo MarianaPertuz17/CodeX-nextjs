@@ -1,0 +1,101 @@
+.paymentHeader {
+  color: white;
+  margin-top: 35px;
+  margin-bottom: 75px;
+  font-size: 55px;
+  /* font-weight: lighter; */
+}
+
+.paymentFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+.price {
+  font-size: 40px;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.paymentText1 {
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.paymentList {
+  font-weight: lighter;
+  font-size: 29px;
+  margin-left: 50px;
+}
+
+.featureList {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.featureListItem {
+  display: flex;
+  margin-left: 47px;
+  font-weight: lighter;
+  font-size: 29px;
+}
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paymentButton {
+  width: 185px;
+  height: 72px;
+  background: #556cd6;
+  border-radius: 4px;
+  color: white;
+  border: 0;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.6);
+  margin: auto;
+  /* margin-bottom: 50px; */
+  /* margin-top: auto; */
+  margin-top: 25px;
+  display: block;
+  justify-self: flex-end;
+}
+
+.paymentButton:hover {
+  opacity: 0.8;
+}
+
+.paymentBackground {
+  background: #ffffff;
+  height: 850px;
+  width: 650px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.codeInterview {
+  margin: auto;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  width: 325px;
+}
+
+.codeInterviewIcon {
+  border-radius: 15px;
+}
+
+.container {
+  background-image: url('../../public/assets/images/landing-bg.png');
+  background-size: cover;
+  height: 132vh;
+  font-family: 'Open Sans';
+}
