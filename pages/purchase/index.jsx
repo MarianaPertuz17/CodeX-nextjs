@@ -1,6 +1,5 @@
 // import { dracula } from '@uiw/codemirror-theme-dracula';
 import { useUser } from '@auth0/nextjs-auth0';
-import { useRouter } from 'next/router';
 import styles from './styles.module.css';
 import { NavBar } from '../../components/navBar';
 import Image from 'next/image';
@@ -15,11 +14,8 @@ const stripePromise = loadStripe(
 export default function purchasePage () {
 
   const { user } = useUser();
-  const router = useRouter();
 
   React.useEffect(() => {
-    console.log('PRE-PAYMENT PAGE!', user)
-    if (!user) router.push('/api/auth/login')
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
     if (query.get('success')) {
@@ -31,7 +27,6 @@ export default function purchasePage () {
     }
   }, []);
 
-  console.log('USER ON PAYMENT PAGE', user)
   if (user) {
     return (
       <div className={styles.container}>
