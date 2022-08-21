@@ -1,19 +1,12 @@
 .container {
-  background-color: #38345c;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
   color: white;
   font-family: 'Open Sans';
-  font-size: 14px;
-  margin: 20px 0px;
-  padding: 15px;
-  border:none;
-  border-radius: 5px;
-  height: 9vh;
-  cursor: pointer;
-  /* height: 15%; */
-}
-
-.container:hover {
-  background-color: #4952a3;
+  height: 50vh;
+  overflow-y: auto; */
+  height: 70vh;
 }

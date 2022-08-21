@@ -33,7 +33,7 @@ model Exercise {
   output       String?
   tests        Test[]
   solutions    Solution[]
-  ourSolution  String
+  isOurSolution  String
 }
 
 model User {

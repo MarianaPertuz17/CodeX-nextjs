@@ -11,7 +11,6 @@ import { url } from '../../config';
 import { useUser } from '@auth0/nextjs-auth0';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router'
 import { AppContext } from './context';
 import { LabelBar } from '../../components/labelBar';
 import { SolutionsContainer } from '../../components/solutions';
@@ -44,6 +43,7 @@ export default function Sandbox ({exercise, tests, solutions}) {
   const [ result, setResult ] = useState([]);
   const [ showSolutions, setShowSolutions ] = useState(false);
   const [ solutionDetail, setSolutionDetail ] = useState(false);
+  const [ isOurSolution, setIsOurSolution ] = useState(false);
 
   const { user } = useUser();
   console.log(solutions, 'las so')
@@ -144,8 +144,10 @@ export default function Sandbox ({exercise, tests, solutions}) {
     else setShowSolutions(false);
   }
 
-  const handleClick = () => {
+  const handleClick = (owner) => {
     setSolutionDetail(true);
+    if (owner === 'us') setIsOurSolution(true)
+    else setIsOurSolution(false);
   }
 
   const handleBack = () => {
@@ -161,7 +163,7 @@ export default function Sandbox ({exercise, tests, solutions}) {
           <div className={styles.questionContainer}>    
             <LabelBar promptHandler={promptHandler} showSolutions={showSolutions}/>     
             {!showSolutions && exercise && <ExerciseDetail exercise={exercise}/>}
-            {showSolutions && <AppContext.Provider value={{tests: result, solutionDetail, handleClick, handleBack, solutions}}><SolutionsContainer/></AppContext.Provider>}
+            {showSolutions && <AppContext.Provider value={{ exercise, solutionDetail, handleClick, handleBack, solutions, isOurSolution}}><SolutionsContainer/></AppContext.Provider>}
           </div>
 
           <div className={styles.codeEditor}>
