@@ -12,10 +12,10 @@ datasource db {
 
 model Test {
   id         Int      @id @default(autoincrement())
-  testInput  String[]
-  testOutput String[]
+  testInput  String
+  testOutput String
   exercise   Exercise @relation(fields: [exerciseId], references: [id])
-  exerciseId Int      @unique // relation scalar field (used in the `@relation` attribute above)
+  exerciseId Int
 }
 
 model Exercise {
@@ -31,11 +31,24 @@ model Exercise {
   paramNames   String[]
   input        String?
   output       String?
-  test         Test?
+  tests        Test[]
+  solutions    Solution[]
+  ourSolution  String
 }
 
 model User {
   id     Int    @id @default(autoincrement())
   authId String @unique
   solved Int[]
+}
+
+model Solution {
+  id           Int      @id @default(autoincrement())
+  title        String
+  explanation  String
+  solution     String
+  exercise     Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId   Int
+  userId       String
+  createdAt  DateTime   @default(now())
 }

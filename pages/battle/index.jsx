@@ -4,10 +4,10 @@ import { html } from '@codemirror/lang-html';
 import styles from './styles.module.css';
 import { useState, useCallback } from 'react';
 import { NavBar } from '../../components/navBar';
+import { url } from '../../config';
+
 
 export default function CSSBattle () {
-
-  const url = `http://localhost:3000/api`;
 
   const [score, setScore] = useState(0);
   const [match, setMatch] = useState(0);
@@ -26,7 +26,6 @@ export default function CSSBattle () {
     setScore(score);
     setMatch(match);
   }
-  console.log(JSON.stringify(codeString), 'CODE STRING')
 
   const fetchScore = () => {
     return fetch(`${url}/cssbattle`, {
@@ -70,7 +69,7 @@ export default function CSSBattle () {
           </div>
 
           <div style={{width:'43%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
-            <div style={{width:'100%', height:'49%', display:'flex', flexDirection:'column'}}>
+            <div style={{width:'100%', height:'47%', display:'flex', flexDirection:'column'}}>
               <div className={styles.labelContainer}>
                 <div className={styles.label}>Output</div>
                 <button className={styles.submitButton} onClick={findScore}>Submit code</button>
@@ -84,7 +83,7 @@ export default function CSSBattle () {
               </div>
             </div>
 
-            <div style={{width:'100%', height:'49%', display:'flex', flexDirection:'column'}}>
+            <div style={{width:'100%', height:'47%', display:'flex', flexDirection:'column'}}>
               <div className={styles.labelContainer}>
                 <div className={styles.label}>Target</div>
               </div>

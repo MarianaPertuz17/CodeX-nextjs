@@ -21,13 +21,20 @@ a {
 
 .ͼ15 {
   height: 95% !important;
-  background-color: #0f0b22 !important;
+  background: #202049 !important;
+  border: 0.3px solid #281e4f !important;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .cm-activeLine {
   background-color: rgba(255, 255, 255, 0.1);
+  
 }
 
 .cm-gutters {
-  background-color: #0f0b22 !important;
+  background-color: #1a1a3f !important;
 }
+
+

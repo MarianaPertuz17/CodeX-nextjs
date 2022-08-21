@@ -2,16 +2,16 @@
   height: 86vh;  
   width: 100vw;
   display: flex;
-  padding: 0px 20px;
   padding-bottom: 20px;
   justify-content: center;
 }
 
 .innerContainer {
   height: 100%;
-  width: 100%;
+  width: 95%;
   display: flex;
   justify-content: space-between;
+  padding-bottom: 5px;
 }
 
 .codeEditor {
@@ -20,37 +20,68 @@
 }
 
 .labelContainer {
-  height: 10%;
+  height: 4vh;
   display:flex;
   justify-content:space-between;
 }
 
 .label {
-  color: white;
+  color: rgb(189, 189, 189);
+  background-color: #30304b;
   width: 20%;
-  background-color: #0f0b22;
+  min-width: 8vw;
   display: flex;
   align-items: center;
+  border: none;
   padding-left: 20px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  font-family: 'Open Sans';
+  border: 0.3px solid #393254;
+  font-family: 'Open Sans' !important;
+  font-size: 15px;
 }
 
 .questionContainer {
-  background-color: #0f0b22;
+  background-color: #202049;
   height: 100%;
-  width: 47%;
+  width:48%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   display: flex;
   flex-direction: column;
   padding-bottom: 30px;
+  border: 0.3px solid #393254;
+  border-top-left-radius:5px ;
+  border-top-right-radius:5px ;
+  border-bottom-left-radius:10px ;
+  border-bottom-right-radius:10px ;
+  margin: 0;
 }
 
 .outputContainer {
-  background-color: #0f0b22;
-  height: 60%;
+  background-color: #202049;
+  height: 65%;
+  border: 0.3px solid #393254;
+  border-bottom-left-radius:10px;
+  border-bottom-right-radius:10px;
+  overflow-y:auto;
 }
+
+.outputContainer::-webkit-scrollbar {
+  width: 12px;
+  height: 20px;
+}
+
+.outputContainer::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+.outputContainer::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: #30304b;
+} 
 
 .runButton {
   background-color: #52c842;
@@ -63,31 +94,20 @@
 }
 
 .submitButton {
-  background-color: #8d62eb;
+  background-color:  #400ed7;
   border: none;
   color:white;
   font-weight: bold;
-  font-family: 'Open Sans';
+  font-family: Open Sans;
   cursor: pointer;
   width: 7vw;
 }
 
-.runButton:hover{
-  background-color: #3f9e32;
-}
 
 .submitButton:hover {
-  background-color: #5f439b;
+  background-color: #4119b7;
 }
 
-.clockContainer {
-  background-color: #343049;
-  border: none;
-  width: 13vw;
-  height: 5%;
-  padding: 5px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  align-self: flex-end;
+.runButton:hover{
+  background-color: #3f9e32;
 }
