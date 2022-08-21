@@ -5,7 +5,7 @@ import rocket from '../public/assets/images/rocket.png';
 import { NavBar } from '../components/navBar';
 import styles from './styles.module.css';
 import Image from 'next/image';
-
+import Link from 'next/link';
 
 export default function Home () {
   return(
@@ -16,6 +16,7 @@ export default function Home () {
           <span className={styles.title}>Get Ready to land your new dream</span>
           <span className={styles.title}>job.</span>
           <span className={styles.text}>Find multiple questions that will get you prepared to ace any tech interview!</span>
+          <Link href="/purchase" >Buy</Link>
         </div>
         <div style={{position: 'absolute'}}>
           <div className={styles.spaceman}>

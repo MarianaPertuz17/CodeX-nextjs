@@ -3,7 +3,6 @@ import styles from './styles.module.css';
 import Link from 'next/link'
 import Image from 'next/image';
 import { useUser } from '@auth0/nextjs-auth0';
-import { useRouter } from 'next/router'
 
 export function NavBar () {
 
@@ -27,6 +26,9 @@ export function NavBar () {
         </div>
         <div className={styles.questionsLabel}>
           <Link href="/questions">Coding Interview Questions</Link>
+        </div>
+        <div className={styles.questionsLabel}>
+          {user ? <Link href="/purchase">Buy Now</Link> : <Link href="/api/loginToBuy">Buy Now</Link>}
         </div>
         {!user &&
         <div className={styles.buttonContainer}>
