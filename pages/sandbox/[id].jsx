@@ -3,9 +3,6 @@ import { dracula } from '@uiw/codemirror-theme-dracula';
 import { javascript } from '@codemirror/lang-javascript';
 import styles from './styles.module.css';
 import { useState, useCallback, useEffect } from 'react';
-import { MyStopwatch } from '../../components/timer';
-import clock from '../../public/assets/images/clock.png';
-import Image from 'next/image';
 import { ExerciseDetail } from '../../components/exerciseDetail';
 import { NavBar } from '../../components/navBar';
 import { Spinner } from '../../components/spinner';
@@ -14,8 +11,9 @@ import { url } from '../../config';
 import { useUser } from '@auth0/nextjs-auth0';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router'
 import { AppContext } from './context';
+import { LabelBar } from '../../components/labelBar';
+import { SolutionsContainer } from '../../components/solutions';
 
 
 export async function getServerSideProps(context) {
@@ -26,25 +24,29 @@ export async function getServerSideProps(context) {
 
   // Fetch tests
   const res2 = await fetch(`${url}/test/${exercise.id}`);
-  const tests= await res2.json();
-  
+  const tests = await res2.json();
+
+  // Fetch solutions
+  const res3 = await fetch(`${url}/solutions/${exercise.id}`);
+  const solutions = await res3.json();
+
   return {
-    props: { exercise, tests },
+    props: { exercise, tests, solutions },
   }
 }
 
-export default function Sandbox ({exercise, tests}) {
-
-  const router = useRouter()
-  const { id } = router.query;
+export default function Sandbox ({exercise, tests, solutions}) {
 
   const [ codeString, setCodeString ] = useState('');
   const [ loading, setLoading ] = useState(false);
   const [ showTestResult, setShowTestResult ] = useState(false);
   const [ result, setResult ] = useState([]);
-  
-  const { user } = useUser();
+  const [ showSolutions, setShowSolutions ] = useState(false);
+  const [ solutionDetail, setSolutionDetail ] = useState(false);
+  const [ isOurSolution, setIsOurSolution ] = useState(false);
 
+  const { user } = useUser();
+  console.log(solutions, 'las so')
 
   useEffect(() => {
     if (loading) {
@@ -136,39 +138,34 @@ export default function Sandbox ({exercise, tests}) {
     
   }
 
+  const promptHandler = (prompt) => {
+    console.log('in prompt handler');
+    if (prompt === 'solutions') setShowSolutions(true);
+    else setShowSolutions(false);
+  }
+
+  const handleClick = (owner) => {
+    setSolutionDetail(true);
+    if (owner === 'us') setIsOurSolution(true)
+    else setIsOurSolution(false);
+  }
+
+  const handleBack = () => {
+    setSolutionDetail(false);
+  }
 
   return(
     <div style={{display:'flex', flexDirection:'column', background:'#040428'}}>
-      <NavBar/>
-      
+      <NavBar/>  
       <div className={styles.container} >
-      
-        <div className={styles.innerContainer}>
         <ToastContainer />
-          <div style={{width:'47%', height:'100%'}}>
-          <div className={styles.labelButtonContainer}>
-            <div style={{display:'flex'}}>
-              <button className={styles.label}>Prompt </button>
-              <button className={styles.label} style={{borderRadius:0, background:'#30304b'}}>Solutions</button>
-            </div>
-              
-              <div className={styles.clockContainer}>
-                <Image
-                  src={clock}
-                  alt="clock"
-                  height='20px'
-                  width='20px'
-                />
-               <MyStopwatch/>
-            </div>
-    
-          </div>
-          <div className={styles.questionContainer}>         
-            {exercise && <ExerciseDetail exercise={exercise}/>}
+        <div className={styles.innerContainer}>
+          <div className={styles.questionContainer}>    
+            <LabelBar promptHandler={promptHandler} showSolutions={showSolutions}/>     
+            {!showSolutions && exercise && <ExerciseDetail exercise={exercise}/>}
+            {showSolutions && <AppContext.Provider value={{ exercise, solutionDetail, handleClick, handleBack, solutions, isOurSolution}}><SolutionsContainer/></AppContext.Provider>}
           </div>
 
-          </div>
-          
           <div className={styles.codeEditor}>
             <div className={styles.labelContainer}>
               <div className={styles.label}>Javascript</div>
@@ -189,7 +186,6 @@ export default function Sandbox ({exercise, tests}) {
             
             <div className={styles.outputContainer}>
               { loading && <Spinner/> }
-
               { showTestResult && tests && <AppContext.Provider value={{tests: result, params: exercise.paramNames}}><TestResult/></AppContext.Provider> }
             </div>
           </div>

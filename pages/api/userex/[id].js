@@ -21,17 +21,26 @@ export default async function userHandler(req, res) {
       try {
 
         const {exerciseId} = JSON.parse(req.body);
-        console.log(exerciseId, 'exe')
-        const newExercise = await prisma.user.update({
+        const idExists = await prisma.user.findMany({
           where: {
-            authId: req.query.id
-          },
-          data: {
             solved: {
-              push: exerciseId,
+              has: exerciseId,
             },
           },
         })
+
+        if (idExists.length === 0) {
+          await prisma.user.update({
+            where: {
+              authId: req.query.id
+            },
+            data: {
+              solved: {
+                push: exerciseId,
+              },
+            },
+          })
+        }     
         res.status(200).send({res: 'success' , error: false});
       } catch (e) {
         res.status(500).send({res: 'Cound not post exercise', error: true});
