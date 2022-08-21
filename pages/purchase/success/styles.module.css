@@ -1,0 +1,12 @@
+.successText {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+}
+
+.container {
+  background-image: url('../../../public/assets/images/landing-bg.png');
+  background-size: cover;
+  height: 132vh;
+  font-family: 'Open Sans';
+}
