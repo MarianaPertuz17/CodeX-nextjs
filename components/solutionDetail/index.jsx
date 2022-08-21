@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { useContext } from 'react';
 import { AppContext } from '../../pages/sandbox/context';
 import styles from './styles.module.css';
@@ -12,11 +13,13 @@ export function SolutionDetail () {
 
   return(
     <>
-    
       {isOurSolution && 
       <div className={styles.container}>
-        <button onClick={handleBack} style={{color:'white', fontSize: '16px', marginBottom:'1vh', background:'none', border:'none'}}>
-          <span  style={{color:'white', fontSize: '35px'}}>&#x2190;</span> Back</button> 
+        <button onClick={handleBack} className={styles.button}>
+          <div  style={{color:'white', marginRight:10, fontSize:25, background:'red'}}>&#x2190;</div> 
+          Back
+          
+        </button> 
         
         <CodeMirror
           value={formattedCode}

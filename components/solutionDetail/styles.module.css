@@ -5,8 +5,21 @@
   padding-left: 30px;
   padding-right: 30px;
   color: white;
-  font-family: 'Open Sans';
+  
   height: 50vh;
   overflow-y: auto; */
   height: 70vh;
+}
+
+.button {
+  color:white; 
+  font-size: 16px; 
+  margin-bottom:1vh; 
+  background:none; 
+  border:none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 5vh;
+  font-family: 'Open Sans';
 }
