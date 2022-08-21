@@ -52,3 +52,23 @@
 .difBut{
     margin-right: 10px;
 }
+
+.completed{
+    display: flex;
+    flex-direction: column
+}
+
+.butTrue{
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: rgba(36, 0, 150, 1);
+    color: white;
+}
+
+.butFalse{
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: white;
+    color: rgba(36, 0, 150, 1);
+    border: 1px rgba(36, 0, 150, 1) solid;
+}

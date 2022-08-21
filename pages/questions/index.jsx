@@ -2,13 +2,35 @@ import styles from './styles.module.css';
 import { NavBar } from '../../components/navBar';
 import { useState, useCallback, useEffect } from 'react';
 import { ExerciseList } from '../../components/exerciseList';
+import { useUser } from '@auth0/nextjs-auth0';
+
+// export async function getServerSideProps(context) {
+//   const { id } = context.query;
+//   // Fetch exercises
+//   const res = await fetch(`${url}/exercises`);
+//   const exercise = await res.json();
+
+//   // Fetch tests
+//   const res2 = await fetch(`${url}/test/${exercise.id}`);
+//   const tests = await res2.json();
+
+//   // Fetch solutions
+//   const res3 = await fetch(`${url}/solutions/${exercise.id}`);
+//   const solutions = await res3.json();
+
+//   return {
+//     props: { exercise, tests, solutions },
+//   }
+// }
+
+
 
 
 export default function Questions () {
   
-  const [percentage, setPercentage] = useState([])
+ 
   const [ exercises, setExercises ] = useState([]);
-  const [ user, setUser ] = useState([]);
+  const [ user1, setUser1 ] = useState([]);
   const [ easy, setEasy] = useState([])
   const [medium, setMedium] = useState([])
   const [hard, setHard] = useState([])
@@ -19,7 +41,9 @@ export default function Questions () {
   const [dynamic, setDynamic] = useState([])
   const [catButton, setCatButton] = useState(true)
   const [diffButton, setDiffButton] = useState(false)
-
+  const [progress, setProgress] = useState(0)
+  const { user} = useUser();
+  const [css1, setCss1] = useState(null)
 
 
 const url= 'http://localhost:3000/api/exercises'
@@ -40,7 +64,7 @@ const handleFetch = () => {
 
 const fetchUser = async() => {
   const res = await handleFetchUser();
-   setUser(res);
+   setUser1(res);
 }
 
 const handleFetchUser = () => {
@@ -50,6 +74,43 @@ const handleFetchUser = () => {
     .catch(e => e);
 }
 
+// const handleFetchUser = () => {
+//   return fetch(`${urlUser}/${user.sub}`)
+//     .then(res => res.json())
+//     .then(data => data)
+//     .catch(e => e);
+// }
+
+const progressFunc = () => {
+  const solvedUser = user1.solved.length
+  const exLength = exercises.length
+  let prog = Math.floor((solvedUser/ exLength) * 100)
+  if(!prog){
+    setProgress(0)
+  }else {
+    setProgress(prog)
+  }   
+}
+
+
+
+const progCss = () => {
+  setCss1(`.progress {
+    width: 400px;
+    height: 10px;
+    border: 1px solid black;
+    position: relative;
+    border-radius: 3px;
+  }
+  .progress:after {
+    content: '\';
+    position: absolute;
+    background: green;
+    top: 0; bottom: 0;
+    left: 0; 
+    width: ${progress}%; 
+  }`)
+}
 
 const filter = () => {
   for(let exercise of exercises){
@@ -66,14 +127,21 @@ const filter = () => {
 }
 
 useEffect(() => {
-  fetchUser();
+  if(user?.sub) fetchUser();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
+}, [user]);
 
 useEffect(() => {
   fetchExercises();  
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [filter()]);
+
+useEffect(() => {
+  if(user1.solved) {
+    return progressFunc()
+  } 
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [user1]);
 
 const categoryHandler = () => {
   setCatButton(true)
@@ -85,7 +153,10 @@ const difficultyHandler = () => {
   setDiffButton(true)
 }
 
-
+useEffect(() => {
+progCss()
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [progress])
 
 
 
@@ -98,14 +169,17 @@ const difficultyHandler = () => {
         </div>
 
       <div className={styles.dashboard}>
-        <div className= {styles.completed}>
-          <h1> {percentage}  % completed problems</h1>
+      <div className= {styles.completed}>
+          <h1> {progress}  % completed problems</h1>
+          <div className="progress">
+            <style> {css1}</style>
+           </div>  
         </div>
 
 
         <div className={styles.categorySelect}>
-          <button onClick= {categoryHandler} className={styles.catBut}> Category </button>
-          <button onClick= {difficultyHandler} className={styles.difBut}> Difficulty</button>
+          <button onClick= {categoryHandler} className={ catButton === true ? styles.butTrue : styles.butFalse}> Category </button>
+          <button onClick= {difficultyHandler} className={ diffButton === true ? styles.butTrue : styles.butFalse}> Difficulty</button>
         </div>
 
         <div className={styles.exerciseTabContainer}>

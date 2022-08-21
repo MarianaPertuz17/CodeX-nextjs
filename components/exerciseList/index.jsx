@@ -4,7 +4,7 @@ import {ExerciseTab} from '../excerciseTab'
 
 export function ExerciseList(props) {
   return (
-    <div>
+    <div className={styles.exer}>
         {props.exercises.map((e) => {
            return  <ExerciseTab
            exercise = {e}
