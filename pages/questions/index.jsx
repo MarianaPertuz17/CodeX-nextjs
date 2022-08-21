@@ -2,13 +2,13 @@ import styles from './styles.module.css';
 import { NavBar } from '../../components/navBar';
 import { useState, useCallback, useEffect } from 'react';
 import { ExerciseList } from '../../components/exerciseList';
-
+import { useUser } from '@auth0/nextjs-auth0';
 
 export default function Questions () {
   
-  const [percentage, setPercentage] = useState([])
+
   const [ exercises, setExercises ] = useState([]);
-  const [ user, setUser ] = useState([]);
+  const [ user1, setUser1 ] = useState([]);
   const [ easy, setEasy] = useState([])
   const [medium, setMedium] = useState([])
   const [hard, setHard] = useState([])
@@ -19,6 +19,8 @@ export default function Questions () {
   const [dynamic, setDynamic] = useState([])
   const [catButton, setCatButton] = useState(true)
   const [diffButton, setDiffButton] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const { user} = useUser();
 
 
 
@@ -40,14 +42,21 @@ const handleFetch = () => {
 
 const fetchUser = async() => {
   const res = await handleFetchUser();
-   setUser(res);
+   setUser1(res);
 }
 
 const handleFetchUser = () => {
-  return fetch(`${urlUser}/${1234}`)
+  return fetch(`${urlUser}/${user?.sub}`)
     .then(res => res.json())
     .then(data => data)
     .catch(e => e);
+}
+
+const progressFunc = () => {
+  const solvedUser = 1
+  const exLength = 2
+  const prog = Math.floor((solvedUser/ exLength) * 100)
+  setProgress(prog)
 }
 
 
@@ -67,15 +76,21 @@ const filter = () => {
 }
 
 useEffect(() => {
-  fetchUser();
+  if(user?.sub) fetchUser();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
+}, [user]);
 
 
 useEffect(() => {
   fetchExercises();  
 // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [filter()]);
+
+useEffect(() => {
+  progressFunc() 
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [user]);
+
 
 const categoryHandler = () => {
   setCatButton(true)
@@ -87,9 +102,21 @@ const difficultyHandler = () => {
   setDiffButton(true)
 }
 
-
-
-
+const css = `.progress {
+  width: 400px;
+  height: 10px;
+  border: 1px solid black;
+  position: relative;
+  border-radius: 3px;
+}
+.progress:after {
+  content: '\';
+  position: absolute;
+  background: green;
+  top: 0; bottom: 0;
+  left: 0; 
+  width: ${progress}%; 
+}`
 
   return(
   
@@ -101,19 +128,22 @@ const difficultyHandler = () => {
 
       <div className={styles.dashboard}>
         <div className= {styles.completed}>
-          <h1> {percentage}  % completed problems</h1>
+          <h1> {progress}  % completed problems</h1>
+          <div className="progress">
+            <style> {css}</style>
+           </div>  
         </div>
 
 
         <div className={styles.categorySelect}>
-          <button onClick= {categoryHandler} className={styles.catBut}> Category </button>
-          <button onClick= {difficultyHandler} className={styles.difBut}> Difficulty</button>
+          <button onClick= {categoryHandler} className={styles.butTrue}> Filter by Category </button>
+          <button onClick= {difficultyHandler} className={styles.butTrue}> Filter by Difficulty</button>
         </div>
 
         <div className={styles.exerciseTabContainer}>
 
       {diffButton === true && 
-      <>
+      <> 
         <div className= {styles.exerciseTabs}>
           <h1> Easy </h1>
           <ExerciseList exercises = {easy}/> 
