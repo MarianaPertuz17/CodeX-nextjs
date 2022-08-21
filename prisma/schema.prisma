@@ -33,6 +33,7 @@ model Exercise {
   output       String?
   tests        Test[]
   solutions    Solution[]
+  ourSolution  String
 }
 
 model User {
@@ -49,4 +50,5 @@ model Solution {
   exercise     Exercise @relation(fields: [exerciseId], references: [id])
   exerciseId   Int
   userId       String
+  createdAt  DateTime   @default(now())
 }

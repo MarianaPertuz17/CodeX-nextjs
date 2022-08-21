@@ -25,23 +25,28 @@ export async function getServerSideProps(context) {
 
   // Fetch tests
   const res2 = await fetch(`${url}/test/${exercise.id}`);
-  const tests= await res2.json();
-  
+  const tests = await res2.json();
+
+  // Fetch solutions
+  const res3 = await fetch(`${url}/solutions/${exercise.id}`);
+  const solutions = await res3.json();
+
   return {
-    props: { exercise, tests },
+    props: { exercise, tests, solutions },
   }
 }
 
-export default function Sandbox ({exercise, tests}) {
+export default function Sandbox ({exercise, tests, solutions}) {
 
   const [ codeString, setCodeString ] = useState('');
   const [ loading, setLoading ] = useState(false);
   const [ showTestResult, setShowTestResult ] = useState(false);
   const [ result, setResult ] = useState([]);
   const [ showSolutions, setShowSolutions ] = useState(false);
-  
-  const { user } = useUser();
+  const [ solutionDetail, setSolutionDetail ] = useState(false);
 
+  const { user } = useUser();
+  console.log(solutions, 'las so')
 
   useEffect(() => {
     if (loading) {
@@ -139,6 +144,13 @@ export default function Sandbox ({exercise, tests}) {
     else setShowSolutions(false);
   }
 
+  const handleClick = () => {
+    setSolutionDetail(true);
+  }
+
+  const handleBack = () => {
+    setSolutionDetail(false);
+  }
 
   return(
     <div style={{display:'flex', flexDirection:'column', background:'#040428'}}>
@@ -149,7 +161,7 @@ export default function Sandbox ({exercise, tests}) {
           <div className={styles.questionContainer}>    
             <LabelBar promptHandler={promptHandler} showSolutions={showSolutions}/>     
             {!showSolutions && exercise && <ExerciseDetail exercise={exercise}/>}
-            {showSolutions && <SolutionsContainer />}
+            {showSolutions && <AppContext.Provider value={{tests: result, solutionDetail, handleClick, handleBack, solutions}}><SolutionsContainer/></AppContext.Provider>}
           </div>
 
           <div className={styles.codeEditor}>

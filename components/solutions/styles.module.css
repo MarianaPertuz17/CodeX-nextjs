@@ -59,3 +59,7 @@
 .solutionButton:hover {
   background-color: #4952a3; 
 }
+
+.title {
+  font-weight: bold;
+}
