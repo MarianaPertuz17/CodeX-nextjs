@@ -44,38 +44,38 @@
   font-weight: bold;
   font-size: 70px;
   overflow: hidden;
-  height: 90px;
+  height: 10vh;
 }
 
 .span {
   display: block;
-  animation: spin_words 6s infinite
+  animation: spin_words 6s infinite;
 }
 
 @keyframes spin_words {
   10% {
-    transform: translateY(-115%);
+    transform: translateY(-120%);
   }
   25% {
-    transform: translateY(-100%);
+    transform: translateY(-110%);
   }
   35% {
-    transform: translateY(-212%);
+    transform: translateY(-220%);
   }
   50% {
-    transform: translateY(-200%);
+    transform: translateY(-210%);
   }
   60% {
-    transform: translateY(-312%);
+    transform: translateY(-320%);
   }
   75% {
-    transform: translateY(-300%);
+    transform: translateY(-310%);
   }
   85% {
-    transform: translateY(-412%);
+    transform: translateY(-420%);
   }
   100% {
-    transform: translateY(-400%);
+    transform: translateY(-410%);
   }
 }
 
