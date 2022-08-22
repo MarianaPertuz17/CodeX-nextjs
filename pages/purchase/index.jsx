@@ -1,4 +1,3 @@
-// import { dracula } from '@uiw/codemirror-theme-dracula';
 import { useUser } from '@auth0/nextjs-auth0';
 import styles from './styles.module.css';
 import { NavBar } from '../../components/navBar';
@@ -34,7 +33,7 @@ export default function purchasePage () {
         <div className={styles.payment}>
           <div className={styles.paymentHeader}>Subscribe to unlock all the exercises:</div>
           <div className={styles.paymentBackground}>
-            <form action="/api/checkout_sessions" method="POST" className={styles.paymentFlex}>
+            <form action={`/api/checkout/${user.sub}`} method="POST" className={styles.paymentFlex}>
               <div className={styles.price}>$5/month</div>
               <div className={styles.featureList}>
                 <div className={styles.featureListItem}>
@@ -56,8 +55,6 @@ export default function purchasePage () {
                   <div>Maximize your odds of getting hired!</div>
                 </div>
               </div>
-              {/* <image src={codeInterviewIcon} /> */}
-              {/* <div className={styles.codeInterviewIcon} /> */}
               <div className={styles.codeInterview} >
                 <Image src={codeInterviewIcon} className={styles.codeInterviewIcon} />
               </div>
