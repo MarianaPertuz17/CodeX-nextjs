@@ -90,7 +90,7 @@
   font-weight: bold;
   font-family: 'Open Sans';
   cursor: pointer;
-  width: 7vw;
+  min-width: 8vw;
 }
 
 .submitButton {
@@ -100,7 +100,7 @@
   font-weight: bold;
   font-family: Open Sans;
   cursor: pointer;
-  width: 7vw;
+  min-width: 8vw;
 }
 
 
