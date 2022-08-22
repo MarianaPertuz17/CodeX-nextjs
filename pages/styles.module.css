@@ -110,11 +110,15 @@
   font-weight: bold;
   font-size: 45px;
   opacity: 0;
-  transition: opacity 250ms ease-in;
+  /* transition: opacity 250ms ease-in; */
+  transform: translateY(150px);
+  transition: all 2s ease;
+  opacity: 0;
 }
 
 .appear {
   opacity: 1;
+  transform: translateY(0px);
 }
 
 .planet {
@@ -198,14 +202,16 @@
   font-weight: bold;
   font-size: 45px;
   align-self: center;
-  opacity: 0;
-  transition: opacity 600ms ease-in, -webkit-transform 600ms ease-in;
-  transition: opacity 600ms ease-in, transform 600ms ease-in;
-  transition: opacity 600ms ease-in, transform 600ms ease-in,
-    -webkit-transform 600ms ease-in;
+  transform: translateX(-150px);
+  transition: all 2s ease;
   opacity: 0;
 }
 
 .cssBattleText.appear{
   opacity: 1;
+  transform: translateY(0px)
+}
+
+.txtRotate >.wrap {
+  border-right: 0.08em solid white;
 }

@@ -5,14 +5,55 @@ import rocket from '../public/assets/images/rocket.png';
 import { NavBar } from '../components/navBar';
 import styles from './styles.module.css';
 import Image from 'next/image';
-import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { useEffect, useState } from 'react';
 
 
 export default function Home () {
   const { ref: rocketRef, inView: rocketIsVisible  } = useInView();
   const { ref: planetTextRef, inView: planetTextIsVisible  } = useInView();
   const { ref: cssTextRef, inView: cssTextIsVisible  } = useInView();
+
+  const [loopNum, setLoopNum] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [text, setText] = useState('');
+  const [delta, setDelta] = useState(300 - Math.random() * 100);
+  const [index, setIndex] = useState(1);
+  const toRotate = [ "hobby", "job", "life" ];
+  const period = 2000;
+
+  useEffect(() => {
+    let ticker = setInterval(() => {
+      tick();
+    }, delta);
+
+    return () => { clearInterval(ticker) };
+  }, [text])
+
+  const tick = () => {
+    let i = loopNum % toRotate.length;
+    let fullText = toRotate[i];
+    let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1);
+
+    setText(updatedText);
+
+    if (isDeleting) {
+      setDelta(prevDelta => prevDelta / 2);
+    }
+
+    if (!isDeleting && updatedText === fullText) {
+      setIsDeleting(true);
+      setIndex(prevIndex => prevIndex - 1);
+      setDelta(period);
+    } else if (isDeleting && updatedText === '') {
+      setIsDeleting(false);
+      setLoopNum(loopNum + 1);
+      setIndex(1);
+      setDelta(500);
+    } else {
+      setIndex(prevIndex => prevIndex + 1);
+    }
+  }
 
   return(
     <div className={styles.container}>
@@ -21,7 +62,7 @@ export default function Home () {
         <div className={styles.textContainer}>
           <span className={styles.title}>Get Ready to land</span>
           <span className={styles.title}>your new dream</span>
-          <span className={styles.title}>job.</span>
+          <span className={styles.title}><span className={styles.txtRotate} dataPeriod="1000" data-rotate='[ "hobby", "job", "life" ]'><span className={styles.wrap}>{text}</span></span></span>
           <span className={styles.text}>Find multiple questions that will get you prepared to ace any tech interview!</span>
         </div>
         <div style={{position: 'absolute'}}>
