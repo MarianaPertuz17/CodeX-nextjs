@@ -67,6 +67,7 @@
   font-size: 22px;
   margin-top: 3vh;
   font-family: 'DM Sans', sans-serif;
+  width: 100%;
 }
 
 .spaceman {
@@ -76,7 +77,7 @@
   padding: 0;
   left: 100%;
   animation: updown 3s linear infinite;
-  z-index: 1000;
+  z-index: 1;
 }
 
 @keyframes updown {
@@ -108,6 +109,12 @@
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
   font-size: 45px;
+  opacity: 0;
+  transition: opacity 250ms ease-in;
+}
+
+.appear {
+  opacity: 1;
 }
 
 .planet {
@@ -131,6 +138,32 @@
 .rocket {
   width: 65%;
   position: relative;
+}
+
+.animateRocket {
+  animation-duration: 5s;
+  animation-name: animate-rocket;
+}
+
+@keyframes animate-rocket {
+  0% {
+    transform: rotate(10deg);
+  }
+  5% {
+    transform: rotate(-15deg);
+  }
+  10% {
+    transform: rotate(5deg);
+  }
+  15% {
+    transform: rotate(-10deg);
+  }
+  20% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: translate3D(-100vw, -100vh, 0) ;
+  }
 }
 
 .shadow {
@@ -165,4 +198,14 @@
   font-weight: bold;
   font-size: 45px;
   align-self: center;
+  opacity: 0;
+  transition: opacity 600ms ease-in, -webkit-transform 600ms ease-in;
+  transition: opacity 600ms ease-in, transform 600ms ease-in;
+  transition: opacity 600ms ease-in, transform 600ms ease-in,
+    -webkit-transform 600ms ease-in;
+  opacity: 0;
+}
+
+.cssBattleText.appear{
+  opacity: 1;
 }

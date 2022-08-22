@@ -5,18 +5,24 @@ import rocket from '../public/assets/images/rocket.png';
 import { NavBar } from '../components/navBar';
 import styles from './styles.module.css';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
+
 
 export default function Home () {
+  const { ref: rocketRef, inView: rocketIsVisible  } = useInView();
+  const { ref: planetTextRef, inView: planetTextIsVisible  } = useInView();
+  const { ref: cssTextRef, inView: cssTextIsVisible  } = useInView();
+
   return(
     <div className={styles.container}>
       <NavBar/>
       <div className={styles.welcomeContainer}>
         <div className={styles.textContainer}>
-          <span className={styles.title}>Get Ready to land your new dream</span>
+          <span className={styles.title}>Get Ready to land</span>
+          <span className={styles.title}>your new dream</span>
           <span className={styles.title}>job.</span>
           <span className={styles.text}>Find multiple questions that will get you prepared to ace any tech interview!</span>
-          <Link href="/purchase" >Buy</Link>
         </div>
         <div style={{position: 'absolute'}}>
           <div className={styles.spaceman}>
@@ -50,13 +56,13 @@ export default function Home () {
             />
           </div>
          
-        <div className={styles.h1}>Over 100 coding interview questions and 125,000 satisfied developers!</div>
+        <div ref={planetTextRef} className={`${styles.h1} ${planetTextIsVisible ? styles.appear : ''}`}>Over 100 coding interview questions and 125,000 satisfied developers!</div>
       </div>
 
       
 
       <div className={styles.cssContain}>
-        <div className={styles.cssBattleText}>Not new to frontend? Test your knowledge in CSS Battles!</div>
+        <div ref={cssTextRef} className={`${styles.cssBattleText} ${cssTextIsVisible ? styles.appear : ''}`}>Not new to frontend? Test your knowledge in CSS Battles!</div>
         
       </div>
 
@@ -67,12 +73,11 @@ export default function Home () {
           <span className={styles.lastTitle}>starts right now.</span>
         </div>
 
-        <div style={{position:'absolute', top:'20%', left:'55%'}}>
-          <div className={styles.rocket}>
+        <div style={{position:'absolute', top:'20%', left:'55%'}} ref={rocketRef}>
+          <div className={`${styles.rocket} ${rocketIsVisible ? styles.animateRocket : ''}`}>
             <Image
               src={rocket}
               alt="rocket"
-
               />
           </div>
         </div>   
