@@ -13,7 +13,8 @@
 
 .button {
   color:white; 
-  font-size: 16px; 
+  font-size: 15px; 
+  margin-top: -3vh;
   margin-bottom:1vh; 
   background:none; 
   border:none;
@@ -22,4 +23,5 @@
   align-items: center;
   height: 5vh;
   font-family: 'Open Sans';
+  font-weight: bold;
 }

@@ -14,6 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { AppContext } from './context';
 import { LabelBar } from '../../components/labelBar';
 import { SolutionsContainer } from '../../components/solutions';
+import { FormModal } from '../../components/formModal';
+import { apiService } from '../../services/apiService';
 
 
 export async function getServerSideProps(context) {
@@ -43,11 +45,12 @@ export default function Sandbox ({exercise, tests, solutions}) {
   const [ result, setResult ] = useState([]);
   const [ showSolutions, setShowSolutions ] = useState(false);
   const [ solutionDetail, setSolutionDetail ] = useState(false);
-  const [ isOurSolution, setIsOurSolution ] = useState(false);
+  const [ userSolution, setUserSolution ] = useState();
+  const [ modalShow, setModalShow ] = useState(false);
 
   const { user } = useUser();
-  console.log(solutions, 'las so')
 
+  console.log(user)
   useEffect(() => {
     if (loading) {
       setTimeout(() => {
@@ -94,14 +97,9 @@ export default function Sandbox ({exercise, tests, solutions}) {
     setShowTestResult(false);
   }
   
-  const updateUserExercises = (id) => {
-    return fetch(`${url}/userex/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify({exerciseId: exercise.id})
-    })
-      .then(res => res.json())
-      .then(data => data)
-      .catch(e => e);
+  const updateUserExercises = async (userId, exerciseId) => {
+    const {res, error} = await apiService.handleExerciseSubmission(userId, exerciseId)
+    console.log(res, 're')
   }
 
   const handleSubmit = async() => {
@@ -115,7 +113,7 @@ export default function Sandbox ({exercise, tests, solutions}) {
           pauseOnHover: true,
           draggable: true,
         }); 
-        await updateUserExercises(user.sub);         
+        await updateUserExercises(user.sub, exercise.id);         
       } else {
         toast.error(`You haven´t passed all the tests`, {
           position: "top-right",
@@ -139,19 +137,27 @@ export default function Sandbox ({exercise, tests, solutions}) {
   }
 
   const promptHandler = (prompt) => {
-    console.log('in prompt handler');
     if (prompt === 'solutions') setShowSolutions(true);
     else setShowSolutions(false);
   }
 
-  const handleClick = (owner) => {
+  const handleClick = (solution) => {
     setSolutionDetail(true);
-    if (owner === 'us') setIsOurSolution(true)
-    else setIsOurSolution(false);
+    if (solution !== 'us') setUserSolution(solution);
+    else setUserSolution(null);
   }
 
   const handleBack = () => {
     setSolutionDetail(false);
+  }
+
+  const handleModalShow = (state) => {
+    setModalShow(state);
+  }
+
+  const postSolution = async(solution) => {
+    const {res, error} = await apiService.handlePostSolution(solution, exercise.id);
+    console.log(res);
   }
 
   return(
@@ -163,8 +169,14 @@ export default function Sandbox ({exercise, tests, solutions}) {
           <div className={styles.questionContainer}>    
             <LabelBar promptHandler={promptHandler} showSolutions={showSolutions}/>     
             {!showSolutions && exercise && <ExerciseDetail exercise={exercise}/>}
-            {showSolutions && <AppContext.Provider value={{ exercise, solutionDetail, handleClick, handleBack, solutions, isOurSolution}}><SolutionsContainer/></AppContext.Provider>}
+            {showSolutions && <AppContext.Provider value={{ exercise, solutionDetail, handleClick, handleBack, solutions, userSolution, handleModalShow}}><SolutionsContainer/></AppContext.Provider>}
           </div>
+          
+          <FormModal
+            show={modalShow}
+            onHide={() => handleModalShow(false)}
+            postSolution={postSolution}
+          />
 
           <div className={styles.codeEditor}>
             <div className={styles.labelContainer}>

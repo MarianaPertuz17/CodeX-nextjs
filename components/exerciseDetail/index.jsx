@@ -11,7 +11,8 @@ export function ExerciseDetail ({exercise}) {
         <span>Difficulty: 
           {exercise.difficulty === 1 && <span>&#128994;</span>} 
           {exercise.difficulty === 2 && <span>&#128993;</span>} 
-          {exercise.difficulty === 3 && <span>&#128308;</span> }
+          {exercise.difficulty === 3 && <span>&#128992;</span> }
+          {exercise.difficulty === 4 && <span>&#128308;</span> }
         </span>
         <span style={{marginLeft:'1vw'}}>Category: {exercise.category}</span>
       </div>
