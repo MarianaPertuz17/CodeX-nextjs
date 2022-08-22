@@ -49,7 +49,6 @@
 
 .tabUnpaid:hover{
     box-shadow: 0 0 3px black;
-    margin-top: -1px;
     cursor: pointer;
     color: black;
 }
