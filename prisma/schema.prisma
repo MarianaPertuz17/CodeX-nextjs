@@ -42,6 +42,7 @@ model User {
   username String?
   solved   Int[]
   paidUser Boolean @default(false)
+  stripeId String? @unique
 }
 
 model Solution {
