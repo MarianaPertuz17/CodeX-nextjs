@@ -52,6 +52,7 @@ const urlUser = 'http://localhost:3000/api/userex'
 
 const fetchExercises = async() => {
   const res = await handleFetch();
+  res.sort((a, b) => a.difficulty - b.difficulty)
    setExercises(res);
 }
 
@@ -178,8 +179,8 @@ progCss()
 
 
         <div className={styles.categorySelect}>
-          <button onClick= {categoryHandler} className={ catButton === true ? styles.butTrue : styles.butFalse}> Category </button>
-          <button onClick= {difficultyHandler} className={ diffButton === true ? styles.butTrue : styles.butFalse}> Difficulty</button>
+          <button onClick= {categoryHandler} className={ catButton === true ? styles.butTrue : styles.butFalse}>Filter by Category </button>
+          <button onClick= {difficultyHandler} className={ diffButton === true ? styles.butTrue : styles.butFalse}>Filter by Difficulty</button>
         </div>
 
         <div className={styles.exerciseTabContainer}>
@@ -232,8 +233,6 @@ progCss()
         </div>
         </>
           }
-
-
         </div>
       </div>
     </div>

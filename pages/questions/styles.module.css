@@ -35,6 +35,7 @@
 
 .exerciseTabs{
     margin-right: 120px;
+    
 }
 
 .exerciseTabContainer{
@@ -42,7 +43,7 @@
     flex-direction: row;
     justify-content: space-between;
     margin-top: 40px;
-    width:70%;
+    width:80%;
 }
 
 .catBut{
@@ -72,3 +73,4 @@
     color: rgba(36, 0, 150, 1);
     border: 1px rgba(36, 0, 150, 1) solid;
 }
+

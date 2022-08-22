@@ -1,7 +1,7 @@
 .tab{
     height: 40px;
-    width: 250px;
-    border: 1px solid;
+    width: 300px;
+    border: 1px solid rgb(232,232,232);
     border-radius: 5px;
     position: relative;
     background-color: 	rgb(232,232,232);
@@ -9,15 +9,17 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .tab:hover{
     box-shadow: 0 0 3px black;
-    margin-top: -2px;
+    margin-top: -1px;
+    cursor: pointer;
 }
 
 .corner{
-    height: 38px;
+    height: 40px;
     width: 30px;
     background-color: green;
     position: absolute;
@@ -27,4 +29,5 @@
 
 .exerciseName{
  margin-left: 10px;
+ font-family: 'Open Sans';
 }
