@@ -16,13 +16,17 @@ export function ExerciseDetail ({exercise}) {
         </span>
         <span style={{marginLeft:'1vw'}}>Category: {exercise.category}</span>
       </div>
-      <h1>{exercise.name}</h1>
-      <span style={{fontSize:14, textAlign:'justify'}}>{exercise.description}</span>
+      <h2 className={styles.title}>{exercise.name}</h2>
+      <span className={styles.description}>{exercise.description}</span>
+      
       <p className={styles.p}>Sample Input</p>
       <div className={styles.sampleContainer}>{exercise.input}</div>
+      
       <p className={styles.p}>Sample Ouput</p>
       <div className={styles.sampleContainer}>{exercise.output}</div>
+      
       <p className={styles.p}>Hints</p>
+      
       <HintList hintList={exercise.hints}/>
       <ListItem item = {exercise.bigO}/>
     </div>

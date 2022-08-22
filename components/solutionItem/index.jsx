@@ -4,7 +4,7 @@ import moment from 'moment';
 export function SolutionItem ({solution, handleClick}) {
 
   const {title, createdAt, userId} = solution;
-  const formattedDate = moment(createdAt).format('MMMM Do YYYY, h:mm:ss');
+  const formattedDate = moment(createdAt).format('MMMM Do YYYY, h:mm a');
 
   return(
     <button className={styles.container} onClick={() => handleClick(solution)}>

@@ -41,3 +41,14 @@
 .p {
   font-weight: bold;
 }
+
+.title {
+  margin: 3vh 0;
+  font-weight: bold ;
+}
+
+.description {
+  font-size:14px;
+  text-align:justify;
+  margin-bottom: 3vh;
+}

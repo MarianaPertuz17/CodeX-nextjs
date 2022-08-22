@@ -30,16 +30,17 @@ export async function getServerSideProps(context) {
 
   // Fetch solutions
   const res3 = await fetch(`${url}/solutions/${exercise.id}`);
-  const solutions = await res3.json();
+  const solutionsArr = await res3.json();
 
   return {
-    props: { exercise, tests, solutions },
+    props: { exercise, tests, solutionsArr },
   }
 }
 
-export default function Sandbox ({exercise, tests, solutions}) {
+export default function Sandbox ({exercise, tests, solutionsArr}) {
 
   const [ codeString, setCodeString ] = useState('');
+  const [ solutions, setSolutions ] = useState(solutionsArr);
   const [ loading, setLoading ] = useState(false);
   const [ showTestResult, setShowTestResult ] = useState(false);
   const [ result, setResult ] = useState([]);
@@ -50,7 +51,6 @@ export default function Sandbox ({exercise, tests, solutions}) {
 
   const { user } = useUser();
 
-  console.log(user)
   useEffect(() => {
     if (loading) {
       setTimeout(() => {
@@ -98,8 +98,7 @@ export default function Sandbox ({exercise, tests, solutions}) {
   }
   
   const updateUserExercises = async (userId, exerciseId) => {
-    const {res, error} = await apiService.handleExerciseSubmission(userId, exerciseId)
-    console.log(res, 're')
+    await apiService.handleExerciseSubmission(userId, exerciseId)
   }
 
   const handleSubmit = async() => {
@@ -155,9 +154,13 @@ export default function Sandbox ({exercise, tests, solutions}) {
     setModalShow(state);
   }
 
-  const postSolution = async(solution) => {
-    const {res, error} = await apiService.handlePostSolution(solution, exercise.id);
-    console.log(res);
+  const postSolution = async (solution) => {
+    setModalShow(false);
+    await apiService.handlePostSolution(solution, exercise.id);
+    // Update solutions
+    const res3 = await fetch(`${url}/solutions/${exercise.id}`);
+    const solutionsArr = await res3.json();
+    setSolutions(solutionsArr);
   }
 
   return(
