@@ -19,16 +19,15 @@ export default async function userHandler(req, res) {
       break
     case 'PUT':
       try {
-
         const {exerciseId} = JSON.parse(req.body);
         const idExists = await prisma.user.findMany({
           where: {
+            authId: req.query.id,
             solved: {
               has: exerciseId,
             },
           },
         })
-
         if (idExists.length === 0) {
           await prisma.user.update({
             where: {

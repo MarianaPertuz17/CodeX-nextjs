@@ -6,7 +6,7 @@ import { SolutionDetail } from '../solutionDetail';
 
 export function SolutionsContainer () {
 
-  const {solutionDetail, handleClick, solutions} = useContext(AppContext);
+  const {solutionDetail, handleClick, solutions, handleModalShow} = useContext(AppContext);
 
   return(
     <div className={styles.container}>
@@ -16,7 +16,7 @@ export function SolutionsContainer () {
         <button className={styles.solutionButton} onClick={() => handleClick('us')}>Solution 1</button>
         <div style={{display:'flex', justifyContent:'space-between', marginTop:'6vh'}}>
           <span className={styles.title}>User solutions</span>
-          <button className={styles.shareButton}>Share +</button>
+          <button className={styles.shareButton} onClick={() => handleModalShow(true)}>Share +</button>
         </div> 
         {solutions.map((solution, index) => <SolutionItem key={index} solution={solution} handleClick={handleClick}/>)} 
       </> :
