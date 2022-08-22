@@ -21,7 +21,7 @@ export default function Questions () {
   const [dynamic, setDynamic] = useState([])
   const [catButton, setCatButton] = useState(true)
   const [diffButton, setDiffButton] = useState(false)
-  const [progress, setProgress] = useState(0)
+  const [progress, setProgress] = useState(null)
   const { user} = useUser();
   const [css1, setCss1] = useState(null)
   
@@ -60,12 +60,12 @@ const handleFetchUser = () => {
 const progressFunc = () => {
   const solvedUser = user1.solved.length
   const exLength = exercises.length
-  let prog = Math.floor((solvedUser/ exLength) * 100)
-  if(!prog || prog === Infinity){
+  if(solvedUser === 0){
     setProgress(0)
-  }else {
+  } else {
+    let prog = Math.floor((solvedUser/ exLength) * 100)
     setProgress(prog)
-  }   
+  } 
 }
 
 
@@ -146,7 +146,7 @@ progCss()
 
       <div className={styles.dashboard}>
         
-        {progress &&
+        {progress !== null && progress !== Infinity &&
       <div className= {styles.completed}>
           <h1> {progress}  % completed problems</h1>
           <div className="progress">
