@@ -9,15 +9,15 @@ export function TestDetail ({item}) {
 
   return(
     <div className={styles.container}>
-      <h3>Expected output</h3>
+      <h6 className={styles.title}>Expected output</h6>
       <code className={styles.output}>{JSON.stringify(expectedOutput)}</code>
-      <h3>Your output</h3>
+      <h6 className={styles.title}>Your output</h6>
       <code className={styles.output}>{receivedOut === undefined ? 'undefined' : JSON.stringify(receivedOut)}</code>
-      <h3>Input</h3>
+      <h6 className={styles.title}>Input</h6>
       <code className={styles.output}>
         {input.length>0 ? input.map((e, index) => {
-          return <code key={index}>{params[index]} = {JSON.stringify(e)}</code>
-        }) : <code>{params[0]} = {input}</code>}
+          return <code className={styles.code} key={index}>{params[index]} = {JSON.stringify(e)}</code>
+        }) : <code className={styles.code}>{params[0]} = {input}</code>}
       </code> 
       
       

@@ -12,5 +12,17 @@
   flex-direction: column;
   justify-content: center;
   color: rgb(204, 153, 252);
+  font-size: 15px;
   line-height: 3vh;
+}
+
+.code {
+  color: rgb(204, 153, 252);
+  font-size: 15px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 3vh;
 }
