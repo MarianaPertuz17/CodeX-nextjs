@@ -31,3 +31,40 @@
  margin-left: 10px;
  font-family: 'Open Sans';
 }
+
+
+.tabUnpaid{
+    height: 40px;
+    width: 300px;
+    border: 1px solid rgb(232,232,232);
+    border-radius: 5px;
+    position: relative;
+    background-color: rgb(232,232,232)	;
+    box-shadow: 1px 1px rgb(232,232,232);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tabUnpaid:hover{
+    box-shadow: 0 0 3px black;
+    margin-top: -1px;
+    cursor: pointer;
+    color: black;
+}
+
+.tabUnpaid .payment {
+    display: none;
+  }
+
+.tabUnpaid:hover .exerciseNameUni {
+    display: none;
+  }
+
+.tabUnpaid:hover .payment {
+    display: inline;
+    color: black;
+    opacity: .8;
+    margin-left: 110px;
+  }
