@@ -38,6 +38,47 @@
   font-size: 70px;
 }
 
+.words {
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: 70px;
+  overflow: hidden;
+  height: 90px;
+}
+
+.span {
+  display: block;
+  animation: spin_words 6s infinite
+}
+
+@keyframes spin_words {
+  10% {
+    transform: translateY(-115%);
+  }
+  25% {
+    transform: translateY(-100%);
+  }
+  35% {
+    transform: translateY(-212%);
+  }
+  50% {
+    transform: translateY(-200%);
+  }
+  60% {
+    transform: translateY(-312%);
+  }
+  75% {
+    transform: translateY(-300%);
+  }
+  85% {
+    transform: translateY(-412%);
+  }
+  100% {
+    transform: translateY(-400%);
+  }
+}
+
 .buyButton {
   color: white;
   font-size: 150px;
