@@ -1,0 +1,23 @@
+.container {
+  background-color: #38345c;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-family: 'Open Sans';
+  font-size: var(--fs-50);;
+  margin: 10px 0px;
+  padding: 15px;
+  border:none;
+  border-radius: 5px;
+  max-height: 9em;
+  cursor: pointer;
+}
+
+.container:hover {
+  background-color: #4952a3;
+}
+
+.date {
+  color: lightgray ;
+  font-size: var(--fs-date)
+}

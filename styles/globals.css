@@ -2,8 +2,58 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  --spinner:5rem;
+  --rs-xxl:30em;
+  --fs-xl: 4.5rem;
+  --fs-600: 2.5rem;
+  --fs-400: 1.4rem;
+  --fs-100: 1.15rem;
+  --fs-50: 1rem;
+  --fs-20: 0.9rem;
+  --fs-date: 0.8rem
+}
+
+@media (max-width: 1700px) {
+  body {
+  --rs-xxl:20em;
+  --fs-xl: 4.1rem;
+  --fs-600: 2.1rem;
+  --fs-400: 1.2rem;
+  --fs-100: 0.9rem;
+  --fs-50: 0.8rem;
+  --fs-20: 0.7rem;
+  --fs-date: 0.6rem
+  }
+}
+
+@media (min-width:2000px) {
+  body {
+    --spinner:7rem;
+    --rs-xxl: 40em;
+    --fs-xl: 6rem;
+    --fs-600: 3rem;
+    --fs-400: 2.2rem;
+    --fs-100: 1.58rem;
+    --fs-50: 1.5rem;
+    --fs-20: 1.1rem;
+    --fs-date: 1rem
+  }
+  
+}
+
+@media (min-width:2400px) {
+  body {
+    --spinner:11rem;
+    --rs-xxl: 50em;
+    --fs-xl: 10rem;
+    --fs-600: 5rem;
+    --fs-400: 3.5rem;
+    --fs-100: 2.2rem;
+    --fs-50: 2rem;
+    --fs-20: 1.8rem;
+    --fs-date: 1.6rem
+  }
+  
 }
 
 a {
@@ -11,16 +61,64 @@ a {
   text-decoration: none;
 }
 
+a:hover{
+  color: gray;
+}
+
 * {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.cm-theme {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+
+.ͼ15 {
+  height: 95% !important;
+  background: #202049 !important;
+  border: 0.3px solid #281e4f !important;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.cm-activeLine {
+  background-color: rgba(255, 255, 255, 0.1);
+  
+}
+
+.cm-gutters {
+  background-color: #1a1a3f !important;
+}
+
+.modal-body {
+  background: rgb(230, 231, 235) !important;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 12px;
+  height: 20px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: #8a8a94;
+} 
+
+span {
+  font-size: var(--fs-50);
+}
+
+h4 {
+  font-size: var(--fs-400);
+  font-weight: bold;
 }

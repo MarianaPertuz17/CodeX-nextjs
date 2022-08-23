@@ -1,0 +1,263 @@
+.container {
+  background-image: url('../public/assets/images/landing-bg.png');
+  background-size: cover;
+  height: 132vh;
+}
+
+.cssContain {
+  background-image: url('../public/assets/images/coverBattle.png');
+  background-size: cover;
+  background: no repeat;
+  height: 100vh;
+  display: flex;
+  padding: 0px 80px;
+  margin: 0px 80px;
+  border-radius: 20px;
+  margin-bottom: 10vh;
+}
+
+.welcomeContainer {
+  height: 60vh;
+  display: flex;
+  margin-top: 13vh;
+  margin-bottom: 10vh;
+  padding: 0 80px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  margin-top: 10vh;
+}
+
+.title {
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: var(--fs-xl);
+}
+
+.words {
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  overflow: hidden;
+  margin-top: 2vh;
+  max-height: var(--spinner);
+  
+}
+
+.span {
+  display: block;
+  animation: spin_words 6s infinite;
+  font-size: var(--fs-xl);
+}
+
+@keyframes spin_words {
+  10% {
+    transform: translateY(-140%);
+  }
+  25% {
+    transform: translateY(-120px);
+  }
+  35% {
+    transform: translateY(-240%);
+  }
+  50% {
+    transform: translateY(-220%);
+  }
+  60% {
+    transform: translateY(-340%);
+  }
+  75% {
+    transform: translateY(-320%);
+  }
+  85% {
+    transform: translateY(-440%);
+  }
+  100% {
+    transform: translateY(-420%);
+  }
+}
+
+.buyButton {
+  color: white;
+  font-size: 150px;
+}
+
+.taglineTitle {
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: var(--fs-xl);;
+  animation-duration: 1750ms;
+  animation-delay: 500ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.48, 0.08, 0.19, 1);
+}
+
+.lastTitle {
+  text-align: center;
+  color: white;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: var(--fs-xl);;
+}
+
+.text {
+  color: gray;
+  font-size: var(--fs-400);
+  margin-top: 1vh;
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+}
+
+.spaceman {
+  height: 78vh;
+  width: 45vw;
+  position: relative;
+  padding: 0;
+  left: 100%;
+  animation: updown 3s linear infinite;
+  z-index: 1;
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(-20px);
+  }
+
+  50% {
+    transform: translateY(20px);
+  }
+
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+
+.firstCardContainer {
+  display: flex;
+  padding: 0 80px;
+  background-color: white;
+  padding-top: 10vh;
+  border-top-left-radius: 200px;
+  height: 80vh;
+  align-items: center;
+}
+
+.h1 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: var(--fs-600);;
+  opacity: 0;
+  transform: translateY(150px);
+  transition: all 2s ease;
+  opacity: 0;
+  align-self: center;
+}
+
+.appear {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
+.planet {
+  height: 40vh;
+  width: 70vw;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.secondCardContainer {
+  background-image: url('../public/assets/images/background_2.png');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  padding: 250px 0;
+  position: relative;
+  min-height: 20vh;
+}
+
+.rocket {
+  width: var(--rs-xxl);
+  height: 20vh;
+  position: relative;
+}
+
+.animateRocket {
+  animation-duration: 5s;
+  animation-name: animate-rocket;
+}
+
+@keyframes animate-rocket {
+  0% {
+    transform: rotate(10deg);
+  }
+  5% {
+    transform: rotate(-15deg);
+  }
+  10% {
+    transform: rotate(5deg);
+  }
+  15% {
+    transform: rotate(-10deg);
+  }
+  20% {
+    transform: rotate(-30deg);
+  }
+  100% {
+    transform: translate3D(-100vw, -100vh, 0) ;
+  }
+}
+
+.shadow {
+  width: 93%;
+  height: 95vh;
+  position: relative;
+}
+
+.cssCode {
+  width: 25vw;
+  position: relative;
+  box-shadow: 0 10px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  filter: brightness(1.55);
+}
+
+.innerContainer {
+  display: flex;
+  background-color: #0f0b22;
+  padding: 0px 80px;
+  border-radius: 20px;
+  margin-bottom: 10vh;
+  width: 100%;
+}
+
+.cssBattleText {
+  font-size: 72px;
+  background: -webkit-linear-gradient(#44eae3, rgb(206, 85, 206));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 40%;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: bold;
+  font-size: var(--fs-600);;
+  align-self: center;
+  transform: translateX(-150px);
+  transition: all 2s ease;
+  opacity: 0;
+}
+
+.cssBattleText.appear{
+  opacity: 1;
+  transform: translateY(0px)
+}
+
+.txtRotate >.wrap {
+  border-right: 0.08em solid white;
+}

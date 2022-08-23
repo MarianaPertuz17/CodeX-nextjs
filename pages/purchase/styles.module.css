@@ -1,0 +1,103 @@
+.container {
+  background-image: url('../../public/assets/images/landing-bg.png');
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Open Sans';
+}
+
+.paymentHeader {
+  color: white;
+  margin-bottom: 1%;
+  font-size: 25px;
+}
+
+.paymentFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+.price {
+  display: inline;
+  justify-content: center;
+  margin: 5% auto 0;
+  position: relative;
+}
+
+.oldPrice {
+  font-size: 25px;
+  text-decoration: line-through;
+  font-weight: lighter;
+  color: gray;
+  position: absolute;
+  right: 100%;
+}
+
+.newPrice {
+  font-size: 50px;
+}
+
+.paymentText1 {
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  display: block;
+}
+
+.featureList {
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.featureListItem {
+  display: flex;
+  margin: 0.5%;
+  margin-left: 5%;
+  font-weight: lighter;
+  font-size: 21px;
+}
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.paymentButton {
+  width: 185px;
+  height: 72px;
+  background: #556cd6;
+  border-radius: 4px;
+  color: white;
+  border: 0;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.6);
+  margin: auto;
+  margin-bottom: 10%;
+  display: block;
+  justify-self: flex-end;
+}
+
+.paymentButton:hover {
+  opacity: 0.8;
+}
+
+.paymentBackground {
+  background: #ffffff;
+  width: 500px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.codeInterview {
+  margin: auto;
+  margin-bottom: 6%;
+  width: 50%;
+}
+
+.codeInterviewIcon {
+  border-radius: 15px;
+}

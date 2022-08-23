@@ -1,0 +1,19 @@
+.container {
+  background-image: url('../../../public/assets/images/simple_bg.png');
+  background-size: cover;
+  height: 100vh;
+  font-family: 'Open Sans';
+}
+
+.successFlex {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.successText {
+  color: white;
+  font-size: 65px;
+}

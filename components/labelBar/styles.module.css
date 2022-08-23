@@ -1,0 +1,41 @@
+.labelButtonContainer {
+  min-height: 4vh;
+  display:flex;
+  justify-content:space-between;
+  align-items: center;
+  background-color: #30304b;
+  border-top-left-radius:5px ;
+  border-top-right-radius:5px ;
+}
+
+
+.label {
+  color: rgb(189, 189, 189);
+  height: 100%;
+  min-width: 6vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: none;
+  font-family: 'Open Sans' !important;
+  font-size: var(--fs-50);
+  cursor: pointer;
+}
+
+.label:hover{
+  background-color: #400ed7;
+}
+
+.clockContainer {
+  border: none;
+  width: 13vw;
+  padding: 3px;
+  padding-left: 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  justify-content: space-around;
+  height: 100%;
+}

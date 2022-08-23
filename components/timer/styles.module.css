@@ -1,0 +1,9 @@
+.button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  min-height: 20px;
+  min-width: 30px;
+  position: relative;
+  margin-left: 2px;
+}

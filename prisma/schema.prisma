@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Test {
+  id         Int      @id @default(autoincrement())
+  testInput  String
+  testOutput String
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId Int
+}
+
+model Exercise {
+  id           Int        @id @default(autoincrement())
+  name         String
+  difficulty   Int
+  category     String?
+  isFree       Boolean
+  bigO         String?
+  description  String?
+  hints        String[]
+  functionName String?
+  paramNames   String[]
+  input        String?
+  output       String?
+  tests        Test[]
+  solutions    Solution[]
+  ourSolution  String
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  authId   String  @unique
+  username String?
+  solved   Int[]
+  paidUser Boolean @default(false)
+  stripeId String? @unique
+}
+
+model Solution {
+  id          Int      @id @default(autoincrement())
+  title       String
+  explanation String
+  solution    String
+  exercise    Exercise @relation(fields: [exerciseId], references: [id])
+  exerciseId  Int
+  userId      String
+  createdAt   DateTime @default(now())
+}

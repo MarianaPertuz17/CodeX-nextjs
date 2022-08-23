@@ -1,0 +1,23 @@
+.button {
+  color:white; 
+  font-size: var(--fs-50);; 
+  margin-top: -3vh;
+  margin-bottom:1vh; 
+  background:none; 
+  border:none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  min-height: 5vh;
+  font-family: 'Open Sans';
+  font-weight: bold;
+}
+
+.container {
+  height: 60vh;
+}
+
+.date {
+  color: lightgray ;
+  font-size: var(--fs-date)
+}

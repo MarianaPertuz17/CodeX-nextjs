@@ -1,0 +1,55 @@
+.container {
+  min-height: 14vh;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color:white;
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: var(--fs-100);;
+  padding: 0 40px;
+}
+
+.logo {
+  height: 100%;
+  width: 200px;
+}
+
+.labelContainer {
+  display: flex;
+  min-width: 45%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 10px;
+  padding: 5px 15px 5px 15px;
+  color: white;
+  font-family: 'Open Sans';
+  font-size: var(--fs-100);;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 1.5vw;
+}
+
+.button:hover {
+  color: black;
+  background-color: white;
+}
+
+.questionsLabel {
+  color: white;
+  text-decoration: none;
+  align-self: center;
+  height: 100%;
+  margin-left: 2vw;
+}

@@ -1,0 +1,89 @@
+.container {
+    display:flex;
+    flex-direction:column;
+    background-image: url('../../public/assets/images/simple_bg.png');
+    background-size: cover;
+}
+
+.header{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 36px;
+}
+
+.dashboard{
+    min-height: 950px;
+    background: white;
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    align-items: center;
+}
+
+.completed{
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+}
+
+.categorySelect{
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.exerciseTabs{
+    margin-right: 0
+    
+}
+
+.exerciseTabContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+    width:90%;
+}
+
+.catBut{
+    margin-right: 10px;
+}
+
+.difBut{
+    margin-right: 10px;
+}
+
+.completed{
+    display: flex;
+    flex-direction: column
+}
+
+.butTrue{
+    margin-right: 20px;
+    border:none;
+    border-radius: 4px;
+    background-color: rgba(36, 0, 150, 1);
+    color: white;
+    font-size: var(--fs-100);
+    padding: 5px 15px;
+}
+
+.butFalse{
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: white;
+    color: rgba(36, 0, 150, 1);
+    border: 1px rgba(36, 0, 150, 1) solid;
+    font-size: var(--fs-100);
+    padding: 5px 15px;
+}
+
