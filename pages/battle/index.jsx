@@ -15,8 +15,9 @@ export async function getServerSideProps() {
       background: blueviolet;
     }
   </style>`
+  const ext = [html()];
   return {
-    props: { code },
+    props: { code, ext },
   }
 }
 
@@ -27,7 +28,7 @@ if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
 }
 
 
-export default function CSSBattle ({code}) {
+export default function CSSBattle ({code, ext}) {
   useEffect(()=> {
     console.log(window, modeLoaded, 'COND')
     if (modeLoaded) setExtension([html()]);
@@ -80,7 +81,7 @@ export default function CSSBattle ({code}) {
               value={codeString}
               height="200px"
               theme={dracula}
-              extensions={extension}
+              extensions={ext}
               onChange={onChange}
             />            
          
