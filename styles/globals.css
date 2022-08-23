@@ -5,9 +5,16 @@ body {
   --spinner:5rem;
   --rs-xxl:30em;
   --fs-xl: 4.5rem;
-  --fs-600: 1.15rem;
+  --fs-600: 2.5rem;
   --fs-500: 1.25rem;
-  --fs-400: 1rem
+  --fs-400: 1.5rem;
+  --fs-100: 1.15rem;
+  --fs-50: 1rem;
+  --fs-20: 0.9rem
+}
+
+span {
+  font-size: var(--fs-50);
 }
 
 @media (min-width:2000px) {
@@ -15,9 +22,12 @@ body {
     --spinner:7rem;
     --rs-xxl: 40em;
     --fs-xl: 6rem;
-    --fs-600: 1.15rem;
+    --fs-600: 3rem;
     --fs-500: 1.25rem;
-    --fs-400: 1rem
+    --fs-400: 2rem;
+    --fs-100: 1.58rem;
+    --fs-50: 1.5rem;
+    --fs-20: 1.1rem
   }
   
 }
@@ -27,9 +37,12 @@ body {
     --spinner:11rem;
     --rs-xxl: 50em;
     --fs-xl: 10rem;
-    --fs-600: 1.15rem;
+    --fs-600: 5rem;
     --fs-500: 1.25rem;
-    --fs-400: 1rem
+    --fs-400: 3.5rem;
+    --fs-100: 2.2rem;
+    --fs-50: 2rem;
+    --fs-20: 1.8rem
   }
   
 }

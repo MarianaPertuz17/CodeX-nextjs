@@ -4,7 +4,7 @@
   flex-direction: column;
   color:white;
   font-family: 'Open Sans';
-  font-size: 14px;
+  font-size: var(--fs-50);;
   margin-bottom: 20px;
   padding: 15px;
   border-radius: 5px;
@@ -19,7 +19,7 @@
 .openItem {
   display: flex;
   margin-top: 10px;
-  font-size: 13px;
+  font-size: var(--fs-20);
   text-align: justify;
 }
 
