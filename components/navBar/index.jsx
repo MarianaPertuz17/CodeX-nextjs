@@ -25,7 +25,7 @@ export function NavBar () {
           <Link href="/battle">CSS Battles &#11088;</Link>
         </div>
         <div className={styles.questionsLabel}>
-          <Link href="/questions">Coding Interview Questionss</Link>
+          <Link href="/questions">Coding Interview Questions</Link>
         </div>
         <div className={styles.questionsLabel}>
           {user ? <Link href="/purchase">Buy Now</Link> : <Link href="/api/loginToBuy">Buy Now</Link>}

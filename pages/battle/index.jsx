@@ -6,20 +6,27 @@ import { useState, useCallback } from 'react';
 import { NavBar } from '../../components/navBar';
 import { url } from '../../config';
 
-
-export default function CSSBattle () {
-
-  const [score, setScore] = useState(0);
-  const [match, setMatch] = useState(0);
-
-  const [codeString, setCodeString] = useState(`<div></div>
+export async function getServerSideProps() {
+  const code = `<div></div>
   <style>
     div {
       width: 100px;
       height: 100px;
       background: blueviolet;
     }
-  </style>`);
+  </style>`
+  return {
+    props: { code },
+  }
+}
+
+
+export default function CSSBattle () {
+
+  const [score, setScore] = useState(0);
+  const [match, setMatch] = useState(0);
+
+  const [codeString, setCodeString] = useState(code);
 
   const findScore = async() => {
     const {score, match} = await fetchScore();
