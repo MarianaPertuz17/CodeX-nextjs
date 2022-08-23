@@ -5,7 +5,7 @@ import { ExerciseList } from '../../components/exerciseList';
 import { useUser } from '@auth0/nextjs-auth0';
 import { MainContext } from '../../context';
 import { Spinner } from '../../components/spinner';
-import { stubArray } from 'lodash';
+
 
 export default function Questions () {
   
@@ -150,7 +150,7 @@ progCss()
 
       <div className= {styles.completed}>
         <div className={styles.spinner}>
-        {loading  &&
+        {loading && user.id  &&
         <Spinner
         background='rgba(36, 0, 150, 1)'
         />     
