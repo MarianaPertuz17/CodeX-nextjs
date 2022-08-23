@@ -1,5 +1,11 @@
+.container {
+    display:flex;
+    flex-direction:column;
+    background-image: url('../../public/assets/images/simple_bg.png');
+    background-size: cover;
+}
+
 .header{
-    background:'#20045c';
     height: 300px;
     display: flex;
     justify-content: center;
