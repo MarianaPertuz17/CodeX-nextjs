@@ -9,7 +9,7 @@ export function SolutionItem ({solution, handleClick}) {
   return(
     <button className={styles.container} onClick={() => handleClick(solution)}>
       <span style={{fontWeight:'bold'}}>{title}</span>
-      <span style={{color:'lightgray', fontSize:'12px'}}>shared on {formattedDate} by {userId ? userId : `Anonymous User`}</span> 
+      <span className={styles.date}>shared on {formattedDate} by {userId ? userId : `Anonymous User`}</span> 
     </button>  
   )
 }

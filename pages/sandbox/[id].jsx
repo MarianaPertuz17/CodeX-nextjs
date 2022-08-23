@@ -103,7 +103,6 @@ export default function Sandbox ({exercise, tests, solutionsArr}) {
 
   const handleSubmit = async() => {
     if ( user ) {
-      console.log(result, 'test')
       if (showTestResult && result.every(ele => ele.passed === true)) {
         toast.success('Your exercise has been submitted', {
           position: "top-right",
@@ -164,50 +163,52 @@ export default function Sandbox ({exercise, tests, solutionsArr}) {
   }
 
   return(
-    <div style={{display:'flex', flexDirection:'column', background:'#040428'}}>
-      <NavBar/>  
-      <div className={styles.container} >
-        <ToastContainer />
-        <div className={styles.innerContainer}>
-          <div className={styles.questionContainer}>    
-            <LabelBar promptHandler={promptHandler} showSolutions={showSolutions}/>     
-            {!showSolutions && exercise && <ExerciseDetail exercise={exercise}/>}
-            {showSolutions && <AppContext.Provider value={{ exercise, solutionDetail, handleClick, handleBack, solutions, userSolution, handleModalShow}}><SolutionsContainer/></AppContext.Provider>}
+    <AppContext.Provider value={{ tests: result, params: exercise.paramNames, exercise, solutionDetail, handleClick, handleBack, solutions, userSolution, handleModalShow}}>
+      <div style={{display:'flex', flexDirection:'column', background:'#040428'}}>
+        <NavBar/>  
+        <div className={styles.container} >
+          <ToastContainer />
+          <div className={styles.innerContainer}>
+            <div className={styles.questionContainer}>    
+              <LabelBar promptHandler={promptHandler} showSolutions={showSolutions}/>     
+              {!showSolutions && exercise && <ExerciseDetail exercise={exercise}/>}
+              {showSolutions && <SolutionsContainer/>}
+            </div>
+            
+            <FormModal
+              show={modalShow}
+              onHide={() => handleModalShow(false)}
+              postSolution={postSolution}
+            />
+
+            <div className={styles.codeEditor}>
+              <div className={styles.labelContainer}>
+                <div className={styles.label}>Javascript</div>
+                <button className={styles.runButton} onClick={handleRun}>Run code</button>
+              </div>
+              
+              <CodeMirror
+                value={codeString}
+                height="200px"
+                theme={dracula}
+                extensions={[javascript({jsx:true})]}
+                onChange={onChange}
+              />
+              <div className={styles.labelContainer}>
+                <div className={styles.label}>Output</div>
+                <button className={styles.submitButton} onClick={handleSubmit}>Submit code</button>
+              </div>
+              
+              <div className={styles.outputContainer}>
+                { loading && <Spinner/> }
+                { showTestResult && tests && <TestResult/> }
+              </div>
+            </div>
           </div>
           
-          <FormModal
-            show={modalShow}
-            onHide={() => handleModalShow(false)}
-            postSolution={postSolution}
-          />
-
-          <div className={styles.codeEditor}>
-            <div className={styles.labelContainer}>
-              <div className={styles.label}>Javascript</div>
-              <button className={styles.runButton} onClick={handleRun}>Run code</button>
-            </div>
-            
-            <CodeMirror
-              value={codeString}
-              height="200px"
-              theme={dracula}
-              extensions={[javascript({jsx:true})]}
-              onChange={onChange}
-            />
-            <div className={styles.labelContainer}>
-              <div className={styles.label}>Output</div>
-              <button className={styles.submitButton} onClick={handleSubmit}>Submit code</button>
-            </div>
-            
-            <div className={styles.outputContainer}>
-              { loading && <Spinner/> }
-              { showTestResult && tests && <AppContext.Provider value={{tests: result, params: exercise.paramNames}}><TestResult/></AppContext.Provider> }
-            </div>
-          </div>
         </div>
-        
       </div>
-    </div>
+    </AppContext.Provider>
     
     
   )

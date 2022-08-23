@@ -3,7 +3,6 @@ import { url } from "../config";
 export const apiService = {};
 
 apiService.handleExerciseSubmission = (userId, exerciseId) => {
-  console.log(userId, exerciseId, 'los id')
   return fetch(`${url}/userex/${userId}`, {
     method: 'PUT',
     body: JSON.stringify({exerciseId})

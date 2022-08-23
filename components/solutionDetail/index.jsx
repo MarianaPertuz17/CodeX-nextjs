@@ -42,22 +42,26 @@ export function SolutionDetail () {
             height="200px"
             theme={dracula}
             extensions={[javascript({jsx:true})]}
+            editable={false}
+            autoFocus={false}
           />
         }
 
         {userSolution &&
           <>
             <h4 style={{marginTop:'2vh'}}>{title}</h4>
-            <span style={{color:'lightgray', fontSize:'12px'}}>shared on {formattedDate} by {userSolution.userId ? userSolution.userId : `Anonymous User`}</span> 
+            <span className={styles.date}>shared on {formattedDate} by {userSolution.userId ? userSolution.userId : `Anonymous User`}</span> 
             <h4 style={{marginTop:'4vh'}}>Explanation</h4>
-            <span style={{color:'lightgray', fontSize:'15px'}}>{explanation.length > 1 ? explanation : `No explanation was provided.`}</span>
+            <span style={{color:'lightgray'}}>{explanation.length > 1 ? explanation : `No explanation was provided.`}</span>
             <h4 style={{marginTop:'4vh'}}>Code</h4>
             <CodeMirror
               value={formattedUserCode}
               height="200px"
               theme={dracula}
               extensions={[javascript({jsx:true})]}
-            />
+              editable={false}
+              autoFocus={false}
+            />            
           </>
         }
 

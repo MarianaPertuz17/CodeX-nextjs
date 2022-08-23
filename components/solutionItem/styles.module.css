@@ -16,3 +16,8 @@
 .container:hover {
   background-color: #4952a3;
 }
+
+.date {
+  color: lightgray ;
+  font-size: var(--fs-date)
+}
