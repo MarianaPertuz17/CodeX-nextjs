@@ -5,6 +5,7 @@ import { ExerciseList } from '../../components/exerciseList';
 import { useUser } from '@auth0/nextjs-auth0';
 import { MainContext } from '../../context';
 import { url } from '../../config';
+import { Spinner } from '../../components/spinner';
 
 
 export async function getServerSideProps() {
@@ -20,6 +21,7 @@ export async function getServerSideProps() {
 
 export default function Questions ({exercises}) {
   
+  const [loading, setLoading] = useState(true)
   const [ user1, setUser1 ] = useState([]);
   const [ easy, setEasy] = useState([])
   const [medium, setMedium] = useState([])
@@ -92,10 +94,12 @@ export default function Questions ({exercises}) {
   }
   }
 
+
   useEffect(() => {
     if(user?.sub) fetchUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
+
 
   useEffect(() => {
     filter();
@@ -120,7 +124,7 @@ export default function Questions ({exercises}) {
   }
 
   useEffect(() => {
-  progCss()
+    progCss()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [progress])
 
@@ -135,15 +139,24 @@ export default function Questions ({exercises}) {
         </div>
 
       <div className={styles.dashboard}>
-        
-        {progress !== null && progress !== Infinity &&
+
       <div className= {styles.completed}>
+        <div className={styles.spinner}>
+        {loading  &&
+        <Spinner
+        background='rgba(36, 0, 150, 1)'
+        />     
+        }
+        </div>
+        {progress !== null && progress !== Infinity &&
+        <>
           <h4> {progress}  % completed problems</h4>
           <div className="progress">
             <style> {css1}</style>
-           </div>  
-        </div>
-}
+           </div>
+           </>          
+        }
+</div>
 
         <div className={styles.categorySelect}>
           <button onClick= {categoryHandler} className={ catButton === true ? styles.butTrue : styles.butFalse}>Filter by Category </button>
