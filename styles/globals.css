@@ -13,6 +13,19 @@ body {
   --fs-date: 0.8rem
 }
 
+@media (max-width: 1700px) {
+  body {
+  --rs-xxl:20em;
+  --fs-xl: 4.1rem;
+  --fs-600: 2.1rem;
+  --fs-400: 1.2rem;
+  --fs-100: 0.9rem;
+  --fs-50: 0.8rem;
+  --fs-20: 0.7rem;
+  --fs-date: 0.6rem
+  }
+}
+
 @media (min-width:2000px) {
   body {
     --spinner:7rem;

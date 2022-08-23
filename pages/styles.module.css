@@ -56,28 +56,28 @@
 
 @keyframes spin_words {
   10% {
-    transform: translateY(-150px);
+    transform: translateY(-140%);
   }
   25% {
-    transform: translateY(-130px);
+    transform: translateY(-120px);
   }
   35% {
-    transform: translateY(-250px);
+    transform: translateY(-240%);
   }
   50% {
-    transform: translateY(-230px);
+    transform: translateY(-220%);
   }
   60% {
-    transform: translateY(-350px);
+    transform: translateY(-340%);
   }
   75% {
-    transform: translateY(-330px);
+    transform: translateY(-320%);
   }
   85% {
-    transform: translateY(-450px);
+    transform: translateY(-440%);
   }
   100% {
-    transform: translateY(-430px);
+    transform: translateY(-420%);
   }
 }
 
