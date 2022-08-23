@@ -58,7 +58,8 @@ export default function Questions ({exercises}) {
     } else {
       let prog = Math.floor((solvedUser/ exLength) * 100)
       setProgress(prog)
-    } 
+    }
+    setLoading(false);
   }
 
 
