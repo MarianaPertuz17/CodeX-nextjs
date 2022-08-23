@@ -1,12 +1,11 @@
 import styles from './styles.module.css';
 import { NavBar } from '../../components/navBar';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ExerciseList } from '../../components/exerciseList';
 import { useUser } from '@auth0/nextjs-auth0';
 import { MainContext } from '../../context';
-import { url } from '../../config';
 import { Spinner } from '../../components/spinner';
-
+import { url } from '../../config';
 
 export async function getServerSideProps() {
   // Fetch exercises
@@ -21,21 +20,32 @@ export async function getServerSideProps() {
 
 export default function Questions ({exercises}) {
   
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const [ user1, setUser1 ] = useState([]);
-  const [ easy, setEasy] = useState([])
-  const [medium, setMedium] = useState([])
-  const [hard, setHard] = useState([])
-  const [veryHard, setVeryHard] = useState([])
-  const [arrays, setArrays] = useState([])
-  const [binarySearchTrees, setBinarySearchTrees] = useState([])
-  const [binaryTrees, setBinaryTrees] = useState([])
-  const [dynamic, setDynamic] = useState([])
-  const [catButton, setCatButton] = useState(true)
-  const [diffButton, setDiffButton] = useState(false)
-  const [progress, setProgress] = useState(null)
+  const easy = stateSetter('difficulty', 1);
+  const medium = stateSetter('difficulty', 2);
+  const hard = stateSetter('difficulty', 3);
+  const veryHard = stateSetter('difficulty', 4);
+  const arrays = stateSetter('category', 'Arrays');
+  const binarySearchTrees = stateSetter('category', 'Binary Search Tree');
+  const binaryTrees = stateSetter('category', 'Binary Tree');
+  const dynamic= stateSetter('category', 'Dynamic Programming');
+  const [catButton, setCatButton] = useState(true);
+  const [diffButton, setDiffButton] = useState(false);
+  const [progress, setProgress] = useState(null);
   const { user} = useUser();
-  const [css1, setCss1] = useState(null)
+  const [css1, setCss1] = useState(null);
+
+
+  function stateSetter  (property, value) {
+    const filteredExercise = [];
+    for (let exercise of exercises) {
+      if (exercise[property] === value) {
+        filteredExercise.push(exercise);
+      }
+    }
+    return filteredExercise;
+  }
 
   const fetchUser = async() => {
     const res = await handleFetchUser();
@@ -81,31 +91,11 @@ export default function Questions ({exercises}) {
     }`)
   }
 
-  const filter = () => {
-    for(let exercise of exercises){
-      if(exercise.difficulty === 1 && easy.some(e => e.id === exercise.id) === false) setEasy(easy => [...easy, exercise])
-      if(exercise.difficulty === 2 && medium.some(e => e.id === exercise.id) === false) setMedium(medium => [...medium, exercise])
-      if(exercise.difficulty === 3 && hard.some(e => e.id === exercise.id) === false) setHard(hard => [...hard, exercise])
-      if(exercise.difficulty === 4 && veryHard.some(e => e.id === exercise.id) === false) setVeryHard(veryHard => [...veryHard, exercise])
-      if(exercise.category === 'Arrays' && arrays.some(e => e.id === exercise.id) === false) setArrays(arrays => [...arrays, exercise])
-      if(exercise.category === 'Binary Search Tree' && binarySearchTrees.some(e => e.id === exercise.id) === false)
-      setBinarySearchTrees(arrays => [...arrays, exercise])
-      if(exercise.category === 'Binary Tree' && binaryTrees.some(e => e.id === exercise.id) === false) setBinaryTrees(arrays => [...arrays, exercise])
-      if(exercise.category === 'Dynamic Programming' && dynamic.some(e => e.id === exercise.id) === false) setDynamic(arrays => [...arrays, exercise])
-  }
-  }
-
 
   useEffect(() => {
     if(user?.sub) fetchUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
-
-
-  useEffect(() => {
-    filter();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     if(user1.solved) {
@@ -130,7 +120,6 @@ export default function Questions ({exercises}) {
   }, [progress])
 
 
-
   return(
   
     <div className={styles.container}>
@@ -144,20 +133,17 @@ export default function Questions ({exercises}) {
       <div className= {styles.completed}>
         <div className={styles.spinner}>
         {loading && user1.id  &&
-        <Spinner
-        background='rgba(36, 0, 150, 1)'
-        />     
-        }
+        <Spinner background='rgba(36, 0, 150, 1)'/>}
         </div>
         {progress !== null && progress !== Infinity &&
         <>
           <h4> {progress}  % completed problems</h4>
           <div className="progress">
             <style> {css1}</style>
-           </div>
-           </>          
+          </div>
+        </>          
         }
-</div>
+      </div>
 
         <div className={styles.categorySelect}>
           <button onClick= {categoryHandler} className={ catButton === true ? styles.butTrue : styles.butFalse}>Filter by Category </button>
