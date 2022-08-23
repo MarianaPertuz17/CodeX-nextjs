@@ -29,6 +29,7 @@ if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
 
 export default function CSSBattle ({code}) {
   useEffect(()=> {
+    console.log(window, modeLoaded, 'COND')
     if (modeLoaded) setExtension([html()]);
   }, [modeLoaded])
 
