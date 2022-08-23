@@ -21,7 +21,7 @@ export async function getServerSideProps() {
 }
 
 
-export default function CSSBattle () {
+export default function CSSBattle ({code}) {
 
   const [score, setScore] = useState(0);
   const [match, setMatch] = useState(0);
