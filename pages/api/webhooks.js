@@ -1,7 +1,6 @@
 import Stripe from 'stripe';
 import { buffer } from 'micro';
 import { prisma } from '../../db.js';
-// import { useUser } from '@auth0/nextjs-auth0';
 
 export const config = {
   api: {
@@ -11,7 +10,6 @@ export const config = {
 
 export default async function webhookHandler (req, res) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-  // const { user } = useUser();
 
   if (req.method === 'POST') {
     const buf = await buffer(req);
@@ -30,7 +28,6 @@ export default async function webhookHandler (req, res) {
     }
 
     if (event.type === 'checkout.session.completed') {
-      console.log('pi', event.data.object.payment_intent);
       await prisma.user.update({
         where: {
           authId: event.data.object.metadata.authUserId,
@@ -42,7 +39,6 @@ export default async function webhookHandler (req, res) {
     }
 
     if (event.type === 'payment_intent.succeeded') {
-      console.log(event.data.object.id, `PAYMENT SUCCESS!!!`);
       await prisma.user.update({
         where: {
           stripeId: event.data.object.id,
