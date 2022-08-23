@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppContext } from '../../pages/sandbox/context';
+import { AppContext } from '../../context';
 import styles from './styles.module.css';
 
 

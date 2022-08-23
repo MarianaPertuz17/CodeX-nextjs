@@ -1,5 +1,5 @@
 import { SolutionItem } from '../solutionItem';
-import { AppContext } from '../../pages/sandbox/context';
+import { AppContext } from '../../context';
 import styles from './styles.module.css';
 import { useContext } from 'react';
 import { SolutionDetail } from '../solutionDetail';

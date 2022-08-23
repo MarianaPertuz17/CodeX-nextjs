@@ -11,7 +11,7 @@ import { url } from '../../config';
 import { useUser } from '@auth0/nextjs-auth0';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { AppContext } from './context';
+import { AppContext } from '../../context';
 import { LabelBar } from '../../components/labelBar';
 import { SolutionsContainer } from '../../components/solutions';
 import { FormModal } from '../../components/formModal';

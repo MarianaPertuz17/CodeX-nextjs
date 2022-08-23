@@ -2,8 +2,8 @@
   background: none;
   border: none;
   cursor: pointer;
-  height: 20px;
-  width: 30px;
+  min-height: 20px;
+  min-width: 30px;
   position: relative;
   margin-left: 2px;
 }

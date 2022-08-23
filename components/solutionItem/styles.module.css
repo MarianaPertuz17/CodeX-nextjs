@@ -9,9 +9,8 @@
   padding: 15px;
   border:none;
   border-radius: 5px;
-  height: 9vh;
+  max-height: 9em;
   cursor: pointer;
-  /* height: 15%; */
 }
 
 .container:hover {

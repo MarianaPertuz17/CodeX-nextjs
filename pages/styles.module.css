@@ -35,47 +35,48 @@
   color: white;
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  font-size: 70px;
+  font-size: var(--fs-xl);
 }
 
 .words {
   color: white;
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  font-size: 70px;
   overflow: hidden;
-  height: 90px;
+  margin-top: 2vh;
+  max-height: var(--spinner);
+  font-size: var(--fs-xl);
 }
 
 .span {
   display: block;
-  animation: spin_words 6s infinite
+  animation: spin_words 6s infinite;
 }
 
 @keyframes spin_words {
   10% {
-    transform: translateY(-115%);
+    transform: translateY(-150px);
   }
   25% {
-    transform: translateY(-100%);
+    transform: translateY(-130px);
   }
   35% {
-    transform: translateY(-212%);
+    transform: translateY(-250px);
   }
   50% {
-    transform: translateY(-200%);
+    transform: translateY(-230px);
   }
   60% {
-    transform: translateY(-312%);
+    transform: translateY(-350px);
   }
   75% {
-    transform: translateY(-300%);
+    transform: translateY(-330px);
   }
   85% {
-    transform: translateY(-412%);
+    transform: translateY(-450px);
   }
   100% {
-    transform: translateY(-400%);
+    transform: translateY(-430px);
   }
 }
 
@@ -88,7 +89,7 @@
   color: white;
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  font-size: 70px;
+  font-size: var(--fs-xl);;
   animation-duration: 1750ms;
   animation-delay: 500ms;
   animation-fill-mode: both;
@@ -100,13 +101,13 @@
   color: white;
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  font-size: 70px;
+  font-size: var(--fs-xl);;
 }
 
 .text {
   color: gray;
   font-size: 22px;
-  margin-top: 3vh;
+  margin-top: 1vh;
   font-family: 'DM Sans', sans-serif;
   width: 100%;
 }
@@ -135,15 +136,15 @@
   }
 }
 
-.whiteFloor {
-  width: 100%;
-  height: 27%;
-  position: relative;
-}
 
 .firstCardContainer {
   display: flex;
   padding: 0 80px;
+  background-color: white;
+  padding-top: 10vh;
+  border-top-left-radius: 200px;
+  height: 80vh;
+  align-items: center;
 }
 
 .h1 {
@@ -151,10 +152,10 @@
   font-weight: bold;
   font-size: 45px;
   opacity: 0;
-  /* transition: opacity 250ms ease-in; */
   transform: translateY(150px);
   transition: all 2s ease;
   opacity: 0;
+  align-self: center;
 }
 
 .appear {
@@ -163,11 +164,13 @@
 }
 
 .planet {
-  height: 75vh;
+  height: 40vh;
   width: 70vw;
-  margin-top: -20vh;
-  margin-left: -7vw;
   position: relative;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .secondCardContainer {
@@ -177,11 +180,12 @@
   justify-content: center;
   padding: 250px 0;
   position: relative;
-  max-height: fit-content;
+  min-height: 20vh;
 }
 
 .rocket {
-  width: 65%;
+  width: var(--rs-xxl);
+  height: 20vh;
   position: relative;
 }
 
