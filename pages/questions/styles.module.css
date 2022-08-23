@@ -87,3 +87,6 @@
     padding: 5px 15px;
 }
 
+.spinner{
+    justify-self: flex-start;
+}
