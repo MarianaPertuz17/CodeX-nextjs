@@ -3,7 +3,6 @@ import { prisma } from '../../../db.js';
 export default async function handler(req, res) {
   try {
     const {title, explanation, solution, exerciseId, userId} = JSON.parse(req.body);
-    console.log(req.body)
     await prisma.solution.create({
       data: {
         title,

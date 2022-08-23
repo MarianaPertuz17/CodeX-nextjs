@@ -12,7 +12,6 @@ export default async function handler(req, res) {
     });
 
     if (!user.stripeId) {
-      console.log('START PAYMENT');
       try {
         const session = await stripe.checkout.sessions.create({
           line_items: [

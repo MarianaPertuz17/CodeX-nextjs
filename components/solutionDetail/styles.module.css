@@ -12,3 +12,12 @@
   font-family: 'Open Sans';
   font-weight: bold;
 }
+
+.container {
+  height: 60vh;
+}
+
+.date {
+  color: lightgray ;
+  font-size: var(--fs-date)
+}
