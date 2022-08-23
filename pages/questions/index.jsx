@@ -148,7 +148,7 @@ progCss()
         
         {progress !== null && progress !== Infinity &&
       <div className= {styles.completed}>
-          <h1> {progress}  % completed problems</h1>
+          <h4> {progress}  % completed problems</h4>
           <div className="progress">
             <style> {css1}</style>
            </div>  
@@ -165,22 +165,22 @@ progCss()
       {diffButton === true &&         
       <>      
         <div className= {styles.exerciseTabs}>
-          <h1> Easy </h1>
+          <h4> Easy </h4>
           <ExerciseList exercises = {easy}/> 
         </div>
 
         <div className={styles.exerciseTabs}>
-        <h1> Medium </h1>
+        <h4> Medium </h4>
           <ExerciseList exercises = {medium}/> 
         </div>
 
         <div className={styles.exerciseTabs}>
-        <h1> Hard </h1>
+        <h4> Hard </h4>
           <ExerciseList exercises = {hard}/> 
         </div>
 
         <div className={styles.exerciseTabs}>
-        <h1> Very Hard </h1>
+        <h4> Very Hard </h4>
           <ExerciseList exercises = {veryHard}/> 
         </div>
         </>
@@ -190,22 +190,22 @@ progCss()
       {catButton === true && 
       <>
         <div className= {styles.exerciseTabs}>
-          <h1> Arrays </h1>
+          <h4> Arrays </h4>
           <ExerciseList exercises = {arrays}/> 
         </div>
 
         <div className={styles.exerciseTabs}>
-        <h1> Binary Search Trees </h1>
+        <h4> Binary Search Trees </h4>
           <ExerciseList exercises = {binarySearchTrees}/> 
         </div>
 
         <div className={styles.exerciseTabs}>
-        <h1> Binary Trees </h1>
+        <h4> Binary Trees </h4>
           <ExerciseList exercises = {binaryTrees}/> 
         </div>
 
         <div className={styles.exerciseTabs}>
-        <h1> Dynamic Programming</h1>
+        <h4> Dynamic Programming</h4>
           <ExerciseList exercises = {dynamic}/> 
         </div>        
         </>        
