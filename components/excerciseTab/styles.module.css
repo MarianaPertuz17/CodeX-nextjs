@@ -1,65 +1,67 @@
 .tab{
-    height: 40px;
-    width: 300px;
-    border: 1px solid rgb(232,232,232);
-    border-radius: 5px;
-    position: relative;
-    background-color: 	rgb(232,232,232);
-    box-shadow: 1px 1px rgb(232,232,232);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 10px;
+  height: 40px;
+  width: 300px;
+  border: 1px solid rgb(232,232,232);
+  border-radius: 5px;
+  position: relative;
+  background-color: 	rgb(232,232,232);
+  box-shadow: 1px 1px rgb(232,232,232);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .tab:hover{
-    box-shadow: 0 0 3px black;
-    margin-top: -1px;
-    cursor: pointer;
+  box-shadow: 0 0 3px black;
+  margin-top: -1px;
+  cursor: pointer;
 }
 
 .corner{
-    height: 40px;
-    width: 30px;
-    background-color: green;
-    position: absolute;
-    right: 0;
-    border-radius: 3px;
+  height: 40px;
+  width: 30px;
+  background-color: green;
+  position: absolute;
+  right: 0;
+  border-radius: 3px;
 }
 
 .exerciseName{
- margin-left: 10px;
- font-family: 'Open Sans';
+  margin-left: 10px;
+  font-family: 'Open Sans';
+  font-size: var(--fs-50);
 }
 
 
 .tabUnpaid{
-    height: 40px;
-    width: 300px;
-    border: 1px solid rgb(232,232,232);
-    border-radius: 5px;
-    position: relative;
-    background-color: rgb(232,232,232)	;
-    box-shadow: 1px 1px rgb(232,232,232);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 10px;
+  height: 40px;
+  width: 300px;
+  border: 1px solid rgb(232,232,232);
+  border-radius: 5px;
+  position: relative;
+  background-color: rgb(232,232,232)	;
+  box-shadow: 1px 1px rgb(232,232,232);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .tabUnpaid:hover{
-    box-shadow: 0 0 3px black;
-    cursor: pointer;
-    color: black;
+  box-shadow: 0 0 3px black;
+  cursor: pointer;
+  color: black;
 }
 
 .tabUnpaid .payment {
-    display: none;
-  }
+  display: none;
+}
+
 
 .tabUnpaid:hover .exerciseNameUni {
-    display: none;
-  }
+  display: none;  
+}
 
 .tabUnpaid:hover .payment {
     display: inline;

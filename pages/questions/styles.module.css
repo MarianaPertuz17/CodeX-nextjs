@@ -15,11 +15,11 @@
 }
 
 .dashboard{
-    height: 950px;
+    min-height: 950px;
     background: white;
     display:flex;
     flex-direction: column;
-    width:100vw;
+    width:100%;
     align-items: center;
 }
 
@@ -28,7 +28,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
 }
 
 .categorySelect{
@@ -40,15 +41,16 @@
 }
 
 .exerciseTabs{
-    margin-right: 120px;
+    margin-right: 0
     
 }
 
 .exerciseTabContainer{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin-top: 40px;
+    justify-content: space-between;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
     width:90%;
 }
 
@@ -66,10 +68,13 @@
 }
 
 .butTrue{
-    margin-right: 10px;
+    margin-right: 20px;
+    border:none;
     border-radius: 4px;
     background-color: rgba(36, 0, 150, 1);
     color: white;
+    font-size: var(--fs-100);
+    padding: 5px 15px;
 }
 
 .butFalse{
@@ -78,5 +83,7 @@
     background-color: white;
     color: rgba(36, 0, 150, 1);
     border: 1px rgba(36, 0, 150, 1) solid;
+    font-size: var(--fs-100);
+    padding: 5px 15px;
 }
 
