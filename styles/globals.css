@@ -114,10 +114,6 @@ a:hover{
   background-color: #8a8a94;
 } 
 
-span {
-  font-size: var(--fs-50);
-}
-
 h4 {
   font-size: var(--fs-400);
   font-weight: bold;
