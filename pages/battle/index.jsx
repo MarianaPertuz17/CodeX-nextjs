@@ -22,22 +22,22 @@ export async function getServerSideProps() {
   }
 }
 
-let modeLoaded = false
-if (typeof window !== 'undefined' && typeof window.navigator !== 'undefined') {
-  require('@codemirror/lang-html')
-  modeLoaded = true
-}
-
-
 export default function CSSBattle ({code}) {
-  useEffect(()=> {
-    console.log(window, modeLoaded, 'COND')
-    if (modeLoaded) setExtension([html()]);
-  }, [modeLoaded])
+  const [comp, setComp] = useState();
+  useEffect(() => {
+    if (window) {
+      import("@uiw/react-codemirror").then((obj) => {
+        if (!comp) {
+          setComp(obj.default);
+        }
+      });
+    }
+  }, []);
 
   const [score, setScore] = useState(0);
   const [match, setMatch] = useState(0);
   const [extension, setExtension] = useState();
+
 
   const [codeString, setCodeString] = useState(code);
 
@@ -62,7 +62,7 @@ export default function CSSBattle ({code}) {
   const onChange = useCallback(value => {
     setCodeString(value)
   }, []);
-
+  const Comps = comp;
 
   return(
     <div className={styles.fullContainer}>
@@ -78,13 +78,14 @@ export default function CSSBattle ({code}) {
             
             </div>
             
-            <CodeMirror
-              value={codeString}
-              height="200px"
-              theme={dracula}
-              extensions={extension}
-              onChange={onChange}
-            />            
+            {Comps && (
+            <Comps
+              value="const a = 0;"
+              options={{
+                mode: "jsx"
+              }}
+            />
+          )}         
          
           </div>
 
