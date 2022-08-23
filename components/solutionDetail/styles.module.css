@@ -1,6 +1,6 @@
 .button {
   color:white; 
-  font-size: 15px; 
+  font-size: var(--fs-50);; 
   margin-top: -3vh;
   margin-bottom:1vh; 
   background:none; 

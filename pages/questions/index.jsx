@@ -138,10 +138,10 @@ progCss()
 
   return(
   
-    <div style={{display:'flex', flexDirection:'column', background:'#20045c'}}>
+    <div className={styles.container}>
       <NavBar/>
         <div className={styles.header} >
-          <h1> Lets Practice! </h1>
+          <h1>{`Let's practice!`}</h1>
         </div>
 
       <div className={styles.dashboard}>

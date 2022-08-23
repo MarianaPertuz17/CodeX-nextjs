@@ -19,7 +19,7 @@
   text-align: center;
   border: none;
   font-family: 'Open Sans' !important;
-  font-size: 15px;
+  font-size: var(--fs-50);
   cursor: pointer;
 }
 

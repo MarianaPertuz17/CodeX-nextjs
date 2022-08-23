@@ -12,17 +12,17 @@
   flex-direction: column;
   justify-content: center;
   color: rgb(204, 153, 252);
-  font-size: 15px;
+  font-size: var(--fs-50);;
   line-height: 3vh;
 }
 
 .code {
   color: rgb(204, 153, 252);
-  font-size: 15px;
+  font-size: var(--fs-50);;
 }
 
 .title {
   font-weight: bold;
-  font-size: 15px;
+  font-size: var(--fs-50);;
   margin-top: 3vh;
 }

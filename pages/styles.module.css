@@ -45,12 +45,13 @@
   overflow: hidden;
   margin-top: 2vh;
   max-height: var(--spinner);
-  font-size: var(--fs-xl);
+  
 }
 
 .span {
   display: block;
   animation: spin_words 6s infinite;
+  font-size: var(--fs-xl);
 }
 
 @keyframes spin_words {
@@ -106,7 +107,7 @@
 
 .text {
   color: gray;
-  font-size: 22px;
+  font-size: var(--fs-400);
   margin-top: 1vh;
   font-family: 'DM Sans', sans-serif;
   width: 100%;
@@ -150,7 +151,7 @@
 .h1 {
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  font-size: 45px;
+  font-size: var(--fs-600);;
   opacity: 0;
   transform: translateY(150px);
   transition: all 2s ease;
@@ -245,7 +246,7 @@
   width: 40%;
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  font-size: 45px;
+  font-size: var(--fs-600);;
   align-self: center;
   transform: translateX(-150px);
   transition: all 2s ease;

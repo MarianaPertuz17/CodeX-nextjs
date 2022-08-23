@@ -10,7 +10,6 @@
   display: flex;
   padding: 0 20px;
   justify-content: center;
-  /* background: radial-gradient(52.42% 52.36% at 39.89% 51.36%,rgba(69,62,151,0.8901960784313725) 0%,rgb(18 19 29/0%) 70%); */
 }
 
 .innerContainer {
@@ -43,6 +42,7 @@
   border-top-right-radius: 5px;
   font-family: Open Sans;
   opacity: 0.8;
+  font-size: var(--fs-50);
 }
 
 
@@ -67,6 +67,7 @@
   font-family: Open Sans;
   cursor: pointer;
   width: 7vw;
+  font-size: var(--fs-50);
 }
 
 

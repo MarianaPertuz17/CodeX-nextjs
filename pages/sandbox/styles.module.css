@@ -38,7 +38,7 @@
   border-top-right-radius: 5px;
   border: 0.3px solid #393254;
   font-family: 'Open Sans' !important;
-  font-size: 15px;
+  font-size: var(--fs-50);
 }
 
 .questionContainer {
@@ -91,6 +91,7 @@
   font-family: 'Open Sans';
   cursor: pointer;
   min-width: 8vw;
+  font-size: var(--fs-50);
 }
 
 .submitButton {
@@ -101,6 +102,7 @@
   font-family: Open Sans;
   cursor: pointer;
   min-width: 8vw;
+  font-size: var(--fs-50);
 }
 
 
