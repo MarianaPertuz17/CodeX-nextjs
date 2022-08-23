@@ -3,7 +3,7 @@ import { NavBar } from '../../../components/navBar';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import Confetti from 'react-confetti';
 
-export default function purchaseSuccess () {
+export default function Success () {
   const { width, height } = useWindowSize();
   return (
     <div className={styles.container}>
