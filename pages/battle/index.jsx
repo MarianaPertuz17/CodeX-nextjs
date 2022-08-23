@@ -7,7 +7,7 @@ import { NavBar } from '../../components/navBar';
 import { url } from '../../config';
 import dynamic from 'next/dynamic'
 
-export default function CSSBattle ({code}) {
+export default function CSSBattle () {
 
   const CodeMirror = dynamic(() => {
     import('@uiw/react-codemirror')
@@ -31,7 +31,14 @@ export default function CSSBattle ({code}) {
   const [extension, setExtension] = useState();
 
 
-  const [codeString, setCodeString] = useState(code);
+  const [codeString, setCodeString] = useState(`<div></div>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background: blueviolet;
+    }
+  </style>`);
 
   const findScore = async() => {
     const {score, match} = await fetchScore();
