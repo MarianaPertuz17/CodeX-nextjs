@@ -5,34 +5,26 @@ import styles from './styles.module.css';
 import { useState, useCallback, useEffect } from 'react';
 import { NavBar } from '../../components/navBar';
 import { url } from '../../config';
-
-export async function getServerSideProps() {
-  const code = `<div></div>
-  <style>
-    div {
-      width: 100px;
-      height: 100px;
-      background: blueviolet;
-    }
-  </style>`
-  require('@codemirror/lang-html')
-  // const ext = [html()];
-  return {
-    props: { code },
-  }
-}
+import dynamic from 'next/dynamic'
 
 export default function CSSBattle ({code}) {
-  const [comp, setComp] = useState();
-  useEffect(() => {
-    if (window) {
-      import("@uiw/react-codemirror").then((obj) => {
-        if (!comp) {
-          setComp(obj.default);
-        }
-      });
-    }
-  }, []);
+
+  const CodeMirror = dynamic(() => {
+    import('@uiw/react-codemirror')
+    import('@uiw/codemirror-theme-dracula')
+    import('@codemirror/lang-html')
+    return import('@uiw/react-codemirror')
+}, {ssr: false})
+  
+  // useEffect(() => {
+  //   if (window) {
+  //     import("@uiw/react-codemirror").then((obj) => {
+  //       if (!comp) {
+  //         setComp(obj.default);
+  //       }
+  //     });
+  //   }
+  // }, []);
 
   const [score, setScore] = useState(0);
   const [match, setMatch] = useState(0);
@@ -62,7 +54,7 @@ export default function CSSBattle ({code}) {
   const onChange = useCallback(value => {
     setCodeString(value)
   }, []);
-  const Comps = comp;
+
 
   return(
     <div className={styles.fullContainer}>
@@ -78,14 +70,13 @@ export default function CSSBattle ({code}) {
             
             </div>
             
-            {Comps && (
-            <Comps
-              value="const a = 0;"
-              options={{
-                mode: "jsx"
-              }}
-            />
-          )}         
+            {<CodeMirror
+              value={codeString}
+              height="200px"
+              theme={dracula}
+              extensions={[html()]}
+              onChange={onChange}
+            />}         
          
           </div>
 
