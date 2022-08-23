@@ -143,7 +143,7 @@ export default function Questions ({exercises}) {
 
       <div className= {styles.completed}>
         <div className={styles.spinner}>
-        {loading  &&
+        {loading && user1.id  &&
         <Spinner
         background='rgba(36, 0, 150, 1)'
         />     
