@@ -1,6 +1,6 @@
 .tab{
-  height: 40px;
-  width: 300px;
+  min-height: 40px;
+  min-width: 300px;
   border: 1px solid rgb(232,232,232);
   border-radius: 5px;
   position: relative;
@@ -35,8 +35,8 @@
 
 
 .tabUnpaid{
-  height: 40px;
-  width: 300px;
+  min-height: 40px;
+  min-width: 300px;
   border: 1px solid rgb(232,232,232);
   border-radius: 5px;
   position: relative;
