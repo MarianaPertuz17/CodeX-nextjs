@@ -41,9 +41,9 @@
 .exerciseTabContainer{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin-top: 40px;
-    width:80%;
+    width:90%;
 }
 
 .catBut{

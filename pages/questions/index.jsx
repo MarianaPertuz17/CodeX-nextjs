@@ -3,27 +3,7 @@ import { NavBar } from '../../components/navBar';
 import { useState, useCallback, useEffect } from 'react';
 import { ExerciseList } from '../../components/exerciseList';
 import { useUser } from '@auth0/nextjs-auth0';
-
-// export async function getServerSideProps(context) {
-//   const { id } = context.query;
-//   // Fetch exercises
-//   const res = await fetch(`${url}/exercises`);
-//   const exercise = await res.json();
-
-//   // Fetch tests
-//   const res2 = await fetch(`${url}/test/${exercise.id}`);
-//   const tests = await res2.json();
-
-//   // Fetch solutions
-//   const res3 = await fetch(`${url}/solutions/${exercise.id}`);
-//   const solutions = await res3.json();
-
-//   return {
-//     props: { exercise, tests, solutions },
-//   }
-// }
-
-
+import { MainContext } from './context';
 
 
 export default function Questions () {
@@ -41,10 +21,10 @@ export default function Questions () {
   const [dynamic, setDynamic] = useState([])
   const [catButton, setCatButton] = useState(true)
   const [diffButton, setDiffButton] = useState(false)
-  const [progress, setProgress] = useState(0)
+  const [progress, setProgress] = useState(null)
   const { user} = useUser();
   const [css1, setCss1] = useState(null)
-
+  
 
 const url= 'http://localhost:3000/api/exercises'
 const urlUser = 'http://localhost:3000/api/userex'
@@ -68,29 +48,24 @@ const fetchUser = async() => {
    setUser1(res);
 }
 
+
+
 const handleFetchUser = () => {
-  return fetch(`${urlUser}/${1234}`)
+  return fetch(`${urlUser}/${user.sub}`)
     .then(res => res.json())
     .then(data => data)
     .catch(e => e);
 }
 
-// const handleFetchUser = () => {
-//   return fetch(`${urlUser}/${user.sub}`)
-//     .then(res => res.json())
-//     .then(data => data)
-//     .catch(e => e);
-// }
-
 const progressFunc = () => {
   const solvedUser = user1.solved.length
   const exLength = exercises.length
-  let prog = Math.floor((solvedUser/ exLength) * 100)
-  if(!prog){
+  if(solvedUser === 0){
     setProgress(0)
-  }else {
+  } else {
+    let prog = Math.floor((solvedUser/ exLength) * 100)
     setProgress(prog)
-  }   
+  } 
 }
 
 
@@ -170,13 +145,15 @@ progCss()
         </div>
 
       <div className={styles.dashboard}>
+        
+        {progress !== null && progress !== Infinity &&
       <div className= {styles.completed}>
           <h1> {progress}  % completed problems</h1>
           <div className="progress">
             <style> {css1}</style>
            </div>  
         </div>
-
+}
 
         <div className={styles.categorySelect}>
           <button onClick= {categoryHandler} className={ catButton === true ? styles.butTrue : styles.butFalse}>Filter by Category </button>
@@ -184,9 +161,9 @@ progCss()
         </div>
 
         <div className={styles.exerciseTabContainer}>
-
-      {diffButton === true && 
-      <>
+        <MainContext.Provider value={{user1}}>
+      {diffButton === true &&         
+      <>      
         <div className= {styles.exerciseTabs}>
           <h1> Easy </h1>
           <ExerciseList exercises = {easy}/> 
@@ -230,9 +207,10 @@ progCss()
         <div className={styles.exerciseTabs}>
         <h1> Dynamic Programming</h1>
           <ExerciseList exercises = {dynamic}/> 
-        </div>
-        </>
+        </div>        
+        </>        
           }
+          </MainContext.Provider>
         </div>
       </div>
     </div>
