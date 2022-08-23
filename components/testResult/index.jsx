@@ -1,7 +1,7 @@
 
 import { ListItem } from '../listItem';
 import styles from './styles.module.css';
-import { AppContext } from '../../pages/sandbox/context';
+import { AppContext } from '../../context';
 import { useContext } from 'react';
 
 export function TestResult () {

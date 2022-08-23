@@ -1,5 +1,5 @@
 .labelButtonContainer {
-  height: 4vh;
+  min-height: 4vh;
   display:flex;
   justify-content:space-between;
   align-items: center;
@@ -12,8 +12,6 @@
 .label {
   color: rgb(189, 189, 189);
   height: 100%;
-  background-color: #30304b;
-  width: 5%;
   min-width: 6vw;
   display: flex;
   justify-content: center;

@@ -10,7 +10,7 @@
 
 .container::-webkit-scrollbar {
   width: 12px;
-  height: 20px;
+  min-height: 20px;
 }
 
 .container::-webkit-scrollbar-track {

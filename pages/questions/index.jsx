@@ -1,9 +1,9 @@
 import styles from './styles.module.css';
 import { NavBar } from '../../components/navBar';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { ExerciseList } from '../../components/exerciseList';
 import { useUser } from '@auth0/nextjs-auth0';
-import { MainContext } from './context';
+import { MainContext } from '../../context';
 
 
 export default function Questions () {

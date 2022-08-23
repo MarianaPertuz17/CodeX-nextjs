@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { AppContext } from '../../pages/sandbox/context';
+import { AppContext } from '../../context';
 import styles from './styles.module.css';
 import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
@@ -21,7 +21,7 @@ export function SolutionDetail () {
     formattedUserCode = userSolution.solution.replaceAll('  ', '\n');
     explanation = userSolution.explanation;
     title = userSolution.title;
-    formattedDate = moment(userSolution.createdAt).format('MMMM Do YYYY, h:mm:ss');
+    formattedDate = moment(userSolution.createdAt).format('MMMM Do YYYY, h:mm:ss a');
   }
 
   return(

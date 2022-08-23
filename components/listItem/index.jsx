@@ -17,13 +17,13 @@ export function ListItem ({item, list, type, params}) {
 
 
   return(
-    <div className={styles.container}>
+    <div className={styles.container} onClick={handleClick}>
       <div style={{fontWeight:'bold', display:'flex', justifyContent:'space-between', alignItems:'center'}}>
         {type ==='hint' && `Hint ${list.indexOf(item)+1}`}
         {type ==='test' && item.passed && <span>&#x2705; Test {list.indexOf(item)+1}</span>}
         {type ==='test' && !item.passed && <span>	&#10060; Test {list.indexOf(item)+1}</span>}
         {type !=='test' &&  type !=='hint' && `Optimal Space and Time Complexity`}
-        <button style={{cursor:'pointer', background:'none', border:'none'}} onClick={handleClick}>
+        <button style={{cursor:'pointer', background:'none', border:'none'}}>
           <FontAwesomeIcon
             icon={isOpen ? faChevronUp : faChevronDown}
             style={{color:'white', fontSize:23}}

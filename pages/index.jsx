@@ -42,16 +42,6 @@ export default function Home () {
         </div>        
       </div>
 
-      <div className={styles.whiteFloor}>
-        <Image
-          src={whiteFloor}
-          alt="whiteFloor"
-          layout='fill'
-          objectFit='cover'
-        />
-      </div>
-      
-
       <div className={styles.firstCardContainer}>  
           <div className={styles.planet}>
             <Image

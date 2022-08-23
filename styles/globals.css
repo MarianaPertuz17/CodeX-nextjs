@@ -2,7 +2,36 @@ html,
 body {
   padding: 0;
   margin: 0;
+  --spinner:5rem;
+  --rs-xxl:30em;
+  --fs-xl: 4.5rem;
+  --fs-600: 1.15rem;
+  --fs-500: 1.25rem;
+  --fs-400: 1rem
+}
 
+@media (min-width:2000px) {
+  body {
+    --spinner:7rem;
+    --rs-xxl: 40em;
+    --fs-xl: 6rem;
+    --fs-600: 1.15rem;
+    --fs-500: 1.25rem;
+    --fs-400: 1rem
+  }
+  
+}
+
+@media (min-width:2400px) {
+  body {
+    --spinner:11rem;
+    --rs-xxl: 50em;
+    --fs-xl: 10rem;
+    --fs-600: 1.15rem;
+    --fs-500: 1.25rem;
+    --fs-400: 1rem
+  }
+  
 }
 
 a {

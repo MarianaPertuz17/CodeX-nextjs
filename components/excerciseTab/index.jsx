@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styles from './styles.module.css';
 import { useContext } from 'react';
-import { MainContext } from '../../pages/questions/context';
+import { MainContext } from '../../context';
 import { AiFillLock } from 'react-icons/ai';
 
 export function ExerciseTab({exercise}) {  
