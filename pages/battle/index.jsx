@@ -5,7 +5,8 @@ import styles from './styles.module.css';
 import { useState, useCallback, useEffect } from 'react';
 import { NavBar } from '../../components/navBar';
 import { url } from '../../config';
-import dynamic from 'next/dynamic'
+import dynamic from 'next/dynamic';
+// import 'codemirror/theme/monokai.css';
 
 const CodeMirror = dynamic(
   () => {
@@ -87,6 +88,10 @@ export default function CSSBattle () {
               theme={dracula}
               extensions={[html()]}
               onChange={onChange}
+              // options={{
+              //   theme: 'monokai',
+              // }}
+              lazyLoadMode={false}
             />}         
          
           </div>
