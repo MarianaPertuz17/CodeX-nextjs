@@ -43,6 +43,7 @@ export default function Questions ({exercises}) {
   }
 
 
+
   const handleFetchUser = () => {
     return fetch(`${url}/userex/${user.sub}`)
       .then(res => res.json())
