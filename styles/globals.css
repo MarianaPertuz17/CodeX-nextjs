@@ -290,3 +290,15 @@ h4 {
 .ͼ1 .cm-selectionBackground {
   position: absolute;
 }
+.ͼ1 .cm-selectionLayer {
+  z-index: -1;
+  contain: size style;
+}
+.ͼo .cm-cursor, .ͼo .cm-dropCursor {
+  border-left-color: green;
+}
+.ͼ1 .cm-cursorLayer {
+  z-index: 100;
+  contain: size style;
+  pointer-events: none;
+}
