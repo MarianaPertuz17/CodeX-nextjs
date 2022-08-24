@@ -298,22 +298,24 @@ h4 {
   border-left-color: green;
 }
 
-.cm-cursor {
-  background: lime;
-  line-height: 17px;
-  margin-left: 3px;
-  -webkit-animation: blink 0.8s infinite;
+.cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color: pink;
 }
 
-@-webkit-keyframes blink {
-  0% {background: #222}
-  50% {background: lime}
-  100% {background: #222}
+.ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color: #f8f8f0;
 }
+
 .ͼ1 .cm-cursorLayer {
   z-index: 100;
   contain: size style;
   pointer-events: none;
+}
+
+.cm-cursor {
+  left: 43.7969px; 
+  top: 72.1719px; 
+  height: 19px;
 }
 
 .cm-theme-light{
