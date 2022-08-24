@@ -224,9 +224,22 @@ h4 {
   z-index: 100;
   contain: size style;
   pointer-events: none;
+  animation-duration: 1200ms;
+  animation-name: cm-blink2;
+
 }
 
 .ͼ1.cm-focused .cm-cursorLayer {
   animation: steps(1) cm-blink 1.2s infinite;
 }
 
+.ͼ1c {
+  color: #50fa7b;
+}
+
+.ͼ17 {
+  color: #f1fa8c;
+}
+.ͼ1b {
+  color: #66d9ef;
+}
