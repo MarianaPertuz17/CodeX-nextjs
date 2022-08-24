@@ -243,3 +243,6 @@ h4 {
 .ͼ1b {
   color: #66d9ef;
 }
+.cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color: #f8f8f0;
+}
