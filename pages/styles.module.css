@@ -90,7 +90,7 @@
   color: white;
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  font-size: var(--fs-xl);;
+  font-size: var(--fs-xl);
   animation-duration: 1750ms;
   animation-delay: 500ms;
   animation-fill-mode: both;
@@ -102,7 +102,7 @@
   color: white;
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  font-size: var(--fs-xl);;
+  font-size: var(--fs-xl);
 }
 
 .text {
@@ -151,7 +151,7 @@
 .h1 {
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  font-size: var(--fs-600);;
+  font-size: var(--fs-600);
   opacity: 0;
   transform: translateY(150px);
   transition: all 2s ease;
@@ -246,7 +246,7 @@
   width: 40%;
   font-family: 'DM Sans', sans-serif;
   font-weight: bold;
-  font-size: var(--fs-600);;
+  font-size: var(--fs-600);
   align-self: center;
   transform: translateX(-150px);
   transition: all 2s ease;
