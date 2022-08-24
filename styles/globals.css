@@ -297,6 +297,19 @@ h4 {
 .ͼo .cm-cursor, .ͼo .cm-dropCursor {
   border-left-color: green;
 }
+
+.cm-cursor {
+  background: lime;
+  line-height: 17px;
+  margin-left: 3px;
+  -webkit-animation: blink 0.8s infinite;
+}
+
+@-webkit-keyframes blink {
+  0% {background: #222}
+  50% {background: lime}
+  100% {background: #222}
+}
 .ͼ1 .cm-cursorLayer {
   z-index: 100;
   contain: size style;
@@ -317,3 +330,4 @@ h4 {
   color: #6c6c6c;
   border-right: 1px solid #ddd;
 }
+
