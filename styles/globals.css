@@ -267,3 +267,14 @@ h4 {
 .ͼ15 .cm-selectionLayer .cm-selectionBackground, .ͼ15 ::selection {
   background-color: rgba(255, 255, 255, 0.1);
 }
+
+.c1.cm-focused .cm-matchingBracket {
+  background-color: #328c8252;
+}
+
+.ͼ16 {
+  color: #6272a4;
+}
+.cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color: #f8f8f0;
+}
