@@ -7,7 +7,10 @@ import { NavBar } from '../../components/navBar';
 import { url } from '../../config';
 import dynamic from 'next/dynamic'
 
-const CodeMirror = dynamic(import('@uiw/react-codemirror'), {ssr: false})
+const CodeMirror = dynamic(
+  () => import("@uiw/react-codemirror").then((mod) => mod.default),
+  { ssr: false }
+);
 
 
 export default function CSSBattle () {
