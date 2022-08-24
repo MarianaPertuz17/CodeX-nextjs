@@ -8,7 +8,10 @@ import { url } from '../../config';
 import dynamic from 'next/dynamic'
 
 const CodeMirror = dynamic(
-  () => import("@uiw/react-codemirror").then((mod) => mod.default),
+  () => {
+    import("@codemirror/lang-html")
+    import('@uiw/codemirror-theme-dracula')
+    return import("@uiw/react-codemirror")},
   { ssr: false }
 );
 
