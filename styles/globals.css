@@ -243,6 +243,17 @@ h4 {
 .ͼ1b {
   color: #66d9ef;
 }
-.cm-cursor, .ͼ15 .cm-dropCursor {
+
+.ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
   border-left-color: #f8f8f0;
+}
+
+.cm-cursor {
+  border-left-color: #f8f8f0;
+}
+.ͼ1c {
+  color: #50fa7b;
+}
+.ͼ15 .cm-selectionLayer .cm-selectionBackground, .ͼ15 ::selection {
+  background-color: rgba(255, 255, 255, 0.1);
 }
