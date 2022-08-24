@@ -30,13 +30,13 @@ body {
   body {
     --spinner:7rem;
     --rs-xxl: 40em;
-    --fs-xl: 6rem;
-    --fs-600: 3rem;
-    --fs-400: 2.2rem;
-    --fs-100: 1.58rem;
-    --fs-50: 1.5rem;
-    --fs-20: 1.1rem;
-    --fs-date: 1rem
+    --fs-xl: 5rem;
+    --fs-600: 2rem;
+    --fs-400: 1.8rem;
+    --fs-100: 1.4rem;
+    --fs-50: 1.2rem;
+    --fs-20: 1rem;
+    --fs-date: 0.8rem
   }
   
 }
@@ -54,6 +54,10 @@ body {
     --fs-date: 1.6rem
   }
   
+}
+
+span {
+  font-size: var(--fs-50);
 }
 
 a {
@@ -245,10 +249,10 @@ h4 {
 }
 
 .cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
-  border-left-color: green;
+  border-left-color: #f8f8f0;
 }
 .cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
-  border-left-color: blue;
+  border-left-color: #f8f8f0;
 }
 
 .ͼ1c {
@@ -295,11 +299,11 @@ h4 {
   contain: size style;
 }
 .ͼo .cm-cursor, .ͼo .cm-dropCursor {
-  border-left-color: green;
+  border-left-color: #f8f8f0;
 }
 
 .cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
-  border-left-color: pink;
+  border-left-color:#f8f8f0;
 }
 
 .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
