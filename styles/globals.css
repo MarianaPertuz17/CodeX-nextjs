@@ -251,9 +251,19 @@ h4 {
 .cm-cursor {
   border-left-color: #f8f8f0;
 }
+
 .ͼ1c {
-  color: #50fa7b;
+  color: #50fa7b !important;
 }
+
+.ͼv {
+  color: #50fa7b !important;
+}
+
 .ͼ15 .cm-selectionLayer .cm-selectionBackground, .ͼ15 ::selection {
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cm-selectionBackground {
+  background: red;
 }
