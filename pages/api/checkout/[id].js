@@ -31,7 +31,7 @@ export default async function handler(req, res) {
       }
     }
     else {
-      res.redirect(`${req.headers.origin}/purchase?error=duplicate`);
+      res.redirect(307, `${req.headers.origin}/purchase?error=duplicate`);
     }
   } else {
     res.setHeader('Allow', 'POST');
