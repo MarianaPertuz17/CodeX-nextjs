@@ -30,13 +30,13 @@ body {
   body {
     --spinner:7rem;
     --rs-xxl: 40em;
-    --fs-xl: 6rem;
-    --fs-600: 3rem;
-    --fs-400: 2.2rem;
-    --fs-100: 1.58rem;
-    --fs-50: 1.5rem;
-    --fs-20: 1.1rem;
-    --fs-date: 1rem
+    --fs-xl: 5rem;
+    --fs-600: 2rem;
+    --fs-400: 1.8rem;
+    --fs-100: 1.4rem;
+    --fs-50: 1.2rem;
+    --fs-20: 1rem;
+    --fs-date: 0.8rem
   }
   
 }
@@ -54,6 +54,10 @@ body {
     --fs-date: 1.6rem
   }
   
+}
+
+span {
+  font-size: var(--fs-50);
 }
 
 a {
@@ -114,11 +118,240 @@ a:hover{
   background-color: #8a8a94;
 } 
 
-span {
-  font-size: var(--fs-50);
-}
-
 h4 {
   font-size: var(--fs-400);
   font-weight: bold;
+}
+
+.ͼ1.cm-editor {
+  position: relative !important;
+  box-sizing: border-box;
+  display: flex !important;
+  flex-direction: column;
+  height: 95%;
+}
+
+.ͼ1j {
+  height: 200px;
+}
+
+.ͼ1 .cm-scroller {
+  display: flex !important;
+  align-items: flex-start !important;
+  font-family: monospace;
+  line-height: 1.4;
+  height: 100%;
+  overflow-x: auto;
+  position: relative;
+  z-index: 0;
+}
+
+.ͼ1 .cm-content {
+  margin: 0;
+  flex-grow: 2;
+  flex-shrink: 0;
+  min-height: 100%;
+  display: block;
+  white-space: pre;
+  word-wrap: normal;
+  box-sizing: border-box;
+  padding: 4px 0;
+  outline: none;
+}
+
+.ͼ1 .cm-gutters {
+  flex-shrink: 0;
+  display: flex;
+  height: 100%;
+  box-sizing: border-box;
+  left: 0;
+  z-index: 200;
+}
+
+.ͼo .cm-gutters {
+  background-color: #282a36;
+  color: #6D8A88;
+}
+
+.ͼ3 .cm-gutters {
+  background-color: #333338;
+  color: #ccc;
+}
+
+.ͼ1 .cm-lineNumbers .cm-gutterElement {
+  padding: 0 3px 0 5px;
+  min-width: 20px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.ͼ1 .cm-gutter {
+  display: flex !important;
+  flex-direction: column;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.ͼ4 .cm-line {
+  caret-color: transparent !important;
+}
+
+.ͼo .cm-activeLine {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ͼ1 .cm-line {
+  display: block;
+  padding: 0 2px 0 4px;
+}
+
+.ͼt {
+  color: #ff79c6;
+}
+
+.ͼu {
+  color: #66d9ef;
+}
+
+.ͼo {
+  background-color: #202049;
+  color: #f8f8f2;
+}
+
+.ͼw {
+  color: #bd93f9;
+}
+
+.ͼ1 .cm-cursorLayer {
+  z-index: 100;
+  contain: size style;
+  pointer-events: none;
+  animation-duration: 1200ms;
+  animation-name: cm-blink2;
+
+}
+
+.ͼ1.cm-focused .cm-cursorLayer {
+  animation: steps(1) cm-blink 1.2s infinite;
+}
+
+.ͼ1c {
+  color: #50fa7b;
+}
+
+.ͼ17 {
+  color: #f1fa8c;
+}
+.ͼ1b {
+  color: #66d9ef;
+}
+
+.cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color: #f8f8f0;
+}
+.cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color: #f8f8f0;
+}
+
+.ͼ1c {
+  color: #50fa7b !important;
+}
+
+.ͼv {
+  color: #50fa7b !important;
+}
+
+.ͼ15 .cm-selectionLayer .cm-selectionBackground, .ͼ15 ::selection {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.ͼ16 {
+  color: #6272a4;
+}
+.cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color: #f8f8f0;
+}
+
+.ͼ1.cm-focused .cm-matchingBracket {
+  background-color: #328c8252 !important;
+}
+.ͼo .cm-cursor, .ͼo .cm-dropCursor {
+  border-left-color: #f8f8f0;
+}
+
+.cm-selectionBackground {
+  left: 37.1719px; 
+  top: 21.99px; 
+  width: 377.266px; 
+  height: 120.166px;
+}
+
+.ͼo .cm-selectionLayer .cm-selectionBackground, .ͼo ::selection {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.ͼ1 .cm-selectionBackground {
+  position: absolute;
+}
+.ͼ1 .cm-selectionLayer {
+  z-index: -1;
+  contain: size style;
+}
+.ͼo .cm-cursor, .ͼo .cm-dropCursor {
+  border-left-color: #f8f8f0;
+}
+
+.cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color:#f8f8f0;
+}
+
+.ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color: #f8f8f0;
+}
+
+.cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color: #f8f8f0;
+}
+.ͼ1 .cm-cursorLayer {
+  z-index: 100;
+  contain: size style;
+  pointer-events: none;
+}
+
+.cm-cursor {
+  left: 43.7969px; 
+  top: 72.1719px; 
+  height: 19px;
+}
+
+.cm-theme-light{
+  height: 100%;
+}
+.ͼ1 .cm-lineNumbers .cm-gutterElement {
+  padding: 0 3px 0 5px;
+  min-width: 20px;
+  text-align: right;
+  white-space: nowrap;
+}
+.ͼ2 .cm-gutters {
+  background-color: #f5f5f5;
+  color: #6c6c6c;
+  border-right: 1px solid #ddd;
+}
+
+.ͼb {
+  color: #708;
+}
+
+.ͼg {
+  color: #00f;
+}
+
+.ͼm {
+  color: #940;
+}
+
+.ͼ2 .cm-activeLine {
+  background-color: #f3f9ff;
 }

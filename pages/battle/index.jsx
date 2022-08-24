@@ -1,21 +1,46 @@
-import CodeMirror from '@uiw/react-codemirror';
+// import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { html } from '@codemirror/lang-html';
 import styles from './styles.module.css';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { NavBar } from '../../components/navBar';
 import { url } from '../../config';
+import dynamic from 'next/dynamic';
+
+// import 'codemirror/theme/monokai.css';
+
+const CodeMirror = dynamic(
+  () => {
+    import("@codemirror/lang-html")
+    import('@uiw/codemirror-theme-dracula')
+    return import("@uiw/react-codemirror")},
+  { ssr: false }
+);
 
 
 export default function CSSBattle () {
 
+  
+  
+  // useEffect(() => {
+  //   if (window) {
+  //     import("@uiw/react-codemirror").then((obj) => {
+  //       if (!comp) {
+  //         setComp(obj.default);
+  //       }
+  //     });
+  //   }
+  // }, []);
+
   const [score, setScore] = useState(0);
   const [match, setMatch] = useState(0);
+  const [extension, setExtension] = useState();
+
 
   const [codeString, setCodeString] = useState(`<div></div>
   <style>
     div {
-      width: 100px;
+      width: 110px;
       height: 100px;
       background: blueviolet;
     }
@@ -64,7 +89,10 @@ export default function CSSBattle () {
               theme={dracula}
               extensions={[html()]}
               onChange={onChange}
-            />            
+              // options={{
+              //   theme: 'monokai',
+              // }}
+            />         
          
           </div>
 
