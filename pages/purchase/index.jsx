@@ -56,7 +56,7 @@ export default function Purchase () {
                 </div>
               </div>
               <div className={styles.codeInterview} >
-                <Image src={codeInterviewIcon} className={styles.codeInterviewIcon} />
+                <Image src={codeInterviewIcon} alt="Coding interview icon" className={styles.codeInterviewIcon} />
               </div>
               <button className={styles.paymentButton} type="submit" role="link">Buy Now</button>
             </form>
