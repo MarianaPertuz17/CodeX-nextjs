@@ -219,3 +219,9 @@ h4 {
 .ͼw {
   color: #bd93f9;
 }
+
+.ͼ1 .cm-cursorLayer {
+  z-index: 100;
+  contain: size style;
+  pointer-events: none;
+}
