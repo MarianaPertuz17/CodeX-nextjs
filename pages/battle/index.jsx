@@ -1,4 +1,4 @@
-// import CodeMirror from '@uiw/react-codemirror';
+import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { html } from '@codemirror/lang-html';
 import styles from './styles.module.css';
@@ -9,13 +9,13 @@ import dynamic from 'next/dynamic';
 
 // import 'codemirror/theme/monokai.css';
 
-const CodeMirror = dynamic(
-  () => {
-    import("@codemirror/lang-html")
-    import('@uiw/codemirror-theme-dracula')
-    return import("@uiw/react-codemirror")},
-  { ssr: false }
-);
+// const CodeMirror = dynamic(
+//   () => {
+//     import("@codemirror/lang-html")
+//     import('@uiw/codemirror-theme-dracula')
+//     return import("@uiw/react-codemirror")},
+//   { ssr: false }
+// );
 
 
 export default function CSSBattle () {
@@ -92,7 +92,6 @@ export default function CSSBattle () {
               // options={{
               //   theme: 'monokai',
               // }}
-              lazyLoadMode={false}
             />         
          
           </div>
