@@ -6,8 +6,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { NavBar } from '../../components/navBar';
 import { url } from '../../config';
 import dynamic from 'next/dynamic';
-import("@codemirror/lang-html")
-import('@uiw/codemirror-theme-dracula')
+
 // import 'codemirror/theme/monokai.css';
 
 const CodeMirror = dynamic(
