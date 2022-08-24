@@ -1,4 +1,4 @@
-import CodeMirror from '@uiw/react-codemirror';
+// import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { html } from '@codemirror/lang-html';
 import styles from './styles.module.css';
@@ -7,14 +7,12 @@ import { NavBar } from '../../components/navBar';
 import { url } from '../../config';
 import dynamic from 'next/dynamic'
 
+const CodeMirror = dynamic(import('@uiw/react-codemirror'), {ssr: false})
+
+
 export default function CSSBattle () {
 
-  const CodeMirror = dynamic(() => {
-    import('@uiw/react-codemirror')
-    import('@uiw/codemirror-theme-dracula')
-    import('@codemirror/lang-html')
-    return import('@uiw/react-codemirror')
-}, {ssr: false})
+  
   
   // useEffect(() => {
   //   if (window) {
