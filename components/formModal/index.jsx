@@ -59,12 +59,15 @@ export function FormModal(props) {
           <input name='explanation' type='text' placeholder='Explain your code...' value={formState.explanation} onChange={handleChange} className={styles.input}/>
           
           <label style={{fontWeight:'bold', fontSize:'17px'}}>Code</label>
-          <CodeMirror
-            value='//write your code here'
-            height="200px"
-            extensions={[javascript({ jsx: true })]}
-            onChange={handleChange}
-          />
+          <div style={{height:'30vh'}}>
+            <CodeMirror
+              value='//write your code here'
+              height="200px"
+              extensions={[javascript({ jsx: true })]}
+              onChange={handleChange}
+            />
+          </div>
+          
 
         </form>
       </Modal.Body>
