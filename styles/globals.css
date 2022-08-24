@@ -306,6 +306,9 @@ h4 {
   border-left-color: #f8f8f0;
 }
 
+.cm-cursor, .ͼ15 .cm-cursor, .ͼ15 .cm-dropCursor {
+  border-left-color: #f8f8f0;
+}
 .ͼ1 .cm-cursorLayer {
   z-index: 100;
   contain: size style;
