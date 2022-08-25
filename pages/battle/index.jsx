@@ -1,4 +1,3 @@
-// import CodeMirror from '@uiw/react-codemirror';
 import { dracula } from '@uiw/codemirror-theme-dracula';
 import { html } from '@codemirror/lang-html';
 import styles from './styles.module.css';
@@ -6,8 +5,6 @@ import { useState, useCallback, useEffect } from 'react';
 import { NavBar } from '../../components/navBar';
 import { url } from '../../config';
 import dynamic from 'next/dynamic';
-
-// import 'codemirror/theme/monokai.css';
 
 const CodeMirror = dynamic(
   () => {
@@ -20,29 +17,8 @@ const CodeMirror = dynamic(
 
 export default function CSSBattle () {
 
-  
-  const [windowWidth, setWindowWidth] = useState(0);
-  const [windowHeight, setWindowHeight] = useState(0);
-
-  useEffect(() => {
-    setWindowWidth(window.width);
-    setWindowHeight(window.height);
-  }, [])
-  // useEffect(() => {
-  //   if (window) {
-  //     import("@uiw/react-codemirror").then((obj) => {
-  //       if (!comp) {
-  //         setComp(obj.default);
-  //       }
-  //     });
-  //   }
-  // }, []);
-
   const [score, setScore] = useState(0);
   const [match, setMatch] = useState(0);
-  const [extension, setExtension] = useState();
-
-
   const [codeString, setCodeString] = useState(`<div></div>
   <style>
     div {
@@ -91,14 +67,10 @@ export default function CSSBattle () {
             
             <CodeMirror
               value={codeString}
-              width={windowWidth}
-              height={windowHeight}
+              height="200px"
               theme={dracula}
               extensions={[html()]}
               onChange={onChange}
-              // options={{
-              //   theme: 'monokai',
-              // }}
             />         
          
           </div>
