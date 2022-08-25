@@ -1,1 +1,1 @@
-export const url= 'https://code-x-nextjs.vercel.app/api';
+export const url= 'https://codex-app.vercel.app/api';
