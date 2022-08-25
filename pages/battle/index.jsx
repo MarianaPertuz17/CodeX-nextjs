@@ -21,7 +21,13 @@ const CodeMirror = dynamic(
 export default function CSSBattle () {
 
   
-  
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
+
+  useEffect(() => {
+    setWindowWidth(window.width);
+    setWindowHeight(window.height);
+  }, [])
   // useEffect(() => {
   //   if (window) {
   //     import("@uiw/react-codemirror").then((obj) => {
@@ -85,7 +91,8 @@ export default function CSSBattle () {
             
             <CodeMirror
               value={codeString}
-              height="200px"
+              width={windowWidth}
+              height={windowHeight}
               theme={dracula}
               extensions={[html()]}
               onChange={onChange}
