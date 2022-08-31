@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## CodeX
+# CodeX
 <p align="center">
   <img src="/public/assets/images/CodeX_banner.png" width="500">
 </p>
@@ -75,5 +75,5 @@ To learn more about Next.js, take a look at the following resources:
 ## Developers
 
 - Mariana Pertuz - [GitHub](https://github.com/MarianaPertuz17) - [LinkedIn](https://www.linkedin.com/in/mariana-pertuz-valencia/)
-- Michael Shaevitch - [GitHub](https://github.com/CornOnACob)
+- Michael Shaevitch - [GitHub](https://github.com/CornOnACob) - [LinkedIn](https://www.linkedin.com/in/mshaevitch/)
 - Patricio Galindo - [GitHub](https://github.com/patriciogalindo)
