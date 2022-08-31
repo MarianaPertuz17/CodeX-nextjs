@@ -4,11 +4,34 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 <p align="center">
   <img src="/public/assets/images/CodeX_banner.png" width="500">
 </p>
+
 CodeX is a web application that helps you to get ready and land your new dream life. In this app, you'll find several questions that are code related and could come up in a technical interview. You'll have access to the question itself, some hints that will help you get to solve the problem and a code editor so that you can run your own code and see if the test are passing. Also, if you want you can check CodeX's solution to the question and user's solutions and you can submit your own solution so that other users can check it out!
 
 Finally, if you want to practice your CSS skills, CodeX has a fun CSS battle section!
 
 NOTE: In the basic plan, you'll only have access to one free exercise, but you'll be able to access the others by signing up to the premium plan.
+
+## Screenshots
+
+<p align="center">
+  <img src="/public/assets/images/Landing_README.png">
+</p>
+
+<p align="center">
+  <img src="/public/assets/images/questions_README.png">
+</p>
+
+<p align="center">
+  <img src="/public/assets/images/sandbox_README.png">
+</p>
+
+<p align="center">
+  <img src="/public/assets/images/battle_README.png">
+</p>
+
+<p align="center">
+  <img src="/public/assets/images/buy_README.png">
+</p>
 
 ## Getting Started
 
