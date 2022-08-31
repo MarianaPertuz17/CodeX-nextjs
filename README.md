@@ -66,6 +66,7 @@ Or you can check the [Deployed Version](https://code-x-nextjs.vercel.app/)
 - [Google Cloud](https://cloud.google.com/)
 - [Auth0](https://auth0.com/)
 - [Stripe](https://stripe.com/)
+- [Figma](https://www.figma.com/)
 - [Vercel](https://vercel.com/) - used for deploying stage.
 
 
