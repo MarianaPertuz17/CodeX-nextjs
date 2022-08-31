@@ -60,8 +60,6 @@ Or you can check the [Deployed Version](https://code-x-nextjs.vercel.app/)
 
 ## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
-
 - [Next.js](https://nextjs.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Prisma](https://www.prisma.io/)
