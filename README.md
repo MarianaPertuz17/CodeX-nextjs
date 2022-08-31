@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 # CodeX
 <p align="center">
   <img src="/public/assets/images/CodeX_banner.png" width="500">
@@ -58,6 +56,7 @@ yarn dev
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+Or you can check the [Deployed Version](https://code-x-nextjs.vercel.app/)
 
 ## Tech Stack
 
